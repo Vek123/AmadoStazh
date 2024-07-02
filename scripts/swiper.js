@@ -140,3 +140,19 @@ const sameArticlesSwiper = new Swiper('.same-articles__swiper', {
         }
     },
 });
+const contentImagesThumbsSwiper = new Swiper('.content-images-swiper__thumbs-swiper', {
+    spaceBetween: 0,
+    slidesPerView: 'auto',
+    freeMode: true,
+    watchSlidesProgress: true,
+});
+const contentImagesSwiper = new Swiper('.content-images-swiper', {
+    spaceBetween: 10,
+    navigation: {
+        nextEl: ".content-images-swiper .swiper-button-next",
+        prevEl: ".content-images-swiper .swiper-button-prev",
+    },
+    thumbs: {
+        swiper: contentImagesThumbsSwiper,
+    }
+});
