@@ -13,6 +13,7 @@ const medicinesSwiper = new Swiper('.article-medicaments__items-swiper', {
     breakpoints: {
         300: {
             slidesPerView: 'auto',
+            spaceBetween: 10,
             pagination: {
                 enabled: true,
             },
@@ -40,13 +41,17 @@ const medicinesSwiper = new Swiper('.article-medicaments__items-swiper', {
         }
     }
 });
-const iconsSwiper = new Swiper('.item-icons-swiper', {
+const iconsSwipers = new Swiper('.item-icons-swiper', {
     nested: true,
     pagination: {
         el: '.item-icons-swiper .swiper-pagination',
         clickable: true,
+        dynamicBullets: true,
     }
 });
+for (sw of iconsSwipers) {
+    sw.slideTo(Math.floor((sw.slides.length - 1) / 2));
+}
 let zoomedSwipers = [];
 document.querySelectorAll('.zoomed-images').forEach(sw => {
     zoomedSwipers.push(new Swiper(`.${sw.classList[sw.classList.length-1]} .zoomed-img-swiper`, {
@@ -128,6 +133,10 @@ const sameArticlesSwiper = new Swiper('.same-articles__swiper', {
         780: {
             enabled: false,
             slidesPerView: 'auto',
+            spaceBetween: 0,
         },
+        1024: {
+            spaceBetween: 50,
+        }
     },
 });

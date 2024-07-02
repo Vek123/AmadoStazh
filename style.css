@@ -50,20 +50,20 @@ h1 {
     line-height: 60px;
     font-weight: 800;
     line-height: 60px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 h2 {
     font-family: Montserrat;
     font-size: 36px;
     font-weight: 800;
     line-height: 50.4px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 h4 {
     font-size: 24px;
     font-weight: 500;
     line-height: 33.6px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 h5 {
     font-family: Montserrat;
@@ -210,6 +210,7 @@ strong {
 .fixed-menu {
     width: 100%;
     height: 100vh;
+    min-height: max-content;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -225,6 +226,7 @@ strong {
     background-color: rgba(0, 0, 0, 0);
 }
 .fixed-menu__container {
+    overflow-y: scroll;
     position: absolute;
     right: 0;
     width: 360px;
@@ -441,7 +443,7 @@ strong {
 .app-main {
     position: relative;
     background: rgba(246, 246, 246, 1);
-    padding-top: 10px;
+    padding-top: 23px;
 }
 .app-main > * {
     position: relative;
@@ -463,17 +465,21 @@ strong {
     bottom: -130px;
 }
 .breadcrumps {
-    margin-bottom: 40px;
+    margin-bottom: 42px;
     z-index: 10;
 }
-.breadcrumps > *, .breadcrumps > * > a {
+.breadcrumbs-container, .breadcrumbs-container a {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 16px;
     color: rgba(189, 189, 189, 1);
     transition: opacity var(--main-hover-delay);
 }
-.breadcrumps a:hover {
+.breadcrumbs-container {
+    display: flex;
+    align-items: center;
+}
+.breadcrumbs-container a:hover {
     opacity: 0.7;
 }
 .content {
@@ -495,13 +501,13 @@ strong {
 .img-flex-block {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
 }
 .img-flex-block__text {
-    width: 50%;
+    width: 49%;
 }
 .img-flex-block__image {
-    width: 45%;
+    width: 39%;
 }
 .content__image_float-left {
     float: left;
@@ -516,7 +522,7 @@ strong {
     background: rgba(229, 241, 243, 1);
     border-radius: 20px;
     padding: 40px;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
     font-size: 18px;
     font-style: italic;
     font-weight: 500;
@@ -621,7 +627,7 @@ strong {
 .zoomed-img-swiper__close-button:hover {
     background-color: var(--main-color-lighter);
 }
-.swiper__footer {
+.zoomed-img-swiper .swiper__footer {
     position: absolute;
     bottom: 0;
     height: 180px;
@@ -724,9 +730,6 @@ strong {
     flex-direction: column;
     align-items: center;
 }
-.content__text-image img {
-    max-height: 640px;
-}
 .content ol {
     margin: 20px 0 50px;
     padding-left: 20px;
@@ -788,7 +791,7 @@ strong {
     display: none;
 }
 .table-container__table {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 .table-container__table table {
     border-collapse: collapse;
@@ -804,14 +807,15 @@ strong {
     text-align: left;
     background-color: rgba(236, 248, 250, 1);
     border: 1px solid rgba(224, 224, 224, 1);
-    padding: 15px;
+    padding: 0 20px;
+    height: 75px;
     width: 25%;
 }
 .table-container__table table tr:nth-of-type(odd) {
     background-color: white;
 }
 .table-container__table table td {
-    padding: 15px;
+    padding: 30px 20px;
     border: 1px solid rgba(224, 224, 224, 1);
 }
 .table-container__table table td:nth-child(n+3), .table-container__table table th:nth-child(n+3) {
@@ -837,7 +841,7 @@ strong {
 }
 .article-medicaments {
     height: max-content;
-    margin-bottom: 150px;
+    margin-bottom: 130px;
     z-index: 10;
 }
 .article-medicaments .swiper-container {
@@ -879,6 +883,7 @@ strong {
 }
 .article-medicaments__item {
     width: 305px;
+    overflow-x: hidden;
 }
 .custom-swiper-button-next:hover, .custom-swiper-button-prev:hover {
     background-color: var(--main-color);
@@ -941,28 +946,23 @@ strong {
 .item-icons-swiper .swiper-pagination-bullet {
     background-color: rgba(189, 189, 189, 1);
     opacity: 0.5;
-    margin: 0 2px;
+    margin: 0 1.5px!important;
+    transform: none;
 }
 .item-icons-swiper .swiper-pagination-bullet-active {
     background: rgba(189, 189, 189, 1);
     opacity: 1;
 }
-.article-medicaments__pharmacy a {
+.article-medicaments__pharmacy {
     font-family: Montserrat;
     font-size: 16px;
     font-weight: 400;
     line-height: 22.4px;
     color: rgba(130, 130, 130, 1);
     margin-bottom: 5px;
+    word-wrap: break-word;
 }
-.item-title a {
-    font-family: Montserrat;
-    font-size: 20px;
-    font-weight: 800;
-    line-height: 28px;
-    margin-bottom: 5px;
-}
-.article-medicaments__description a {
+.article-medicaments__description {
     padding: 0;
     font-family: Roboto;
     font-size: 16px;
@@ -982,14 +982,14 @@ strong {
     justify-content: center;
 }
 .same-articles {
-    margin-bottom: 100px;
+    margin-bottom: 120px;
     z-index: 10;
 }
 .same-articles .template-container {
     position: relative;
 }
 .same-articles__swiper {
-    padding-bottom: 30px;
+    padding-bottom: 50px;
 }
 .same-articles__swiper .swiper-wrapper {
     flex-wrap: wrap;
@@ -1077,6 +1077,9 @@ strong {
     z-index: 50;
     position: relative;
 }
+.where-buy h2 {
+    margin-bottom: 0;
+}
 .where-buy__content {
     padding: 100px 0;
 }
@@ -1087,6 +1090,7 @@ strong {
     line-height: 22.4px;
     color: rgba(130, 130, 130, 1);
     width: max-content;
+    margin-bottom: 22px;
 }
 .where-buy__main {
     width: 35%;
@@ -1200,7 +1204,7 @@ footer .footer-top * {
 .amado-brand {
     text-align: right;
     padding-right: 5px;
-    margin-bottom: 80px;
+    margin-bottom: 65px;
 }
 .footer-bottom__container {
     width: 95vw;
@@ -1269,7 +1273,7 @@ footer .footer-top * {
 }
 @media screen and (max-width: 1024px) {
     .app-main {
-        padding-top: 140px;
+        padding-top: 110px;
     }
     .template-container {
         padding: 0 30px;
@@ -1322,10 +1326,10 @@ footer .footer-top * {
         height: 30px;
     }
     .requisites {
-        width: 200px;
+        width: 230px;
     }
     .same-articles__swiper .swiper-wrapper {
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
     .same-articles__button-show-all {
         display: block;
@@ -1333,17 +1337,23 @@ footer .footer-top * {
         text-align: center;
         width: max-content;
         cursor: pointer;
-        top: auto;
-        bottom: -60px;
-        left: 50%;
+        position: relative;
+        right: 0;
+        top: 0;
+        margin: 0 auto;
         transition: opacity var(--main-hover-delay);
-        transform: translate(-50%, 0);
     }
     .same-articles__button-show-all::before {
         content: 'Все статьи';
     }
     .same-articles__swiper .swiper-slide:nth-child(n+3) {
         display: none;
+    }
+    .same-articles__swiper a {
+        width: 100%;
+    }
+    .same-articles__swiper .swiper-slide {
+        width: 45%;
     }
     .zoom-image-icon {
         height: 81px;
@@ -1422,6 +1432,9 @@ footer .footer-top * {
         text-align: center;
         align-items: center;
     }
+    .where-buy h2 {
+        max-width: 500px;
+    }
     .article-medicaments {
         margin-bottom: 70px;
     }
@@ -1433,20 +1446,27 @@ footer .footer-top * {
         width: 100%;
     }
     .article-medicaments .swiper-wrapper {
-        margin-bottom: 15px;
+        margin-bottom: 40px;
     }
     .custom-swiper-button-prev, .custom-swiper-button-next {
         top: auto!important;
         bottom: 0;
     }
     .custom-swiper-button-prev {
-        left: 20px
+        left: 0px;
     }
     .custom-swiper-button-next {
-        right: 20px;
+        right: 0px;
     }
     .article-medicaments .swiper-container {
         padding: 0;
+    }
+    .amado-brand {
+        margin-bottom: 35px;
+    }
+    .zoomed-img-swiper .swiper-slide__description {
+        left: 15px;
+        width: calc(60% - 35px);
     }
 }
 @media screen and (max-width: 779px) {
@@ -1460,10 +1480,10 @@ footer .footer-top * {
     }
     .zoomed-img-swiper .swiper-slide__description {
         width: 30%;
-        left: 10px;
+        left: 15px;
     }
     .zoomed-img-swiper .swiper-buttons {
-        width: 140px;
+        width: 100%;
         height: 70px;
     }
     .zoomed-img-swiper .swiper-button-next, .zoomed-img-swiper .swiper-button-prev {
@@ -1472,12 +1492,27 @@ footer .footer-top * {
     }
     .zoomed-images__container {
         right: 0;
+        width: 100%;
     }
     .zoomed-img-swiper .swiper-slide img {
-        height: 60vh;
+        height: 75vh;
     }
     .zoomed-img-swiper .swiper-pagination {
         width: 70px;
+    }
+    .zoomed-images__pagination {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+    }
+    .zoomed-img-swiper .swiper-slide__description {
+        bottom: 180px;
+        left: 5%;
+        margin-bottom: 0;
+        width: 90%;
+    }
+    .zoomed-img-swiper .swiper__footer {
+        border-top: none;
     }
     .same-articles__swiper .swiper-wrapper {
         flex-wrap: nowrap;
@@ -1485,6 +1520,12 @@ footer .footer-top * {
     }
     .same-articles__swiper .swiper-slide:nth-child(n+3) {
         display: flex;
+    }
+    .same-articles__swiper a {
+        width: 250px;
+    }
+    .same-articles__swiper .swiper-slide {
+        width: unset;
     }
     .same-articles__button-show-all {
         background-color: var(--main-color);
@@ -1518,6 +1559,10 @@ footer .footer-top * {
     .where-buy {
         background-image: url('media/background-image-wherebuy-360.png');
     }
+    .where-buy h2 {
+        font-size: 20px;
+        line-height: 28px;
+    }
     footer .footer-top * {
         line-height: 40px;
     }
@@ -1536,9 +1581,6 @@ footer .footer-top * {
     }
     .footer-list {
         width: 100%;
-    }
-    .requisites {
-        width: 230px;
     }
 }
 @media screen and (max-width: 360px) {
@@ -1600,12 +1642,5 @@ footer .footer-top * {
     }
     .article-medicaments__items-swiper .article-medicaments__item {
         padding: 15px;
-    }
-    .zoomed-img-swiper .swiper-slide__description {
-        display: none;
-    }
-    .zoomed-images__container {
-        width: 100%;
-        justify-content: space-around;
     }
 }
