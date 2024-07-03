@@ -3,7 +3,21 @@ head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Document
+- 
+    var objectList = [
+        {firstAttr: 1, secontAttr: 2},
+        {firstAttr: 2, secontAttr: 2},
+        {firstAttr: 3, secontAttr: 3}
+        ]
+mixin objOut(obj)
+    each val, key in obj
+        li(class!=attributes.class, style!=attributes.style)= key + ': ' + val
+
 body
     header
     .app-main
-    footer
+        p
+            each obj in objectList
+                ul
+                    +objOut(obj)(class="myClass", style="background-color: black;")
+    include includes/footer.pug

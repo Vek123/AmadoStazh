@@ -52,6 +52,32 @@ const iconsSwipers = new Swiper('.item-icons-swiper', {
 for (sw of iconsSwipers) {
     sw.slideTo(Math.floor((sw.slides.length - 1) / 2));
 }
+const contentImagesThumbsSwiper = new Swiper('.content-images-swiper__thumbs-swiper', {
+    spaceBetween: 0,
+    slidesPerView: 'auto',
+    freeMode: true,
+    watchSlidesProgress: true,
+});
+const contentImagesSwiper = new Swiper('.content-images-swiper', {
+    spaceBetween: 10,
+    navigation: {
+        nextEl: ".content-images-swiper .swiper-button-next",
+        prevEl: ".content-images-swiper .swiper-button-prev",
+    },
+    thumbs: {
+        swiper: contentImagesThumbsSwiper,
+    },
+    on: {
+        slideChange: function() {
+            let zoomedSwiper = zoomedSwipers.filter(x => x.el.parentNode.classList.contains('zoomed-thumbs'))[0];
+            if (!document.querySelector('body').classList.contains('modal-opened')) {
+                zoomedSwiper.enable();
+                zoomedSwiper.slideTo(this.realIndex);
+                zoomedSwiper.disable();
+            }
+        }
+    }
+});
 let zoomedSwipers = [];
 document.querySelectorAll('.zoomed-images').forEach(sw => {
     zoomedSwipers.push(new Swiper(`.${sw.classList[sw.classList.length-1]} .zoomed-img-swiper`, {
@@ -68,6 +94,9 @@ document.querySelectorAll('.zoomed-images').forEach(sw => {
         pagination: {
             el: `.${sw.classList[sw.classList.length-1]} .zoomed-img-swiper .swiper-pagination`,
             type: 'fraction',
+        },
+        thumbs: {
+            swiper: sw.classList[sw.classList.length-1].includes('thumb') ? contentImagesSwiper : null,
         },
         on: {
             init: function(swiper) {
@@ -91,6 +120,7 @@ document.querySelectorAll('.zoomed-images').forEach(sw => {
                 });
             },
             keyPress: function(swiper, keyCode) {
+                console.log(keyCode)
                 switch(keyCode) {
                     case 27:
                         swiper.disable();
@@ -140,19 +170,8 @@ const sameArticlesSwiper = new Swiper('.same-articles__swiper', {
         }
     },
 });
-const contentImagesThumbsSwiper = new Swiper('.content-images-swiper__thumbs-swiper', {
-    spaceBetween: 0,
-    slidesPerView: 'auto',
-    freeMode: true,
-    watchSlidesProgress: true,
-});
-const contentImagesSwiper = new Swiper('.content-images-swiper', {
-    spaceBetween: 10,
-    navigation: {
-        nextEl: ".content-images-swiper .swiper-button-next",
-        prevEl: ".content-images-swiper .swiper-button-prev",
-    },
-    thumbs: {
-        swiper: contentImagesThumbsSwiper,
-    }
-});
+// console.log(zoomedSwipers.map(x => x.el.parentNode));
+// // console.log(zoomedSwipers.map(x => x.el.parentNode).filter(x => x.classList.contains()));
+// console.log(zoomedSwipers.filter(x => x.el.parentNode.classList.contains('zoomed-thumbs'))[0]);
+
+console.log(contentImagesThumbsSwiper);
