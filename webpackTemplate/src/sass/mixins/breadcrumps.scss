@@ -1,0 +1,15 @@
+@import './_fonts';
+.breadcrumps-container {
+    display: flex;
+    align-items: center;
+    align-items: center;
+    color: rgba(189, 189, 189, 1);
+    a {
+        @include font(var(--font-montserrat), 16px, 22.4px, 400);
+        transition: opacity var(--main-hover-delay);
+        color: rgba(189, 189, 189, 1);
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
