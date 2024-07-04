@@ -13,11 +13,31 @@
         color: white;
     }
 }
-.main-button_inverted {
+.main-button--inverted {
     background-color: var(--main-color);
     color: white;
     &:hover {
         color: var(--main-color);
         background-color: unset;
+    }
+}
+.main-button--lighter {
+    background-color: var(--main-color-lighter);
+    color: white;
+    border: 1px solid white;
+    &:hover {
+        color: var(--main-color-lighter);
+        background-color: white;
+        border: 1px solid var(--main-color-lighter);
+    }
+}
+.main-button--pink {
+    background-color: var(--color-pink);
+    color: white;
+    border: 1px solid white;
+    &:hover {
+        color: var(--color-pink);
+        background-color: white;
+        border: 1px solid var(--color-pink);
     }
 }

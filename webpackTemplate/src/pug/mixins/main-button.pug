@@ -1,5 +1,5 @@
 mixin main-button(className, text, invert= false, link='#')
     - var classList = ['main-button']
     if invert 
-        - classList.push('main-button_inverted')
+        - classList.push('main-button--inverted')
     a(class= classList, class= className, href= link)= text

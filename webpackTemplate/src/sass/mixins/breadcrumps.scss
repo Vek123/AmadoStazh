@@ -6,10 +6,17 @@
     color: rgba(189, 189, 189, 1);
     a {
         @include font(var(--font-montserrat), 16px, 22.4px, 400);
-        transition: opacity var(--main-hover-delay);
+        transition: color var(--main-hover-delay);
         color: rgba(189, 189, 189, 1);
+        cursor: pointer;
+        path {
+            transition: stroke var(--main-hover-delay);
+        }
         &:hover {
-            opacity: 0.7;
+            color: var(--main-color);
+            path {
+                stroke: var(--main-color);
+            }
         }
     }
 }
