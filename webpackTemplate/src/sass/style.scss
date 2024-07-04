@@ -19,6 +19,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
 }
 
+a {
+  text-decoration: none;
+}
+
 // end common styles
 
 @import './_imports';

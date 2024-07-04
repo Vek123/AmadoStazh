@@ -1,4 +1,6 @@
 extends ~@templates/main-template
+include ~@mixins/main-button
+include ~@mixins/intext-link
 
 block vars
   - title = 'ui страница'
@@ -6,3 +8,5 @@ block vars
 block content
   section.ui
     h1 Страница ui-компонентов
+    +main-button('', 'Текст кнопки', false)
+    +intext-link('', 'Текст ссылки', false)

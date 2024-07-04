@@ -1,0 +1,23 @@
+@import './_fonts';
+.main-button {
+    border-radius: 50px;
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    background-color: unset;
+    @include font(var(--font-montserrat), 16px, 22.4px, 700);
+    margin: 0;
+    padding: 0;
+    transition: background-color var(--main-hover-delay), color var(--main-hover-delay);
+    &:hover {
+        background-color: var(--main-color);
+        color: white;
+    }
+}
+.main-button_inverted {
+    background-color: var(--main-color);
+    color: white;
+    &:hover {
+        color: var(--main-color);
+        background-color: unset;
+    }
+}

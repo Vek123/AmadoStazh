@@ -1,0 +1,9 @@
+@import './_fonts';
+.intext-link {
+    @include font(var(--font-montserrat), 16px, 22.4px, 700);
+    color: var(--main-color);
+    transition: color var(--main-hover-delay);
+    &:hover {
+        color: var(--main-color-lighter)!important;
+    }
+}

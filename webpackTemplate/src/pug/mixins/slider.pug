@@ -1,15 +1,5 @@
-mixin slider(className)
+mixin slider(className, items)
   .swiper-container(class=className)
     .swiper-wrapper
-        +card('swiper-slide', './images/jaba.png', 'заголовок карточки', '01.01.2001')
-        +card('swiper-slide', './images/jaba.png', 'заголовок карточки', '01.01.2001')
-        +card('swiper-slide', './images/jaba.png', 'заголовок карточки', '01.01.2001')
-        +card('swiper-slide', './images/jaba.png', 'заголовок карточки', '01.01.2001')
-        +card('swiper-slide', './images/jaba.png', 'заголовок карточки', '01.01.2001')
-        +card('swiper-slide', './images/jaba.png', 'заголовок карточки', '01.01.2001')
-        +card('swiper-slide', './images/jaba.png', 'заголовок карточки', '01.01.2001')
-        +card('swiper-slide', './images/jaba.png', 'заголовок карточки', '01.01.2001')
-        +card('swiper-slide', './images/jaba.png', 'заголовок карточки', '01.01.2001')
-        +card('swiper-slide', './images/jaba.png', 'заголовок карточки', '01.01.2001')
-        +card('swiper-slide', './images/jaba.png', 'заголовок карточки', '01.01.2001')
-        +card('swiper-slide', './images/jaba.png', 'заголовок карточки', '01.01.2001')
+        each item in items
+          +card('swiper-slide', item.image, item.title, item.date)
