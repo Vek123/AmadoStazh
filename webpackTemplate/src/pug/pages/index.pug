@@ -1,0 +1,24 @@
+extends ~@templates/main-template
+include ~@mixins/card
+include ~@mixins/slider
+include ~@mixins/list
+
+block vars
+  - title = 'главная'
+
+block content
+  -
+    const items = [
+      {image: './images/jaba.png', title: 'заголовок карточки1', date: '01.01.2001'},
+      {image: './images/jaba.png', title: 'заголовок карточки2', date: '01.01.2001'},
+      {image: './images/jaba.png', title: 'заголовок карточки3', date: '01.01.2001'},
+      {image: './images/jaba.png', title: 'заголовок карточки4', date: '01.01.2001'},
+      {image: './images/jaba.png', title: 'заголовок карточки5', date: '01.01.2001'},
+      {image: './images/jaba.png', title: 'заголовок карточки6', date: '01.01.2001'},
+    ]
+  section.main-page
+    h1 Главная страница
+    +slider('main-page__slider')
+
+    h4 Список из массива
+    +list(items)

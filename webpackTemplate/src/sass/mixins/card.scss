@@ -1,0 +1,13 @@
+.card {
+  &__title {
+    color: var(--color-red)
+  }
+}
+
+@include tablet {
+  .card {
+    &__title {
+      color: var(--color-black);
+    }
+  }
+}

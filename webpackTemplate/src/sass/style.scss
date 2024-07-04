@@ -1,0 +1,30 @@
+@import './_libs';
+@import './_vars';
+@import './_mixins.scss';
+@import './_fonts';
+
+// common styles
+
+body {
+  min-width: 360px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  @include font(var(--font-roboto), 18px, 100%, 400);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 20px;
+}
+
+// end common styles
+
+@import './_imports';
+
+@include tablet {
+  body {
+    @include fontAdaptive(14px, 100%);
+  }
+}

@@ -1,0 +1,14 @@
+//components
+@import './components/header';
+@import './components/footer';
+
+//mixins
+@import './mixins/card';
+
+//pages
+@import './pages/404';
+@import './pages/index';
+@import './pages/ui';
+
+//templates
+@import './templates/main-template';
