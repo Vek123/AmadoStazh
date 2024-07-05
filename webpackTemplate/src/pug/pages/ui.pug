@@ -1,12 +1,12 @@
 extends ~@templates/main-template
-include ~@mixins/main-button
-include ~@mixins/intext-link
-include ~@mixins/breadcrumps
+include ~@mixins/mainButton
+include ~@mixins/intextLink
+include ~@mixins/breadCrumbs
 
 block vars
   - title = 'ui страница'
   -
-    var breadcrumbsItems = [
+    var breadCrumbsItems = [
       {text: 'Статья', link: './'},
       {text: 'Подробнее', link: ''},
     ]
@@ -14,8 +14,14 @@ block vars
 block content
   section.ui
     h1 Страница ui-компонентов
-    +main-button('', 'Текст кнопки', false)
-    +main-button('main-button--lighter', 'Текст кнопки', false)
-    +main-button('main-button--pink', 'Текст кнопки', false)
-    +intext-link('', 'Текст ссылки', false)
-    +breadcrumps(breadcrumbsItems)
+    br
+    +mainButton('', 'Текст кнопки', false)
+    br
+    +mainButton('main-button--lighter', 'Текст кнопки', false)
+    br
+    +mainButton('main-button--pink', 'Текст кнопки', false)
+    br
+    +intextLink('', 'Текст ссылки', false)
+    br
+    +breadCrumbs(breadCrumbsItems)
+    br
