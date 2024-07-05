@@ -16,6 +16,8 @@ const medicinesSwiper = new Swiper('.article-medicaments__items-swiper', {
             spaceBetween: 10,
             pagination: {
                 enabled: true,
+                dynamicBullets: true,
+                dynamicMainBullets: 1,
             },
         },
         1025: {
@@ -26,7 +28,7 @@ const medicinesSwiper = new Swiper('.article-medicaments__items-swiper', {
             },
         },
         1280: {
-            spaceBetween: 30,
+            spaceBetween: 20,
             slidesPerView: 4,
             pagination: {
                 enabled: false,
@@ -34,7 +36,7 @@ const medicinesSwiper = new Swiper('.article-medicaments__items-swiper', {
         },
         1601: {
             slidesPerView: 4,
-            spaceBetween: 40,
+            spaceBetween: 20,
             pagination: {
                 enabled: false,
             },
@@ -59,7 +61,7 @@ const contentImagesThumbsSwiper = new Swiper('.content-images-swiper__thumbs-swi
     watchSlidesProgress: true,
 });
 const contentImagesSwiper = new Swiper('.content-images-swiper', {
-    spaceBetween: 10,
+    spaceBetween: 50,
     navigation: {
         nextEl: ".content-images-swiper .swiper-button-next",
         prevEl: ".content-images-swiper .swiper-button-prev",
@@ -170,8 +172,3 @@ const sameArticlesSwiper = new Swiper('.same-articles__swiper', {
         }
     },
 });
-// console.log(zoomedSwipers.map(x => x.el.parentNode));
-// // console.log(zoomedSwipers.map(x => x.el.parentNode).filter(x => x.classList.contains()));
-// console.log(zoomedSwipers.filter(x => x.el.parentNode.classList.contains('zoomed-thumbs'))[0]);
-
-console.log(contentImagesThumbsSwiper);

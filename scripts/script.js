@@ -1,11 +1,3 @@
-let moveTopScroll = () => {
-    let topscroll = document.querySelector('.table-container__topscroll');
-    topscroll.scroll({left: document.querySelector('.table-container__table').scrollLeft});
-};
-let moveMainScroll = () => {
-    let mainScroll = document.querySelector('.table-container__table');
-    mainScroll.scroll({left: document.querySelector('.table-container__topscroll').scrollLeft});
-};
 let showAllSameArticles = () => {
     document.querySelectorAll('.same-articles__list li:nth-child(n+3)').forEach(x => x.style.display = 'block');
     document.querySelector('.same-articles__button-show-all').style.cssText += 'display: none!important;';
