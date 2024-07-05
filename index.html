@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -293,6 +294,7 @@
         </div>
         <div class="mobile-menu-fixed">
             <div class="fixed-menu fixed-menu_hidden">
+                <div class="fixed-menu__outer" onclick="closeFixedMenu()"></div>
                 <div class="fixed-menu__container fixed-menu__container_hidden">
                     <div class="fixed-menu__header">
                         <a class="fixed-menu__header-logo" href="/"><img src="media/fixed-menu__header-logo.png" alt="Логотип"></a>
@@ -553,10 +555,10 @@
                 </div>
                 <div class="table-container">
                     <div class="table-container__title">Пример таблицы</div>
-                    <div class="table-container__topscroll" onscroll="moveMainScroll()">
+                    <div class="table-container__topscroll">
                         <div class="table-container__fake" style="height: 5px;"></div>
                     </div>
-                    <div class="table-container__table" onscroll="moveTopScroll()">
+                    <div class="table-container__table" data-simplebar>
                         <table>
                             <tr>
                                 <th>Наименование биологически активного вещества (БАВ)</th>
@@ -1076,7 +1078,7 @@
                     </ul>
                     <div class="requisites">
                         <ul>
-                            <li>ООО "НЕО-ФАРМ"</li>
+                            <li>ООО «НЕО-ФАРМ»</li>
                             <li>117246, Россия, г. Москва, ул. Обручева, д. 55А</li>
                             <li><a href="tel:+74996483727">+7 (499) 648 - 37 - 27</a></li>
                             <li><br></li>
@@ -1117,7 +1119,9 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
     <script src="scripts/swiper.js"></script>
     <script src="scripts/script.js"></script>
+    <script src="scripts/scrollbars.js"></script>
 </body>
 </html>
