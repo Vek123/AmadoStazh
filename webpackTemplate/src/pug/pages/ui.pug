@@ -2,6 +2,7 @@ extends ~@templates/main-template
 include ~@mixins/mainButton
 include ~@mixins/intextLink
 include ~@mixins/breadCrumbs
+include ~@mixins/zoomImageIcon
 
 block vars
   - title = 'ui страница'
@@ -24,4 +25,6 @@ block content
     +intextLink('', 'Текст ссылки', false)
     br
     +breadCrumbs(breadCrumbsItems)
+    br
+    +zoomImageIcon('myIcon')
     br

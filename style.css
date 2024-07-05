@@ -1434,7 +1434,7 @@ footer .footer-top * {
         transform: translate(-50%, -50%) scale(.56);
     }
     .zoom-image-icon__text {
-        display: none;
+        font-size: 12px;
     }
     .content__correction {
         margin-bottom: 50px;
