@@ -51,6 +51,7 @@ const iconsSwipers = new Swiper('.item-icons-swiper', {
         dynamicBullets: true,
     }
 });
+console.log(iconsSwipers)
 for (sw of iconsSwipers) {
     sw.slideTo(Math.floor((sw.slides.length - 1) / 2));
 }

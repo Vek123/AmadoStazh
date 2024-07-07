@@ -4,6 +4,7 @@ include ~@mixins/intextLink
 include ~@mixins/breadCrumbs
 include ~@mixins/zoomImageIcon
 include ~@mixins/squareCloseButton
+include ~@mixins/medicamentCard
 
 block vars
   - title = 'ui страница'
@@ -11,6 +12,9 @@ block vars
     var breadCrumbsItems = [
       {text: 'Статья', link: './'},
       {text: 'Подробнее', link: ''},
+    ]
+    var cards = [
+      {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3."}
     ]
 
 block content
@@ -33,3 +37,4 @@ block content
     br
     +squareCloseButton('')
     br
+    +medicamentCard('myCard', cards[0])

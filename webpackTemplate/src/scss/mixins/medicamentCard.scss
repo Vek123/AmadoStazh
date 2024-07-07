@@ -1,0 +1,80 @@
+@import './_fonts';
+.medicament-card {
+    padding: 30px;
+    border-radius: 20px;
+    transition: background-color var(--main-hover-delay), box-shadow var(--main-hover-delay);
+    height: unset;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    &:hover {
+        background-color: white;
+        box-shadow: 0px 0px 20px 0px rgba(178, 178, 178, 0.81);
+        & .medicament-card__image {
+            width: 100%;
+        }
+    }
+    &__icons-swiper {
+        width: 100%;
+        height: 100%;
+        & .swiper-pagination-bullet {
+            background-color: rgba(189, 189, 189, 1);
+            opacity: 0.5;
+            margin: 0 1.5px !important;
+            transform: none!important;
+        }
+        & .swiper-pagination-bullet-active {
+            background: rgba(189, 189, 189, 1);
+            opacity: 1;
+        }
+    }
+    &__image-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 30px auto 30px;
+        width: 100%;
+        height: 150px;
+    }
+    &__image {
+        width: 80%;
+        transition: width var(--main-hover-delay);
+    }
+    &__pharmacy {
+        @include font(var(--font-montserrat), 16px, 22.4px, 400);
+        color: rgba(130, 130, 130, 1);
+        margin-bottom: 5px;
+        word-wrap: break-word;
+    }
+    & h5 a {
+        color: var(--color-black);
+    }
+    &__description {
+        padding: 0;
+        @include font(var(--font-roboto), 16px, 22.4px, 400);
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 30px;
+        color: var(--color-black);
+    }
+    &__button {
+        height: 50px;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .medicament-card {
+        background-color: white;
+        
+        &__image {
+            width: 100%;
+        }
+    }
+}
+@media screen and (max-width: 360px) {
+    .medicament-card {
+        padding: 15px;
+    }
+}

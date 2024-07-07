@@ -1,6 +1,22 @@
 import Swiper from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/swiper-bundle.css';
 
-export default new Swiper('.swiper-container', {
-  spaceBetween: 20,
-  slidesPerView: 3,
+Swiper.use([Navigation, Pagination]);
+const iconsSwipers = new Swiper('.medicament-card__icons-swiper', {
+  nested: true,
+  slidesPerView: 1,
+  pagination: {
+    el: '.medicament-card__icons-swiper .swiper-pagination',
+    clickable: true,
+    dynamicBullets: true,
+  },
 });
+iconsSwipers.slideTo(Math.floor((iconsSwipers.slides.length - 1) / 2));
+// if (iconsSwipers?.length) {
+//   for (sw of iconsSwipers) {
+//     sw.slideTo(Math.floor((sw.slides.length - 1) / 2));
+//   }
+// }
+
+export { iconsSwipers };

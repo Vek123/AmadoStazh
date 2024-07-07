@@ -7,6 +7,9 @@
     @include font(var(--font-montserrat), 16px, 22.4px, 700);
     margin: 0;
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: background-color var(--main-hover-delay), color var(--main-hover-delay);
     &:hover {
         background-color: var(--main-color);

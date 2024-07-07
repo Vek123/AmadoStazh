@@ -1,0 +1,19 @@
+include ~@mixins/mainButton
+
+mixin medicamentCard(className, card)
+    .medicament-card(class=className)
+        .medicament-card__icon
+            .swiper.medicament-card__icons-swiper
+                .swiper-wrapper
+                    each icon in card.icons
+                        .swiper-slide
+                            .medicament-card__image-container
+                                .medicament-card__image
+                                    a(href= card.link)
+                                        img(src= icon)
+                .swiper-pagination
+        a(href= card.link).medicament-card__pharmacy= card.pharmacy
+        h5: a(href= card.link)= card.title
+        a(href= card.link).medicament-card__description= card.description
+        +mainButton('medicament-card__button', text= 'Подробнее', false, link= card.link)
+        
