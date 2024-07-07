@@ -3,6 +3,7 @@ include ~@mixins/mainButton
 include ~@mixins/intextLink
 include ~@mixins/breadCrumbs
 include ~@mixins/zoomImageIcon
+include ~@mixins/squareCloseButton
 
 block vars
   - title = 'ui страница'
@@ -24,7 +25,11 @@ block content
     br
     +intextLink('', 'Текст ссылки', false)
     br
+    +intextLink('intext-link--white', 'Текст ссылки', false)
+    br
     +breadCrumbs(breadCrumbsItems)
     br
     +zoomImageIcon('myIcon')
+    br
+    +squareCloseButton('')
     br

@@ -8,6 +8,6 @@ mixin breadCrumbs(items)
             if item.link 
                 a(href= item.link)= item.text 
             else 
-                a()= item.text
+                | #{item.text}
             if index !== items.length - 1
                 | &ensp;/&ensp;
