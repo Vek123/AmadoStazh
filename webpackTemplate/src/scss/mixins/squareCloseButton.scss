@@ -1,12 +1,11 @@
 .square-close-button {
-    width: max-content;
-    height: max-content;
-    display: flex;
+    width: 59px;
+    height: 59px;
     padding: 17px;
     cursor: pointer;
-    background-color: var(--main-color);
+    background-color: rgb(var(--color-main));
     transition: background-color var(--main-hover-delay);
     &:hover {
-        background-color: var(--main-color-lighter);
+        background-color: rgb(var(--color-main-lighter));
     }
 }

@@ -10,6 +10,8 @@ const iconsSwipers = new Swiper('.medicament-card__icons-swiper', {
     el: '.medicament-card__icons-swiper .swiper-pagination',
     clickable: true,
     dynamicBullets: true,
+    bulletClass: 'medicament-card__bullet',
+    bulletActiveClass: 'medicament-card__bullet--active',
   },
 });
 iconsSwipers.slideTo(Math.floor((iconsSwipers.slides.length - 1) / 2));

@@ -1,76 +1,77 @@
-@import './_fonts';
 .medicament-card {
-    padding: 30px;
+    padding: 20px;
     border-radius: 20px;
     transition: background-color var(--main-hover-delay), box-shadow var(--main-hover-delay);
-    height: unset;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
     &:hover {
-        background-color: white;
-        box-shadow: 0px 0px 20px 0px rgba(178, 178, 178, 0.81);
+        background-color: rgb(var(--color-white));
+        box-shadow: 0px 0px 20px 0px rgba(var(--color-grey-shadow), 0.81);
         & .medicament-card__image {
-            width: 100%;
+            transform: scale(1.1);
         }
     }
     &__icons-swiper {
         width: 100%;
         height: 100%;
-        & .swiper-pagination-bullet {
-            background-color: rgba(189, 189, 189, 1);
-            opacity: 0.5;
-            margin: 0 1.5px !important;
-            transform: none!important;
-        }
-        & .swiper-pagination-bullet-active {
-            background: rgba(189, 189, 189, 1);
-            opacity: 1;
-        }
     }
     &__image-container {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 30px auto 30px;
+        margin-bottom: 35px;
         width: 100%;
         height: 150px;
+        background-color: inherit;
+        overflow: hidden;
     }
     &__image {
-        width: 80%;
-        transition: width var(--main-hover-delay);
+        width: 100%;
+        transition: transform var(--main-hover-delay);
     }
     &__pharmacy {
         @include font(var(--font-montserrat), 16px, 22.4px, 400);
-        color: rgba(130, 130, 130, 1);
-        margin-bottom: 5px;
+        color: rgb(var(--color-grey));
+        margin-bottom: 4px;
         word-wrap: break-word;
     }
-    & h5 a {
-        color: var(--color-black);
+    &__title {
+        color: rgb(var(--color-black));
+        margin-bottom: 4px;
     }
     &__description {
-        padding: 0;
         @include font(var(--font-roboto), 16px, 22.4px, 400);
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        margin-bottom: 30px;
+        margin-bottom: 67px;
         color: var(--color-black);
     }
     &__button {
         height: 50px;
         width: 100%;
     }
+    &__bullet {
+        position: relative;
+        background-color: rgba(var(--color-grey-lighter), 0.5);
+        margin-right: 3px;
+        transform: none;
+        width: 8px;
+        height: 8px;
+        border-radius: 5px;
+        display: inline-block;
+        cursor: pointer;
+        transition: var(--main-hover-delay) transform, var(--main-hover-delay) left;
+        &--active {
+            background-color: rgb(var(--color-grey-lighter));
+        }
+    }
 }
 @media screen and (max-width: 1024px) {
     .medicament-card {
-        background-color: white;
-        
-        &__image {
-            width: 100%;
-        }
+        background-color: rgb(var(--color-white));
     }
 }
 @media screen and (max-width: 360px) {

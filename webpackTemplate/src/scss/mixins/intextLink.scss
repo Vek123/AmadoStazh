@@ -1,12 +1,11 @@
-@import './_fonts';
 .intext-link {
     @include font(var(--font-montserrat), 16px, 22.4px, 700);
-    color: var(--main-color);
+    color: rgb(var(--color-main));
     transition: color var(--main-hover-delay);
     &:hover {
-        color: var(--main-color-lighter)!important;
+        color: rgb(var(--color-main-lighter));
     }
 }
 .intext-link--white {
-    color: white;
+    color: rgb(var(--color-white));
 }

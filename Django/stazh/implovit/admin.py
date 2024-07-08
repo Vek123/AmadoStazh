@@ -16,15 +16,23 @@ class CategoriesAdmin(admin.ModelAdmin):
 
 @admin.register(Medicines)
 class MedicinesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'created_at', 'updated_at')
+    list_display = ('id', 'title', 'tag', 'created_at', 'updated_at')
     list_display_links = ('id', 'title')
     list_per_page = 20
-    search_fields = ['title']
+    search_fields = ['title', 'tag']
 
 
-@admin.register(ProductImage)
+@admin.register(ProductImages)
 class ProductImageAdmin(admin.ModelAdmin):
     list_display = ('id', '__str__', 'caption')
     list_display_links = ('id', '__str__', 'caption')
     list_per_page = 20
     search_fields = ('__str__', 'caption')
+
+
+@admin.register(ProductTags)
+class ProductTagsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+    list_display_links = ('id', 'name')
+    list_per_page = 20
+    search_fields = ('name', )

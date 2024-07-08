@@ -1,6 +1,6 @@
 extends ~@templates/main-template
 include ~@mixins/mainButton
-include ~@mixins/intextLink
+include ~@mixins/inTextLink
 include ~@mixins/breadCrumbs
 include ~@mixins/zoomImageIcon
 include ~@mixins/squareCloseButton
@@ -27,14 +27,14 @@ block content
     br
     +mainButton('main-button--pink', 'Текст кнопки', false)
     br
-    +intextLink('', 'Текст ссылки', false)
+    +inTextLink('', 'Текст ссылки', false)
     br
-    +intextLink('intext-link--white', 'Текст ссылки', false)
+    +inTextLink('intext-link--white', 'Текст ссылки', false)
     br
     +breadCrumbs(breadCrumbsItems)
     br
-    +zoomImageIcon('myIcon')
+    +zoomImageIcon('my-icon')
     br
     +squareCloseButton('')
     br
-    +medicamentCard('myCard', cards[0])
+    +medicamentCard('my-card', cards[0])
