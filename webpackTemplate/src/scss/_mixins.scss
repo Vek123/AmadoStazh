@@ -61,7 +61,7 @@
   }
 }
 
-// ниже 1025
+// ниже 1024
 @mixin tablet {
   @media screen and (max-width: 1024px) {
     @content;
