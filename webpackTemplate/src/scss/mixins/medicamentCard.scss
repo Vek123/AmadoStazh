@@ -1,16 +1,22 @@
 .medicament-card {
+    position: relative;
     padding: 20px;
     border-radius: 20px;
     transition: background-color var(--main-hover-delay), box-shadow var(--main-hover-delay);
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    cursor: pointer;
     &:hover {
         background-color: rgb(var(--color-white));
         box-shadow: 0 0 20px 0 rgba(var(--color-grey-shadow), 0.81);
         & .medicament-card__image {
             transform: scale(1.1);
         }
+    }
+    &__tag {
+        top: 12px;
+        left: 13px;
     }
     &__image-container {
         display: flex;
@@ -25,7 +31,7 @@
         transition: transform var(--main-hover-delay);
     }
     &__pharmacy {
-        @include font(var(--font-montserrat), 16px, 22.4px, 400);
+        @include font(Montserrat, 16px, 22.4px, 400);
         color: rgb(var(--color-grey));
         margin-bottom: 4px;
         word-wrap: break-word;
@@ -55,7 +61,6 @@
         height: 8px;
         border-radius: 5px;
         display: inline-block;
-        cursor: pointer;
         transition: var(--main-hover-delay) transform, var(--main-hover-delay) left;
         &--active {
             background-color: rgb(var(--color-grey-lighter));

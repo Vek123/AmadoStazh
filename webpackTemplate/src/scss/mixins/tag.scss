@@ -1,0 +1,12 @@
+.tag {
+    position: absolute;
+    z-index: 10;
+    background-color: rgb(var(--color-green));
+    border-radius: 5px;
+    padding: 4px 15px;
+    @include font(Montserrat, 14px, 19.6px, 700);
+    color: rgb(var(--color-white));
+    &--new {
+        background-color: rgb(var(--color-pink-dark));
+    }
+}

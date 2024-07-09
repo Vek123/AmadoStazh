@@ -1,0 +1,5 @@
+mixin tag(className, name)
+    if name === "Новинка"
+        .tag.tag--new(class= className)= name
+    else
+        .tag(class= className)= name
