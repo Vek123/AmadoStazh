@@ -1,6 +1,11 @@
 .my-icon {
     transform: unset;
 }
-.my-card {
+.my-list .swiper-slide {
     width: 320px;
+}
+@include tablet {
+    .medicine-container {
+        padding: 0;
+    }
 }

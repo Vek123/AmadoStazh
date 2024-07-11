@@ -4,7 +4,7 @@ include ~@mixins/inTextLink
 include ~@mixins/breadCrumbs
 include ~@mixins/zoomImageIcon
 include ~@mixins/squareCloseButton
-include ~@mixins/medicamentCard
+include ~@mixins/medicamentList
 
 block vars
   - title = 'ui страница'
@@ -14,14 +14,21 @@ block vars
       {text: 'Подробнее', link: ''},
     ]
     var cards = [
-      {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Новинка"}
+      {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Новинка"},
+      {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Акция"},
+      {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3."},
+      {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Акция"},
+      {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3."},
+      {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3."},
+      {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3."},
+      {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Новинка"},
+      {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Новинка"},
+      {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Новинка"},
     ]
 
 block content
-  script(src="./js/index.js")
   section.ui
     h1 Страница ui-компонентов
-    h2 Медицина: !{medicine}
     br
     +mainButton('', 'Текст кнопки', false)
     br
@@ -39,4 +46,5 @@ block content
     br
     +squareCloseButton('')
     br
-    +medicamentCard('my-card', cards[0])
+    .template-container.medicine-container: +medicamentList('my-list', cards)
+    br

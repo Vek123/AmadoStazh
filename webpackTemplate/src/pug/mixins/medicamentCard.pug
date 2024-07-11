@@ -14,8 +14,9 @@ mixin medicamentCard(className, card)
                                 a(href= card.link).medicament-card__image
                                             img(src= icon)
                 .swiper-pagination
-        a(href= card.link).medicament-card__pharmacy= card.pharmacy
-        a(href= card.link).medicament-card__title: h5= card.title
-        a(href= card.link).medicament-card__description= card.description
-        +mainButton('medicament-card__button', text= 'Подробнее', false, link= card.link)
+        .medicament-card__info
+            a(href= card.link).medicament-card__pharmacy= card.pharmacy
+            a(href= card.link).medicament-card__title: h5= card.title
+            a(href= card.link).medicament-card__description= card.description
+            +mainButton('medicament-card__button', text= 'Подробнее', false, link= card.link)
         

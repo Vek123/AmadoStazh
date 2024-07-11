@@ -1,6 +1,6 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
-import 'swiper/swiper-bundle.css';
+
 
 Swiper.use([Navigation, Pagination]);
 const iconsSwipers = new Swiper('.medicament-card__icons-swiper', {
@@ -14,11 +14,45 @@ const iconsSwipers = new Swiper('.medicament-card__icons-swiper', {
     bulletActiveClass: 'medicament-card__bullet--active',
   },
 });
-iconsSwipers.slideTo(Math.floor((iconsSwipers.slides.length - 1) / 2));
-// if (iconsSwipers?.length) {
-//   for (sw of iconsSwipers) {
-//     sw.slideTo(Math.floor((sw.slides.length - 1) / 2));
-//   }
-// }
+const medicinesSwiper = new Swiper('.cards-swiper', {
+    observer: true,
+    observeParents: true,
+    spaceBetween: 10,
+    pagination: {
+        el: '.cards-swiper .swiper-pagination',
+        clickable: true,
+        bulletClass: 'cards-swiper__bullet',
+        bulletActiveClass: 'cards-swiper__bullet--active',
+    },
+    navigation: {
+        nextEl: '.custom-swiper-button-next',
+        prevEl: '.custom-swiper-button-prev',
+    },
+    breakpoints: {
+        300: {
+            slidesPerView: 'auto',
+            spaceBetween: 10,
+            pagination: {
+                enabled: true,
+                dynamicBullets: true,
+                dynamicMainBullets: 1,
+            },
+        },
+        1280: {
+            spaceBetween: 20,
+            slidesPerView: 4,
+            pagination: {
+                enabled: false,
+            },
+        },
+        1601: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+            pagination: {
+                enabled: false,
+            },
+        }
+    }
+});
 
-export { iconsSwipers };
+export { iconsSwipers, medicinesSwiper };

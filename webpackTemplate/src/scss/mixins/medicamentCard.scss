@@ -30,6 +30,12 @@
     &__image {
         transition: transform var(--main-hover-delay);
     }
+    &__info {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        min-height: 150px;
+    }
     &__pharmacy {
         @include font(Montserrat, 16px, 22.4px, 400);
         color: rgb(var(--color-grey));
@@ -44,13 +50,15 @@
         @include font(var(--font-roboto), 16px, 22.4px, 400);
         display: -webkit-box;
         -webkit-line-clamp: 3;
+        line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        margin-bottom: 67px;
+        margin-bottom: 26px;
         color: var(--color-black);
     }
     &__button {
         height: 50px;
+        margin-top: auto;
     }
     &__bullet {
         position: relative;
@@ -67,12 +75,12 @@
         }
     }
 }
-@include tablet {
+@include laptop {
     .medicament-card {
         background-color: rgb(var(--color-white));
     }
 }
-@include phone {
+@include tablet {
     .medicament-card {
         padding: 15px;
     }

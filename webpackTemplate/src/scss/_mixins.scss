@@ -47,30 +47,30 @@
 // Media
 // =============================================================================
 
-// ниже 1660
+// ниже 1600
 @mixin desktop {
-  @media screen and (max-width: 1660px) {
+  @media screen and (max-width: 1599px) {
     @content;
   }
 }
 
-// ниже 1440
+// ниже 1280
 @mixin laptop {
-  @media screen and (max-width: 1440px) {
-    @content;
-  }
-}
-
-// ниже 1024
-@mixin tablet {
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1279px) {
     @content;
   }
 }
 
 // ниже 780
-@mixin phone {
+@mixin tablet {
   @media screen and (max-width: 779px) {
+    @content;
+  }
+}
+
+// ниже 360
+@mixin phone {
+  @media screen and (max-width: 359px) {
     @content;
   }
 }

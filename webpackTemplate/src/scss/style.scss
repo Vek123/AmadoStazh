@@ -15,7 +15,11 @@ body {
   min-height: 100vh;
   background-color: rgb(var(--color-background));
 }
-
+@include phone {
+  body {
+    overflow-x: scroll;
+  }
+}
 /* Указываем box sizing */
 *,
 *::before,
@@ -104,7 +108,38 @@ button {
 // end common styles
 
 
+.swiper-container {
+  position: relative;
+}
+.template-container {
+  width: 1300px;
+  margin: 0 auto;
+  position: relative;
+}
+@include desktop {
+  .template-container {
+    width: 1180px;
+  }
+}
+@include laptop {
+  .template-container {
+    width: 100%;
+    padding: 0 30px;
+  }
+  .medicine-container {
+    padding: 0;
+  }
+}
+@include tablet {
+  .template-container {
+    padding: 0 20px;
+  }
+}
+
+
 @import './_imports';
+
+
 
 @include tablet {
   body {
