@@ -5,7 +5,7 @@ mixin medicamentCard(className, card)
     .medicament-card(class=className)
         if card.tag
             +tag('medicament-card__tag', card.tag)
-        .medicament-card__icon
+        .medicament-card__swiper-container
             .swiper.medicament-card__icons-swiper
                 .swiper-wrapper
                     each icon in card.icons
