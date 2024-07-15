@@ -1,0 +1,214 @@
+.brand-card {
+    background-color: rgb(var(--color-white));
+    position: relative;
+    display: block;
+    border-radius: 20px;
+    height: 332px;
+    overflow: hidden;
+    padding: 30px 35px;
+    img {
+        width: unset;
+        object-fit: contain;
+    }
+    &__brand-logo {
+        position: relative;
+        display: flex;
+        margin-bottom: 20px;
+        z-index: 20;
+        path {
+            transition: fill var(--main-hover-delay);
+        }
+    }
+    &__category {
+        display: none;
+        position: relative;
+        color: rgb(var(--color-black));
+        z-index: 20;
+        transition: color var(--main-hover-delay);
+        margin-bottom: 10px;
+        @include font("Roboto", 18px, 25.2px, 500);
+    }
+    &__desc {
+        @include font("Roboto", 16px, 22.4px, 400);
+        position: relative;
+        margin-bottom: 14px;
+        color: rgb(var(--color-black));
+        max-width: 201px;
+        z-index: 20;
+        transition: color var(--main-hover-delay);
+    }
+    &__link {
+        position: relative;
+        @include font("Montserrat", 16px, 22.4px, 500);
+        color: rgb(var(--color-main));
+        z-index: 20;
+        transition: color var(--main-hover-delay);
+        svg {
+            display: inline-block;
+            margin-left: 9px;
+            path {
+                transition: fill var(--main-hover-delay);
+            }
+        }
+    }
+    &__product, &__product-mobile {
+        position: absolute;
+        bottom: 0px;
+        right: 18px;
+        z-index: 10;
+    }
+    &__product-mobile {
+        display: none;
+        left: 50%;
+        right: 0;
+        width: 260px;
+        height: 260px;
+        transform: translateX(-50%);
+        img {
+            width: 100%;
+        }
+    }
+    &__animation-img1, &__animation-img2, &__animation-mobile {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        transition: transform var(--brand-cards-hover-delay);
+    }
+    &__animation-mobile {
+        display: none;
+        bottom: -30px;
+        right: -40px;
+    }
+    .brand-card__animation-img1 {
+        z-index: 5;
+    }
+    .brand-card__animation-img2 {
+        z-index: 3;
+    }
+    &:hover {
+        .brand-card__animation-img1, .brand-card__animation-img2, .brand-card__animation-mobile {
+            transform: scale(10);
+        }
+    }
+    &--big {
+        width: 100%;
+        &:hover {
+            .brand-card__animation-img1, .brand-card__animation-img2 {
+                transform: scale(10);
+            }
+        }
+    }
+    &--biruse {
+        &:hover {
+            .brand-card__brand-logo {
+                path {
+                    fill: rgb(var(--color-white));
+                }
+            }
+            .brand-card__desc, .brand-card__link, .brand-card__category {
+                color: rgb(var(--color-white));
+            }
+            .brand-card__link {
+                path {
+                    fill: rgb(var(--color-white));
+                }
+            }
+        }
+    }
+    &--pink {
+        .brand-card__animation-mobile  {
+            bottom: -105px;
+            right: -20px;
+        }
+    }
+    &--blue {
+        .brand-card__animation-mobile  {
+            bottom: -105px;
+            right: auto;
+        }
+    }
+    &--gray {
+        .brand-card__animation-mobile  {
+            bottom: -270px;
+            right: -65px;
+        }
+    }
+    &--green {
+        .brand-card__animation-img1 {
+            &--green {
+                bottom: -50px;
+                right: -120px;
+            }
+        }
+        .brand-card__animation-img2 {
+            &--green {
+                bottom: -80px;
+                right: -150px;
+            }
+        }
+        .brand-card__animation-mobile  {
+            right: -115px;
+            bottom: -150px;
+        }
+    }
+    &--red {
+        .brand-card__animation-img1{
+            right: -58px;
+            bottom: -74px;
+        }
+        .brand-card__animation-img2  {
+            right: -50px;
+            bottom: -70px;
+        }
+        .brand-card__animation-mobile  {
+            bottom: -10px;
+            right: 0;
+        }
+    }
+    &--violet {
+        .brand-card__animation-mobile  {
+            bottom: -220px;
+            right: 0;
+        }
+    }
+    &--yellow {
+        .brand-card__animation-mobile  {
+            right: 8px;
+            bottom: -150px;
+        }
+    }
+}
+@media screen and (max-width: 1023px) {
+    .brand-card {
+        height: 320px;
+        padding: 20px;
+        padding-top: 18px;
+        &__brand-logo {
+            justify-content: center;
+            transform: scale(.82);
+            margin-bottom: 7px;
+        }
+        &__category {
+            display: block;
+            text-align: center;
+        }
+        &__desc {
+            display: none;
+        }
+        &__link {
+            text-align: center;
+        }
+        &__product {
+            display: none;
+            &-mobile {
+                display: block;
+            }
+        }
+        &__animation-img1, &__animation-img2 {
+            display: none;
+        }
+        &__animation-mobile {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,72 @@
+mixin brandCard(className, color, big=false, brand, category, desc, link="#", product_image, product_image_mobile)
+    - var classList = ["brand-card"]
+    if big 
+        - classList.push("brand-card--big")
+    a(class= classList, class= className, href= link)
+        case color 
+            when "biruse"
+                .brand-card__animation-img1
+                    img(src= "./images/brandCardImages/animation/biruse.png")
+                .brand-card__animation-img2
+                    img(src= "./images/brandCardImages/animation/biruseLight.png")
+                .brand-card__animation-mobile 
+                    img(src= "./images/brandCardImages/animation/biruseMobile.png")
+            when "red"
+                .brand-card__animation-img1
+                    img(src= "./images/brandCardImages/animation/red.png")
+                .brand-card__animation-img2
+                    img(src= "./images/brandCardImages/animation/redLight.png")
+                .brand-card__animation-mobile 
+                    img(src= "./images/brandCardImages/animation/redMobile.png")
+            when "yellow"
+                .brand-card__animation-img1
+                    img(src= "./images/brandCardImages/animation/yellow.png")
+                .brand-card__animation-img2
+                    img(src= "./images/brandCardImages/animation/yellowLight.png")
+                .brand-card__animation-mobile 
+                    img(src= "./images/brandCardImages/animation/yellowMobile.png")
+            when "violet"
+                .brand-card__animation-img1
+                    img(src= "./images/brandCardImages/animation/violet.png")
+                .brand-card__animation-img2
+                    img(src= "./images/brandCardImages/animation/violetLight.png")
+                .brand-card__animation-mobile 
+                    img(src= "./images/brandCardImages/animation/violetMobile.png")
+            when "gray"
+                .brand-card__animation-img1
+                    img(src= "./images/brandCardImages/animation/gray.png")
+                .brand-card__animation-img2
+                    img(src= "./images/brandCardImages/animation/grayLight.png")
+                .brand-card__animation-mobile 
+                    img(src= "./images/brandCardImages/animation/grayMobile.png")
+            when "blue"
+                .brand-card__animation-img1
+                    img(src= "./images/brandCardImages/animation/blue.png")
+                .brand-card__animation-img2
+                    img(src= "./images/brandCardImages/animation/blueLight.png")
+                .brand-card__animation-mobile 
+                    img(src= "./images/brandCardImages/animation/blueMobile.png")
+            when "green"
+                .brand-card__animation-img1.brand-card__animation-img1--green
+                    img(src= "./images/brandCardImages/animation/green.png")
+                .brand-card__animation-img2.brand-card__animation-img2--green
+                    img(src= "./images/brandCardImages/animation/greenLight.png")
+                .brand-card__animation-mobile.brand-card__animation-mobile--green
+                    img(src= "./images/brandCardImages/animation/greenMobile.png")
+            when "pink"
+                .brand-card__animation-img1
+                    img(src= "./images/brandCardImages/animation/pink.png")
+                .brand-card__animation-img2
+                    img(src= "./images/brandCardImages/animation/pinkLight.png")
+                .brand-card__animation-mobile 
+                    img(src= "./images/brandCardImages/animation/pinkMobile.png")
+        .brand-card__brand-logo!= brand
+        .brand-card__category= category
+        .brand-card__desc= desc
+        .brand-card__link Подробнее
+            svg(width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg")
+                path(fill-rule="evenodd" clip-rule="evenodd" d="M0.531112 0.11461C0.691536 -0.0382035 0.951636 -0.0382035 1.11206 0.11461L4.63904 3.47427C5.12032 3.93271 5.12032 4.67599 4.63904 5.13443L0.701268 8.88539C0.540843 9.0382 0.280743 9.0382 0.120319 8.88539C-0.0401062 8.73258 -0.0401062 8.48482 0.120319 8.332L4.05809 4.58104C4.21852 4.42823 4.21852 4.18047 4.05809 4.02765L0.531112 0.667998C0.370687 0.515184 0.370687 0.267424 0.531112 0.11461Z" fill="#46C0C1")
+        .brand-card__product
+            img(src= product_image, alt= "Product Image1")
+        .brand-card__product-mobile
+            img(src= product_image_mobile, alt= "Product ImageMobile")
