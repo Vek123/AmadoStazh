@@ -34,7 +34,7 @@
     }
 }
 
-.custom-swiper-button-prev, .custom-swiper-button-next {
+.medicine-container .swiper-button-prev, .medicine-container .swiper-button-next {
     z-index: 10;
     color: rgb(var(--color-main));
     width: 40px;
@@ -57,51 +57,44 @@
         transition: filter var(--main-hover-delay);
         transform: scale(.625);
     }
-    &--arrow {
-      display: none;
-      &:hover {
-        background-color: unset;
-        path {
-            fill: rgb(var(--color-main-lighter));
-        }
-      }
-    }
 }
-.custom-swiper-button-prev {
+.medicine-container .swiper-button-prev {
     left: -8px;
 }
-.custom-swiper-button-next {
+.medicine-container .swiper-button-next {
     right: -8px;
 }
 
 @include laptop {
-    .custom-swiper-button-prev, .custom-swiper-button-next {
+    .medicine-container .swiper-button-prev, .medicine-container .swiper-button-next {
         bottom: 20px;
         top: unset;
         width: 22px;
         height: 22px;
-        &--angle {
-            display: none;
-        }
-        &--arrow {
-            display: block;
-        }
         svg {
             transform: scale(1) translateY(-50%);
         }
+        &:hover {
+            background-color: unset;
+            svg {
+                path {
+                    fill: rgb(var(--color-main-lighter))
+                }
+            }
+        }
     }
-    .custom-swiper-button-prev {
+    .medicine-container .swiper-button-prev {
         left: calc(30px - 7.5px);
     }
-    .custom-swiper-button-next {
+    .medicine-container .swiper-button-next {
         right: calc(30px - 7.5px);
     }
 }
 @include tablet {
-    .custom-swiper-button-prev {
+    .medicine-container .swiper-button-prev {
         left: calc(20px - 7.5px);
     }
-    .custom-swiper-button-next {
+    .medicine-container .swiper-button-next {
         right: calc(20px - 7.5px);
     }
 }

@@ -25,8 +25,8 @@ const medicinesSwiper = new Swiper('.cards-swiper', {
         bulletActiveClass: 'cards-swiper__bullet--active',
     },
     navigation: {
-        nextEl: '.custom-swiper-button-next',
-        prevEl: '.custom-swiper-button-prev',
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
     },
     breakpoints: {
         300: {
