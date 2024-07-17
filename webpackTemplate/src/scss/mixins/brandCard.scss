@@ -23,7 +23,7 @@
         display: none;
         position: relative;
         color: rgb(var(--color-black));
-        z-index: 20;
+        z-index: 30;
         transition: color var(--main-hover-delay);
         margin-bottom: 10px;
         @include font("Roboto", 18px, 25.2px, 500);
@@ -34,14 +34,14 @@
         margin-bottom: 14px;
         color: rgb(var(--color-black));
         max-width: 201px;
-        z-index: 20;
+        z-index: 30;
         transition: color var(--main-hover-delay);
     }
     &__link {
         position: relative;
         @include font("Montserrat", 16px, 22.4px, 500);
         color: rgb(var(--color-main));
-        z-index: 20;
+        z-index: 30;
         transition: color var(--main-hover-delay);
         svg {
             display: inline-block;
@@ -56,6 +56,12 @@
         bottom: 0px;
         right: 18px;
         z-index: 10;
+        width: 332px;
+        height: 332px;
+        img {
+            height: 100%;
+            width: 100%;
+        }
     }
     &__product-mobile {
         display: none;
@@ -200,6 +206,8 @@
         }
         &__product {
             display: none;
+            width: 260px;
+            height: 260px;
             &-mobile {
                 display: block;
             }
