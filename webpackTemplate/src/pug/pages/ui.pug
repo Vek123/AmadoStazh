@@ -6,6 +6,7 @@ include ~@mixins/zoomImageIcon
 include ~@mixins/squareCloseButton
 include ~@mixins/medicamentList
 include ~@mixins/brandCard
+include ~@mixins/arrow
 
 block vars
   - title = 'ui страница'
@@ -54,3 +55,6 @@ block content
     br
     +brandCard("brand-card--biruse my-card", "biruse", false, brand_card[0].brand, brand_card[0].category, brand_card[0].desc, brand_card[0].link, brand_card[0].product_img, brand_card[0].product_img_mobile)
     br
+    +arrow("", true)
+    br
+    +arrow("", false)

@@ -1,0 +1,16 @@
+.arrow-left-angle, .arrow-right-angle,  .arrow-left, .arrow-right {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.arrow-left, .arrow-right {
+    display: none;
+}
+@include laptop {
+    .arrow-left-angle, .arrow-right-angle {
+        display: none;
+    }
+    .arrow-left, .arrow-right {
+        display: block;
+    }
+}
