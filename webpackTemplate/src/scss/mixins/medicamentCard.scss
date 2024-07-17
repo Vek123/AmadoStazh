@@ -47,7 +47,6 @@
         margin-bottom: 4px;
     }
     &__description {
-        @include font(var(--font-roboto), 16px, 22.4px, 400);
         display: -webkit-box;
         -webkit-line-clamp: 3;
         line-clamp: 3;

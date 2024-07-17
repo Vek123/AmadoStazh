@@ -29,7 +29,6 @@
         @include font("Roboto", 18px, 25.2px, 500);
     }
     &__desc {
-        @include font("Roboto", 16px, 22.4px, 400);
         position: relative;
         margin-bottom: 14px;
         color: rgb(var(--color-black));
