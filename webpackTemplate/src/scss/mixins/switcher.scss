@@ -41,6 +41,10 @@
         &--unselected {
             color: rgb(var(--color-grey-lighter));
             cursor: pointer;
+            transition: color var(--main-hover-delay);
+            &:hover {
+                color: rgb(var(--color-main));
+            }
         }
     }
     .left-block-title {
