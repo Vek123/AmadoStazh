@@ -1,7 +1,29 @@
 mixin advantage(className, color, title, desc)
     .advantage(class= className)
-        .advantage__background
-            img(src="./images/advantageImages/red.png")
-            img(src="./images/advantageImages/redLight.png")
+        case color 
+            when "red"
+                .advantage__background
+                    img(src="./images/advantageImages/red.png")
+                    img(src="./images/advantageImages/redLight.png")
+            when "biruse"
+                .advantage__background
+                    img(src="./images/advantageImages/biruse.png")
+                    img(src="./images/advantageImages/biruseLight.png")
+            when "blue"
+                .advantage__background
+                    img(src="./images/advantageImages/blue.png")
+                    img(src="./images/advantageImages/blueLight.png")
+            when "yellow"
+                .advantage__background
+                    img(src="./images/advantageImages/yellow.png")
+                    img(src="./images/advantageImages/yellowLight.png")
+            when "pink"
+                .advantage__background
+                    img(src="./images/advantageImages/pink.png")
+                    img(src="./images/advantageImages/pinkLight.png")
+            when "green"
+                .advantage__background
+                    img(src="./images/advantageImages/green.png")
+                    img(src="./images/advantageImages/greenLight.png")
         .advantage__title= title
         .advantage__desc= desc
