@@ -2,6 +2,14 @@
     width: 100%;
     height: 100%;
     cursor: pointer;
+    path {
+        transition: fill var(--main-hover-delay);
+    }
+    &:hover {
+        path {
+            fill: rgb(var(--color-main-lighter));
+        }
+    }
 }
 .arrow-left, .arrow-right {
     display: none;
