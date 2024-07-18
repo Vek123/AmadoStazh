@@ -1,0 +1,11 @@
+mixin switcher(className, tag, leftName, leftNameMobile, rightName, rightNameMobile)
+    .switcher
+        .switcher__header
+            h2.left-block-title= leftName
+            h2.left-block-title.left-block-title--mobile= leftNameMobile
+            .switch
+                .switch__bar-container
+                    .switch__bar
+            h2.right-block-title.right-block-title--unselected= rightName
+            h2.right-block-title.right-block-title--mobile.right-block-title--unselected= rightNameMobile
+        block

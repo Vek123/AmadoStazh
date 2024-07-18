@@ -1,0 +1,92 @@
+.switcher {
+    position: relative;
+    &__header {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 4px 0;
+    }
+    .switch {
+        position: relative;
+        border-radius: 50px;
+        outline: 1px solid rgb(var(--color-main));
+        outline-offset: 3px;
+        height: 30px;
+        flex-grow: 1;
+        &__bar-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        &__bar {
+            position: absolute;
+            height: 100%;
+            width: 50%;
+            right: 100%;
+            transform: translateX(100%);
+            border-radius: 50px;
+            background-color: rgb(var(--color-main-lighter));
+            transition: width var(--main-hover-delay), right var(--main-hover-delay), transform var(--main-hover-delay);
+            &--right {
+                right: 0;
+                transform: translateX(0);
+            }
+        }
+    }
+    .left-block-title, .right-block-title {
+        &--mobile {
+            display: none;
+        }
+        &--unselected {
+            color: rgb(var(--color-grey-lighter));
+            cursor: pointer;
+        }
+    }
+    .left-block-title {
+        margin-right: 30px;
+    }
+    .right-block-title {
+        margin-left: 30px;
+    }
+    .left-block-content, .right-block-content {
+        &--hidden {
+            display: none;
+        }
+    }
+}
+@include laptop {
+    .switcher {
+        &__header {
+            justify-content: unset;
+        }
+        .switch {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .left-block-title, .right-block-title {
+            width: 50%;
+            margin: 0;
+            text-align: center;
+            @include fontAdaptive(16px, 19.2px, 700);
+            padding: 7px 0;
+            display: none;
+            &--mobile {
+                display: block;
+            }
+        }
+    }
+}
+@include tablet {
+    .switcher {
+        &__header {
+            justify-content: space-between;
+        }
+        .left-block-title, .right-block-title {
+            width: max-content;
+            padding: 7px 12px;
+        }
+    }
+}

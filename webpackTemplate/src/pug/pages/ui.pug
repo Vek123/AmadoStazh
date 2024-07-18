@@ -7,6 +7,7 @@ include ~@mixins/squareCloseButton
 include ~@mixins/medicamentList
 include ~@mixins/brandCard
 include ~@mixins/arrow
+include ~@mixins/switcher
 
 block vars
   - title = 'ui страница'
@@ -58,3 +59,7 @@ block content
     +arrow("", true)
     br
     +arrow("", false)
+    br
+    .template-container: +switcher("", "Топ продаж", "Популярные товары", "Популярное", "Выбор покупателя", "Выбор покупателя")
+      .left-block-content Контент левого блока
+      .right-block-content.right-block-content--hidden Контент правого блока
