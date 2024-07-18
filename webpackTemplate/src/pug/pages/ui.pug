@@ -8,6 +8,7 @@ include ~@mixins/medicamentList
 include ~@mixins/brandCard
 include ~@mixins/arrow
 include ~@mixins/switcher
+include ~@mixins/advantage
 
 block vars
   - title = 'ui страница'
@@ -63,3 +64,4 @@ block content
     .template-container: +switcher("", "Топ продаж", "Популярные товары", "Популярное", "Выбор покупателя", "Выбор покупателя")
       .left-block-content Контент левого блока
       .right-block-content.right-block-content--hidden Контент правого блока
+    +advantage("", "red", "Контроль качества", "Каждый продукт проходит несколько проверок на всех этапах производства и упаковки")

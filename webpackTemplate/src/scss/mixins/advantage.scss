@@ -1,0 +1,50 @@
+.advantage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: min-content;
+    height: min-content;
+    color: white;
+    @include font(Montserrat, 16px, 19.5px, 700);
+    text-align: center;
+    &__background {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    img {
+        width: unset;
+        &:nth-child(1) {
+            position: absolute;
+        }
+    }
+    &__title {
+        position: absolute;
+        max-width: 80%;
+        text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+        transition: opacity var(--main-hover-delay);
+    }
+    &__desc {
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        font-weight: 500;
+        max-width: 87%;
+        text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+        transition: opacity var(--main-hover-delay);
+    }
+    &:hover {
+        .advantage{
+            &__title {
+                opacity: 0;
+                visibility: hidden;
+            }
+            &__desc {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+}
