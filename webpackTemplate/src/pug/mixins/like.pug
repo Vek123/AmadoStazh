@@ -1,0 +1,6 @@
+mixin like(className, filled=False)
+    .like(class= className)
+        if filled
+            include ~@icons/like-filled.svg
+        else
+            include ~@icons/like-empty.svg
