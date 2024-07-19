@@ -1,0 +1,10 @@
+.search-icon {
+    path {
+        transition: fill var(--main-hover-delay);
+    }
+    &:hover {
+        path {
+            fill: rgb(var(--color-main-lighter));
+        }
+    }
+}
