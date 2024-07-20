@@ -1,0 +1,11 @@
+mixin articlesCategListing(className, label, categs)
+    form.articles-categ-listing(class= className)
+        .articles-categ-listing__select(data-state= "")
+            .articles-categ-listing__title.articles-categ-listing__title--default(data-default= label)= label
+            .articles-categ-listing__content-container
+                .articles-categ-listing__content
+                    input(id= "all", type= "radio", name= "all")
+                    label(for= "all", ) Все
+                    each cat in categs
+                        input(id= cat.slug, type= "radio", name= cat.slug)
+                        label(for= cat.slug, )= cat.name

@@ -4,6 +4,7 @@ import '@babel/polyfill';
 import '../scss/style.scss';
 // imports
 import './_imports';
+import SimpleBar from 'simplebar';
 
 
 function moveSwitcher(event) {
@@ -29,6 +30,7 @@ function moveSwitcher(event) {
     rightContent.classList.toggle("right-block-content--hidden");
 }
 
+
 function scaleSwitcherBar() {
     if (window.innerWidth < 780) {
         let left = document.querySelectorAll(".switcher .left-block-title");
@@ -44,6 +46,37 @@ function scaleSwitcherBar() {
         bar.style.width = "50%";
     }
 }
+
+
+// let articleCategListScrollBar = new SimpleBar('.articles-categ-listing__content-container', {});
+
+
+function toggleArticleCategList(event) {
+    let articleCategSelect = document.querySelector(".articles-categ-listing__select")
+    if (event.target.classList.length === 0 || !event.target.classList[0].includes("articles-categ-listing")) {
+        articleCategSelect.setAttribute("data-state", "");
+        return 0;
+    } else {
+        articleCategSelect.setAttribute("data-state", "active");
+    }
+}
+
+
+function choiceArticle(event) {
+    let title = document.querySelector(".articles-categ-listing__title");
+    if (event.target.getAttribute("for") === "all") {
+        title.textContent = title.getAttribute("data-default");
+        title.classList.add("articles-categ-listing__title--default");
+    } else {
+        title.textContent = event.target.textContent;
+        title.classList.remove("articles-categ-listing__title--default");
+    }
+    document.querySelector(".articles-categ-listing__select").setAttribute("data-state", "");
+}
+
+
+document.querySelectorAll(".articles-categ-listing__content label").forEach(x => {x.addEventListener("click", choiceArticle)});
+document.addEventListener("click", toggleArticleCategList)
 document.addEventListener("DOMContentLoaded", scaleSwitcherBar);
 window.addEventListener("resize", scaleSwitcherBar);
 document.querySelectorAll(".switcher .left-block-title").forEach(x => x.addEventListener("click", moveSwitcher));

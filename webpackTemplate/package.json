@@ -47,6 +47,8 @@
     "@babel/polyfill": "^7.8.7",
     "jquery": "^3.5.1",
     "normalize.css": "^8.0.1",
+    "resize-observer-polyfill": "^1.5.1",
+    "simplebar": "^6.2.7",
     "swiper": "^11.1.4",
     "validate-form.js": "^1.0.0"
   }
