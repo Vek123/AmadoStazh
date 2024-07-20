@@ -5,7 +5,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 4px 0;
     }
     .switch {
         position: relative;
@@ -66,6 +65,7 @@
     .switcher {
         &__header {
             justify-content: unset;
+            margin: 4px 0;
         }
         .switch {
             position: absolute;
