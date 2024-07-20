@@ -18,14 +18,17 @@
             position: relative;
             width: 100%;
             height: 100%;
+            cursor: pointer;
         }
         &__bar {
             position: absolute;
+            z-index: 10;
             height: 100%;
             width: 50%;
             right: 100%;
             transform: translateX(100%);
             border-radius: 50px;
+            cursor: default;
             background-color: rgb(var(--color-main-lighter));
             transition: width var(--main-hover-delay), right var(--main-hover-delay), transform var(--main-hover-delay);
             &--right {

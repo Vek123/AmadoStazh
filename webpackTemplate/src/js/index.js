@@ -8,7 +8,7 @@ import SimpleBar from 'simplebar';
 
 
 function moveSwitcher(event) {
-    if (!(event.target.classList.contains("left-block-title--unselected") || event.target.classList.contains("right-block-title--unselected"))) {
+    if (!(event.target.classList.contains("left-block-title--unselected") || event.target.classList.contains("right-block-title--unselected") || event.target.classList.contains("switch__bar-container"))) {
         return 0;
     }
     let left = document.querySelectorAll(".switcher .left-block-title");
@@ -74,7 +74,8 @@ function choiceArticle(event) {
     document.querySelector(".articles-categ-listing__select").setAttribute("data-state", "");
 }
 
-
+console.log(document.querySelector(".switch__bar-container"));
+document.querySelector(".switch__bar-container").addEventListener("click", moveSwitcher);
 document.querySelectorAll(".articles-categ-listing__content label").forEach(x => {x.addEventListener("click", choiceArticle)});
 document.addEventListener("click", toggleArticleCategList)
 document.addEventListener("DOMContentLoaded", scaleSwitcherBar);
