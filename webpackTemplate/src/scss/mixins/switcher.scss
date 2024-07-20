@@ -18,6 +18,8 @@
             width: 100%;
             height: 100%;
             cursor: pointer;
+            overflow: hidden;
+            border-radius: 50px;
         }
         &__bar {
             position: absolute;
