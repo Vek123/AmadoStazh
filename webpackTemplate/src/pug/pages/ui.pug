@@ -76,7 +76,15 @@ block content
     br
     .template-container.medicine-container: +medicamentList('my-list', cards)
     br
-    +brandCard("brand-card--biruse my-card", "biruse", false, brand_card[0].brand, brand_card[0].category, brand_card[0].desc, brand_card[0].link, brand_card[0].product_img, brand_card[0].product_img_mobile)
+    .brands-container
+      +brandCard("brand-card--biruse my-card", "biruse", false, brand_card[0].brand, brand_card[0].category, brand_card[0].desc, brand_card[0].link, brand_card[0].product_img, brand_card[0].product_img_mobile)
+      +brandCard("brand-card--blue my-card", "blue", false, brand_card[0].brand, brand_card[0].category, brand_card[0].desc, brand_card[0].link, brand_card[0].product_img, brand_card[0].product_img_mobile)
+      +brandCard("brand-card--gray my-card", "gray", false, brand_card[0].brand, brand_card[0].category, brand_card[0].desc, brand_card[0].link, brand_card[0].product_img, brand_card[0].product_img_mobile)
+      +brandCard("brand-card--green my-card", "green", false, brand_card[0].brand, brand_card[0].category, brand_card[0].desc, brand_card[0].link, brand_card[0].product_img, brand_card[0].product_img_mobile)
+      +brandCard("brand-card--pink my-card", "pink", false, brand_card[0].brand, brand_card[0].category, brand_card[0].desc, brand_card[0].link, brand_card[0].product_img, brand_card[0].product_img_mobile)
+      +brandCard("brand-card--red my-card", "red", false, brand_card[0].brand, brand_card[0].category, brand_card[0].desc, brand_card[0].link, brand_card[0].product_img, brand_card[0].product_img_mobile)
+      +brandCard("brand-card--violet my-card", "violet", false, brand_card[0].brand, brand_card[0].category, brand_card[0].desc, brand_card[0].link, brand_card[0].product_img, brand_card[0].product_img_mobile)
+      +brandCard("brand-card--yellow my-card", "yellow", false, brand_card[0].brand, brand_card[0].category, brand_card[0].desc, brand_card[0].link, brand_card[0].product_img, brand_card[0].product_img_mobile)
     br
     +arrow("", true)
     br
@@ -85,7 +93,14 @@ block content
     .template-container: +switcher("", "Топ продаж", "Популярные товары", "Популярное", "Выбор покупателя", "Выбор покупателя")
       .left-block-content Контент левого блока
       .right-block-content.right-block-content--hidden Контент правого блока
-    +advantage("", "biruse", "Контроль качества", "Каждый продукт проходит несколько проверок на всех этапах производства и упаковки")
+    br
+    .advantages-container
+      +advantage("", "biruse", "Контроль качества", "Каждый продукт проходит несколько проверок на всех этапах производства и упаковки")
+      +advantage("", "blue", "Контроль качества", "Каждый продукт проходит несколько проверок на всех этапах производства и упаковки")
+      +advantage("", "green", "Контроль качества", "Каждый продукт проходит несколько проверок на всех этапах производства и упаковки")
+      +advantage("", "pink", "Контроль качества", "Каждый продукт проходит несколько проверок на всех этапах производства и упаковки")
+      +advantage("", "red", "Контроль качества", "Каждый продукт проходит несколько проверок на всех этапах производства и упаковки")
+      +advantage("", "yellow", "Контроль качества", "Каждый продукт проходит несколько проверок на всех этапах производства и упаковки")
     br
     +searchIcon("")
     br
