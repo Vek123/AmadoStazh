@@ -1,8 +1,7 @@
 mixin breadCrumbs(items)
     .breadcrumps-container
         a(href='/')
-            svg(width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg")
-                path(d="M1.36621 6.72001V16.98H5.96621V12.42C5.96621 9.00001 11.7162 9.00001 11.7162 12.42V16.98H16.3162V6.72001L8.64954 0.640015L1.36621 6.72001Z" stroke="#BDBDBD" stroke-linejoin="round")
+            include ~@icons/breadCrumbs/homeIcon.svg
         | &ensp;/&ensp;
         each item, index in items 
             if item.link 
