@@ -1,2 +1,2 @@
 mixin inTextLink(className, text, white=false, link='#')
-    a(class='intext-link', class= className, href= link, style=white ? 'color: white;' : '')= text
+    a(class='intext-link', class= className, class= white ? "intext-link--white" : "", href= link)= text
