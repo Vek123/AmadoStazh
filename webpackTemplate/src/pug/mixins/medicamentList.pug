@@ -3,11 +3,11 @@ include ~@mixins/arrow
 
 mixin medicamentList(className, cardsList)
     .swiper-container
-        +arrow("swiper-button-prev", left= true) 
-        +arrow("swiper-button-next", left= false) 
-        .swiper.cards-swiper(class= className)
+        +arrow("custom-swiper-button custom-swiper-button--prev", left= true) 
+        +arrow("custom-swiper-button custom-swiper-button--next", left= false) 
+        .swiper.medicament-list(class= className)
             .swiper-wrapper
                 each card in cardsList 
                     .swiper-slide 
                         +medicamentCard('', card)
-            .swiper-pagination.custom-swiper-pagination
+            .custom-swiper-pagination

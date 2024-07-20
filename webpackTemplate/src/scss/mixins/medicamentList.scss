@@ -1,4 +1,4 @@
-.cards-swiper {
+.medicament-list {
     padding: 20px!important;
     .swiper-slide {
         height: auto;
@@ -15,6 +15,7 @@
         width: 6px;
         height: 6px;
         transition: var(--main-hover-delay) transform, var(--main-hover-delay) left;
+        cursor: pointer;
         &--active {
             background-color: unset;
             width: 15px;
@@ -24,17 +25,23 @@
         }
     }
     .custom-swiper-pagination {
-        position: relative;
         line-height: 0;
         bottom: 0;
         margin: 0 auto;
-        margin-top: 58px;
-        left: unset!important;
-        transform: unset!important;
+        margin-top: 40px;
+        left: unset;
+        transform: unset;
+        overflow: hidden;
+        text-wrap: nowrap;
+        &--disabled {
+            visibility: hidden;
+        }
     }
 }
 
-.medicine-container .swiper-button-prev, .medicine-container .swiper-button-next {
+.medicine-container .custom-swiper-button {
+    position: absolute;
+    top: 36%;
     z-index: 10;
     color: rgb(var(--color-main));
     width: 40px;
@@ -55,46 +62,58 @@
     }
     svg {
         transition: filter var(--main-hover-delay);
-        transform: scale(.625);
     }
-}
-.medicine-container .swiper-button-prev {
-    left: -8px;
-}
-.medicine-container .swiper-button-next {
-    right: -8px;
+    &--prev {
+        left: -8px;
+    }
+    &--next {
+        right: -8px;
+    }
+    &--disabled {
+        path {
+            fill: rgb(var(--color-main-lighter));
+        }
+        &:hover {
+            cursor: unset;
+            background-color: unset;
+            path {
+                fill: rgb(var(--color-main-lighter));
+            }
+        }
+    }
 }
 
 @include laptop {
-    .medicine-container .swiper-button-prev, .medicine-container .swiper-button-next {
+    .medicine-container .custom-swiper-button {
         bottom: 20px;
         top: unset;
         width: 22px;
         height: 22px;
         svg {
-            transform: scale(1) translateY(-50%);
+            transform: scale(1) translateY(50%);
         }
         &:hover {
             background-color: unset;
-            svg {
-                path {
-                    fill: rgb(var(--color-main-lighter))
-                }
+            path {
+                fill: rgb(var(--color-main-lighter))
             }
         }
-    }
-    .medicine-container .swiper-button-prev {
-        left: calc(30px - 7.5px);
-    }
-    .medicine-container .swiper-button-next {
-        right: calc(30px - 7.5px);
+        &--prev {
+            left: calc(30px - 7.5px);
+        }
+        &--next {
+            right: calc(30px - 7.5px);
+        }
     }
 }
 @include tablet {
-    .medicine-container .swiper-button-prev {
-        left: calc(20px - 7.5px);
-    }
-    .medicine-container .swiper-button-next {
-        right: calc(20px - 7.5px);
+
+    .medicine-container .custom-swiper-button {
+        &--prev {
+            left: calc(20px - 7.5px);
+        }
+        &--next {
+            right: calc(20px - 7.5px);
+        }
     }
 }

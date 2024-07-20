@@ -14,42 +14,33 @@ const iconsSwipers = new Swiper('.medicament-card__icons-swiper', {
     bulletActiveClass: 'medicament-card__bullet--active',
   },
 });
-const medicinesSwiper = new Swiper('.cards-swiper', {
-    observer: true,
-    observeParents: true,
+const medicinesSwiper = new Swiper('.medicament-list', {
+    containerModifierClass: 'swiper-horizontal-container',
+    slidesPerView: 'auto',
     spaceBetween: 10,
     pagination: {
-        el: '.cards-swiper .swiper-pagination',
+        el: '.medicament-list .custom-swiper-pagination',
+        horizontalClass: 'custom-swiper-pagination',
         clickable: true,
-        bulletClass: 'cards-swiper__bullet',
-        bulletActiveClass: 'cards-swiper__bullet--active',
+        enabled: true,
+        bulletClass: 'medicament-list__bullet',
+        bulletActiveClass: 'medicament-list__bullet--active',
+        paginationDisabledClass: 'custom-swiper-pagination--disabled',
+        dynamicBullets: true,
+        dynamicMainBullets: 1,
     },
     navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: '.custom-swiper-button--next',
+        prevEl: '.custom-swiper-button--prev',
+        disabledClass: 'custom-swiper-button--disabled',
     },
     breakpoints: {
-        300: {
-            slidesPerView: 'auto',
-            spaceBetween: 10,
-            pagination: {
-                enabled: true,
-                dynamicBullets: true,
-                dynamicMainBullets: 1,
-            },
-        },
         1280: {
             spaceBetween: 20,
             slidesPerView: 4,
             pagination: {
                 enabled: false,
-            },
-        },
-        1601: {
-            slidesPerView: 4,
-            spaceBetween: 20,
-            pagination: {
-                enabled: false,
+                dynamicBullets: false,
             },
         }
     }
