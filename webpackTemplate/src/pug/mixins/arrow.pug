@@ -1,11 +1,11 @@
 mixin arrow(className, left= false)
     if left 
-        .arrow.arrow--left--angle(class= className)
+        button.arrow.arrow--left--angle(class= className)
             include ~@icons/slider/left-arrow-angle.svg
-        .arrow.arrow--left(class= className)
+        button.arrow.arrow--left(class= className)
             include ~@icons/slider/left-arrow.svg
     else 
-        .arrow.arrow--right--angle(class= className)
+        button.arrow.arrow--right--angle(class= className)
             include ~@icons/slider/left-arrow-angle.svg
-        .arrow.arrow--right(class= className)
+        button.arrow.arrow--right(class= className)
             include ~@icons/slider/left-arrow.svg
