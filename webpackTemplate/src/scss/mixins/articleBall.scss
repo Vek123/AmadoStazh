@@ -1,0 +1,49 @@
+.article-ball {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    justify-content: center;
+    cursor: pointer;
+    &:hover {
+        .article-ball__background {
+            &--big {
+                transform: rotate(11.52deg) scaleX(1.04) translate(4px, 8px);
+            }
+            &--type1 {
+                transform: rotate(3.62deg) scale(1.04) translate(-5px, 5px);
+            }
+            &--type2 {
+                transform: rotate(4.51deg) scale(1.03) translateY(2px);
+            }
+            &--type3 {
+                transform: rotate(3.45deg) scale(1.04) translate(5px, -2px);
+            }
+            &--type4 {
+                transform: rotate(3.68deg) scale(1.04) translate(-3px, 3px);
+            }
+        }
+    }
+    &__image {
+        position: absolute;
+        image {
+            width: auto;
+            height: 100%;
+        }
+        &--big {
+            bottom: 5px;
+            right: 21px;
+        }
+        &--type1 {
+            bottom: -40px;
+            right: -27px;
+        }
+        &--type3 {
+            bottom: -42px;
+            right: -40px;
+        }
+    }
+    &__background {
+        transition: transform var(--main-hover-delay);
+    }
+}

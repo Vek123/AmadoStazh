@@ -12,6 +12,7 @@ include ~@mixins/advantage
 include ~@mixins/searchIcon
 include ~@mixins/like
 include ~@mixins/articlesCategListing
+include ~@mixins/articleBall
 
 block vars
   - title = 'ui страница'
@@ -116,3 +117,13 @@ block content
     br
     h5 Заголовок
     br
+    +articleBall("", 1, true, 1)
+      include ~@images/articleBalls/first-article.html
+    +articleBall("", 1, false, 2)
+      include ~@images/articleBalls/second-article.html
+    +articleBall("", 2, false, 3)
+      include ~@images/articleBalls/third-article.html
+    +articleBall("", 3, false, 4)
+      include ~@images/articleBalls/fourth-article.html
+    +articleBall("", 4, false, 5)
+      include ~@images/articleBalls/fifth-article.html
