@@ -6,6 +6,9 @@
     justify-content: center;
     cursor: pointer;
     &:hover {
+        .article-ball__image {
+            opacity: 1;
+        }
         .article-ball__background {
             &--big {
                 transform: rotate(11.52deg) scaleX(1.04) translate(4px, 8px);
@@ -26,6 +29,8 @@
     }
     &__image {
         position: absolute;
+        opacity: .6;
+        transition: opacity var(--main-hover-delay);
         image {
             width: auto;
             height: 100%;
