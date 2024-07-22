@@ -17,7 +17,7 @@
         background-color: rgb(var(--color-main));
         color: rgb(var(--color-white));
         &:hover {
-            color: var(--main-color);
+            color: rgb(var(--color-main));
             background-color: unset;
         }
     }
