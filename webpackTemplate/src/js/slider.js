@@ -14,31 +14,35 @@ const iconsSwipers = new Swiper('.medicament-card__icons-swiper', {
     bulletActiveClass: 'medicament-card__bullet--active',
   },
 });
-const medicinesSwiper = new Swiper('.medicament-list__swiper', {
-    containerModifierClass: 'swiper-horizontal-container',
-    slidesPerView: 'auto',
-    spaceBetween: 10,
-    pagination: {
-        el: '.medicament-list__swiper-pagination',
-        horizontalClass: 'medicament-list__swiper-pagination',
-        clickable: true,
-        enabled: true,
-        bulletClass: 'medicament-list__bullet',
-        bulletActiveClass: 'medicament-list__bullet--active',
-        dynamicBullets: true,
-        dynamicMainBullets: 1,
-    },
-    navigation: {
-        nextEl: '.medicament-list__button--next',
-        prevEl: '.medicament-list__button--prev',
-        disabledClass: 'medicament-list__button--disabled',
-    },
-    breakpoints: {
-        1280: {
-            spaceBetween: 20,
-            slidesPerView: 4,
-        }
-    }
-});
-
-export { iconsSwipers, medicinesSwiper };
+let medicinesSwipers = [];
+document.querySelectorAll(".medicament-list__swiper").forEach(swiper => {
+    medicinesSwipers.push(
+        new Swiper(swiper, {
+            containerModifierClass: 'swiper-horizontal-container',
+            slidesPerView: 'auto',
+            spaceBetween: 10,
+            pagination: {
+                el: swiper.querySelector('.medicament-list__swiper-pagination'),
+                horizontalClass: 'medicament-list__swiper-pagination',
+                clickable: true,
+                enabled: true,
+                bulletClass: 'medicament-list__bullet',
+                bulletActiveClass: 'medicament-list__bullet--active',
+                dynamicBullets: true,
+                dynamicMainBullets: 1,
+            },
+            navigation: {
+                nextEl: [swiper.parentElement.querySelectorAll('.medicament-list__button--next')[0], swiper.parentElement.querySelectorAll('.medicament-list__button--next')[1]],
+                prevEl: [swiper.parentElement.querySelectorAll('.medicament-list__button--prev')[0], swiper.parentElement.querySelectorAll('.medicament-list__button--prev')[1]],
+                disabledClass: 'medicament-list__button--disabled',
+            },
+            breakpoints: {
+                1280: {
+                    spaceBetween: 20,
+                    slidesPerView: 4,
+                }
+            }
+        })
+    );
+})
+export { iconsSwipers, medicinesSwipers };
