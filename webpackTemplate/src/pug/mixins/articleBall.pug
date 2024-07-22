@@ -1,4 +1,4 @@
-mixin articleBall(className, type=1, big=false, image_id=0, link="#")
+mixin articleBall(className, image, type=1, big=false, image_id=0, link="#")
     a.article-ball(class= className, class= big ? "article-ball--big" : "", href= link)
         if big
             .article-ball__background.article-ball__background--big
@@ -33,7 +33,7 @@ mixin articleBall(className, type=1, big=false, image_id=0, link="#")
                             feColorMatrix(type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0")
                             feBlend(mode="normal" in2="shape" result="effect-article-balls-big" + image_id)
                         pattern(id="pattern-article-balls-big-" + image_id width="100%" height="100%")
-                            block
+                            image(xlink:href= image)
         else 
             case type 
                 when 1
@@ -69,7 +69,7 @@ mixin articleBall(className, type=1, big=false, image_id=0, link="#")
                                     feColorMatrix(type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0")
                                     feBlend(mode="normal" in2="shape" result="effect-article-balls-" + image_id)
                                 pattern(id="pattern-article-balls-" + image_id width="100%" height="100%")
-                                    block
+                                    image(xlink:href= image)
                 when 2
                     .article-ball__background.article-ball__background--type2
                         svg(width="262" height="242" viewBox="0 0 262 242" fill="none" xmlns="http://www.w3.org/2000/svg")
@@ -103,7 +103,7 @@ mixin articleBall(className, type=1, big=false, image_id=0, link="#")
                                     feColorMatrix(type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0")
                                     feBlend(mode="normal" in2="shape" result="effect-article-balls-" + image_id)
                                 pattern(id="pattern-article-balls-" + image_id width="100%" height="100%")
-                                    block
+                                    image(xlink:href= image)
                 when 3
                     .article-ball__background.article-ball__background--type3
                         svg(width="252" height="230" viewBox="0 0 252 230" fill="none" xmlns="http://www.w3.org/2000/svg")
@@ -137,7 +137,7 @@ mixin articleBall(className, type=1, big=false, image_id=0, link="#")
                                     feColorMatrix(type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0")
                                     feBlend(mode="normal" in2="shape" result="effect-article-balls-" + image_id)
                                 pattern(id="pattern-article-balls-" + image_id width="100%" height="100%")
-                                    block
+                                    image(xlink:href= image)
                 when 4
                     .article-ball__background.article-ball__background--type4
                         svg(width="242" height="233" viewBox="0 0 242 233" fill="none" xmlns="http://www.w3.org/2000/svg")
@@ -171,4 +171,4 @@ mixin articleBall(className, type=1, big=false, image_id=0, link="#")
                                     feColorMatrix(type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0")
                                     feBlend(mode="normal" in2="shape" result="effect-article-balls-" + image_id)
                                 pattern(id="pattern-article-balls-" + image_id width="100%" height="100%")
-                                    block
+                                    image(xlink:href= image)
