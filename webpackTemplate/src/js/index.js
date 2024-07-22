@@ -11,11 +11,20 @@ function moveSwitcher(event) {
     if (!(event.target.classList.contains("left-block-title--unselected") || event.target.classList.contains("right-block-title--unselected") || event.target.classList.contains("switch__bar-container"))) {
         return 0;
     }
-    let left = document.querySelectorAll(".switcher .left-block-title");
-    let right = document.querySelectorAll(".switcher .right-block-title");
-    let bar = document.querySelector(".switch__bar");
-    let leftContent = document.querySelector(".switcher .left-block-content");
-    let rightContent = document.querySelector(".switcher .right-block-content");
+    let left, right, bar, leftContent, rightContent;
+    if (event.target.classList.contains("switch__bar-container")) {
+        left = event.target.parentElement.parentElement.querySelectorAll(".left-block-title");
+        right = event.target.parentElement.parentElement.querySelectorAll(".right-block-title");
+        bar = event.target.querySelector(".switch__bar");
+        leftContent = event.target.parentElement.parentElement.parentElement.querySelectorAll(".left-block-content");
+        rightContent = event.target.parentElement.parentElement.parentElement.querySelectorAll(".right-block-content");
+    } else {
+        left = event.target.parentElement.querySelectorAll(".left-block-title");
+        right = event.target.parentElement.querySelectorAll(".right-block-title");
+        bar = event.target.parentElement.querySelector(".switch__bar");
+        leftContent = event.target.parentElement.parentElement.querySelectorAll(".left-block-content");
+        rightContent = event.target.parentElement.parentElement.querySelectorAll(".right-block-content");
+    }
     left.forEach(x => x.classList.toggle("left-block-title--unselected"));
     right.forEach(x => x.classList.toggle("right-block-title--unselected"));
     bar.classList.toggle("switch__bar--right");
@@ -26,8 +35,8 @@ function moveSwitcher(event) {
             bar.style.width = left[0].clientWidth ? `${left[0].clientWidth}px` : `${left[1].clientWidth}px`;
         }
     }
-    leftContent.classList.toggle("left-block-content--hidden");
-    rightContent.classList.toggle("right-block-content--hidden");
+    leftContent.forEach(x => x.classList.toggle("left-block-content--hidden"));
+    rightContent.forEach(x => x.classList.toggle("right-block-content--hidden"));
 }
 
 
@@ -35,15 +44,17 @@ function scaleSwitcherBar() {
     if (window.innerWidth < 780) {
         let left = document.querySelectorAll(".switcher .left-block-title");
         let right = document.querySelectorAll(".switcher .right-block-title");
-        let bar = document.querySelector(".switch__bar");
-        if (bar.classList.contains("switch__bar--right")) {
-            bar.style.width = right[0].clientWidth ? `${right[0].clientWidth}px` : `${right[1].clientWidth}px`;
-        } else {
-            bar.style.width = left[0].clientWidth ? `${left[0].clientWidth}px` : `${left[1].clientWidth}px`;
-        }
+        let bar = document.querySelectorAll(".switch__bar");
+        bar.forEach(x => {
+            if (x.classList.contains("switch__bar--right")) {
+                x.style.width = right[0].clientWidth ? `${right[0].clientWidth}px` : `${right[1].clientWidth}px`;
+            } else {
+                x.style.width = left[0].clientWidth ? `${left[0].clientWidth}px` : `${left[1].clientWidth}px`;
+            }
+        });
     } else {
-        let bar = document.querySelector(".switch__bar");
-        bar.style.width = "50%";
+        let bar = document.querySelectorAll(".switch__bar");
+        bar.forEach(x=> x.style.width = "50%");
     }
 }
 
@@ -74,11 +85,14 @@ function choiceArticle(event) {
     document.querySelector(".articles-categ-listing__select").setAttribute("data-state", "");
 }
 
-console.log(document.querySelector(".switch__bar-container"));
-document.querySelector(".switch__bar-container").addEventListener("click", moveSwitcher);
-document.querySelectorAll(".articles-categ-listing__content label").forEach(x => {x.addEventListener("click", choiceArticle)});
+const switchBarContainer = document.querySelectorAll(".switch__bar-container");
+if (switchBarContainer) switchBarContainer.forEach(x => x.addEventListener("click", moveSwitcher));
+const articlesCategListingContentLabel = document.querySelectorAll(".articles-categ-listing__content label");
+if (articlesCategListingContentLabel) articlesCategListingContentLabel.forEach(x => {x.addEventListener("click", choiceArticle)});
 document.addEventListener("click", toggleArticleCategList)
 document.addEventListener("DOMContentLoaded", scaleSwitcherBar);
 window.addEventListener("resize", scaleSwitcherBar);
-document.querySelectorAll(".switcher .left-block-title").forEach(x => x.addEventListener("click", moveSwitcher));
-document.querySelectorAll(".switcher .right-block-title").forEach(x => x.addEventListener("click", moveSwitcher));
+const switcherLeftBlockTitle = document.querySelectorAll(".switcher .left-block-title");
+if (switcherLeftBlockTitle) switcherLeftBlockTitle.forEach(x => x.addEventListener("click", moveSwitcher));
+const switcherRightBlockTitle = document.querySelectorAll(".switcher .right-block-title");
+if (switcherRightBlockTitle) switcherRightBlockTitle.forEach(x => x.addEventListener("click", moveSwitcher));
