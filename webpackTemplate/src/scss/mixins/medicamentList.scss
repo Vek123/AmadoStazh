@@ -1,10 +1,12 @@
 .medicament-list {
-    padding: 20px!important;
-    .swiper-slide {
+    .medicament-list__swiper-slide {
         height: auto;
     }
     .medicament-card {
         height: 100%;
+    }
+    &__swiper {
+        padding: 20px;
     }
     &__bullet {
         position: relative;
@@ -24,7 +26,7 @@
             margin-bottom: 0;
         }
     }
-    .custom-swiper-pagination {
+    &__swiper-pagination {
         line-height: 0;
         bottom: 0;
         margin: 0 auto;
@@ -33,87 +35,72 @@
         transform: unset;
         overflow: hidden;
         text-wrap: nowrap;
+        display: none;
+    }
+    &__button {
+        position: absolute;
+        top: 50%;
+        z-index: 10;
+        transform: scale(-1, 1) translateY(-50%);
+        &--prev {
+            left: -8px;
+            transform: translateY(-50%);
+        }
+        &--next {
+            right: -8px;
+        }
         &--disabled {
-            visibility: hidden;
-        }
-    }
-}
-
-.medicine-container .custom-swiper-button {
-    position: absolute;
-    top: 36%;
-    z-index: 10;
-    color: rgb(var(--color-main));
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    transition: background-color var(--main-hover-delay);
-    path {
-        transition: fill var(--main-hover-delay);
-    }
-    &:hover{
-        background-color: rgb(var(--color-main));
-        path {
-            fill: white;
-        }
-    }
-    &::after {
-        content: "";
-    }
-    svg {
-        transition: filter var(--main-hover-delay);
-    }
-    &--prev {
-        left: -8px;
-    }
-    &--next {
-        right: -8px;
-    }
-    &--disabled {
-        path {
-            fill: rgb(var(--color-main-lighter));
-        }
-        &:hover {
-            cursor: unset;
-            background-color: unset;
             path {
                 fill: rgb(var(--color-main-lighter));
+            }
+            &:hover {
+                cursor: unset;
+                background-color: unset;
+                path {
+                    fill: rgb(var(--color-main-lighter));
+                }
             }
         }
     }
 }
 
 @include laptop {
-    .medicine-container .custom-swiper-button {
-        bottom: 20px;
-        top: unset;
-        width: 22px;
-        height: 22px;
-        svg {
-            transform: scale(1) translateY(50%);
+    .medicament-list {
+        &__swiper-pagination {
+            display: block;
         }
-        &:hover {
-            background-color: unset;
-            path {
-                fill: rgb(var(--color-main-lighter))
+        &__button {
+            bottom: 20px;
+            top: unset;
+            width: 22px;
+            height: 22px;
+            svg {
+                transform: scale(1) translateY(50%);
             }
-        }
-        &--prev {
-            left: calc(30px - 7.5px);
-        }
-        &--next {
-            right: calc(30px - 7.5px);
+            &:hover {
+                background-color: unset;
+                path {
+                    fill: rgb(var(--color-main-lighter))
+                }
+            }
+            &--prev {
+                left: calc(30px - 7.5px);
+            }
+            &--next {
+                right: calc(30px - 7.5px);
+            }
         }
     }
 }
 @include tablet {
-
-    .medicine-container .custom-swiper-button {
-        &--prev {
-            left: calc(20px - 7.5px);
-        }
-        &--next {
-            right: calc(20px - 7.5px);
+    .medicament-list {
+        &__button {
+            &--prev {
+                left: calc(20px - 7.5px);
+            }
+            &--next {
+                right: calc(20px - 7.5px);
+            }
         }
     }
 }

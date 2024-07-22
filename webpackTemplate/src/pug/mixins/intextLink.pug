@@ -1,4 +1,4 @@
 mixin inTextLink(className, text, white=false, link='#', withAngle= false)
     a(class='intext-link', class= className, class= white ? "intext-link--white" : "", href= link)= text
         if withAngle 
-            include ~@icons/link/right-arrow-angle.svg
+            include ~@icons/link/right-arrow-angle.svg 

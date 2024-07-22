@@ -14,34 +14,29 @@ const iconsSwipers = new Swiper('.medicament-card__icons-swiper', {
     bulletActiveClass: 'medicament-card__bullet--active',
   },
 });
-const medicinesSwiper = new Swiper('.medicament-list', {
+const medicinesSwiper = new Swiper('.medicament-list__swiper', {
     containerModifierClass: 'swiper-horizontal-container',
     slidesPerView: 'auto',
     spaceBetween: 10,
     pagination: {
-        el: '.medicament-list .custom-swiper-pagination',
-        horizontalClass: 'custom-swiper-pagination',
+        el: '.medicament-list__swiper-pagination',
+        horizontalClass: 'medicament-list__swiper-pagination',
         clickable: true,
         enabled: true,
         bulletClass: 'medicament-list__bullet',
         bulletActiveClass: 'medicament-list__bullet--active',
-        paginationDisabledClass: 'custom-swiper-pagination--disabled',
         dynamicBullets: true,
         dynamicMainBullets: 1,
     },
     navigation: {
-        nextEl: '.custom-swiper-button--next',
-        prevEl: '.custom-swiper-button--prev',
-        disabledClass: 'custom-swiper-button--disabled',
+        nextEl: '.medicament-list__button--next',
+        prevEl: '.medicament-list__button--prev',
+        disabledClass: 'medicament-list__button--disabled',
     },
     breakpoints: {
         1280: {
             spaceBetween: 20,
             slidesPerView: 4,
-            pagination: {
-                enabled: false,
-                dynamicBullets: false,
-            },
         }
     }
 });

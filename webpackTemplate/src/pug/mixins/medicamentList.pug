@@ -2,12 +2,12 @@ include ~@mixins/medicamentCard
 include ~@mixins/arrow
 
 mixin medicamentList(className, cardsList)
-    .swiper-container
-        +arrow("custom-swiper-button custom-swiper-button--prev", left= true) 
-        +arrow("custom-swiper-button custom-swiper-button--next", left= false) 
-        .swiper.medicament-list(class= className)
+    .medicament-list(class= className)
+        +arrow("medicament-list__button medicament-list__button--prev", left= true) 
+        +arrow("medicament-list__button medicament-list__button--next", left= false) 
+        .swiper.medicament-list__swiper
             .swiper-wrapper
                 each card in cardsList 
-                    .swiper-slide 
+                    .swiper-slide.medicament-list__swiper-slide 
                         +medicamentCard('', card)
-            .custom-swiper-pagination
+            .medicament-list__swiper-pagination
