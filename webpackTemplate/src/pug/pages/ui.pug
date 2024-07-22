@@ -13,6 +13,7 @@ include ~@mixins/searchIcon
 include ~@mixins/like
 include ~@mixins/articlesCategListing
 include ~@mixins/articleBall
+include ~@mixins/articleBallCard
 
 block vars
   - title = 'ui страница'
@@ -97,6 +98,10 @@ block content
       .left-block-content Контент левого блока
       .right-block-content.right-block-content--hidden Контент правого блока
     br
+    .template-container: +switcher("", "Топ продаж", "Популярные товары", "Популярное", "Выбор покупателя", "Выбор покупателя")
+      .left-block-content Контент левого блока
+      .right-block-content.right-block-content--hidden Контент правого блока
+    br
     .advantages-container
       +advantage("", "biruse", "Контроль качества", "Каждый продукт проходит несколько проверок на всех этапах производства и упаковки")
       +advantage("", "blue", "Контроль качества", "Каждый продукт проходит несколько проверок на всех этапах производства и упаковки")
@@ -109,24 +114,26 @@ block content
     br
     +like("", true)
     br
-    h1 Заголовок
+    h1 Заголовок H1
     br
-    h2 Заголовок
+    h2 Заголовок H2
     br
-    h3 Заголовок
+    h3 Заголовок H3
     br
-    h4 Заголовок
+    h4 Заголовок H4
     br
-    h5 Заголовок
+    h5 Заголовок H5
     br
-    +articleBall("", 1, true, 1)
+    +articleBall("", "./images/medicamentCardIcons/image1.png", 1, true, 1)
       include ~@images/articleBalls/first-article.html
-    +articleBall("", 1, false, 2)
+    +articleBall("", "./images/medicamentCardIcons/image1.png", 1, false, 2)
       include ~@images/articleBalls/second-article.html
-    +articleBall("", 2, false, 3)
+    +articleBall("", "./images/medicamentCardIcons/image1.png", 2, false, 3)
       include ~@images/articleBalls/third-article.html
-    +articleBall("", 3, false, 4)
+    +articleBall("", "./images/medicamentCardIcons/image1.png", 3, false, 4)
       include ~@images/articleBalls/fourth-article.html
-    +articleBall("", 4, false, 5)
+    +articleBall("", "./images/medicamentCardIcons/image1.png", 4, false, 5)
       include ~@images/articleBalls/fifth-article.html
     br
+    +articleBallCard()
+      include ~@images/articleBalls/first-article.html

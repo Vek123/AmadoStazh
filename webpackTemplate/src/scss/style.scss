@@ -153,6 +153,9 @@ h1 {
 h2 {
   @include font(var(--font-montserrat), 36px, 50.4px, 800);
 }
+h3 {
+  @include font(var(--font-montserrat), 30px, 42.5px, 800);
+}
 h4 {
   @include font(var(--font-montserrat), 24px, 33.6px, 500);
 }
