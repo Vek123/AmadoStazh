@@ -1,0 +1,35 @@
+include ~@mixins/searchIcon
+include ~@mixins/like
+
+.main-header
+    .header-top
+        .template-container
+            .header-top__inner
+                a(href="/ui.html")
+                    .header-top__logo 
+                        picture 
+                            source(srcset="./images/header/logo-360.svg" media="(max-width: 779)")
+                            img(src="./images/header/logo.svg" alt="Импловит")
+                .search-input 
+                    .input-text.search-input__input
+                        input(type="text", placeholder="Поиск товара")
+                        .input-text__icon: +searchIcon()
+                    .search-input__like: +like()
+    .header-bottom
+        .template-container 
+            nav.header-bottom__nav
+                ul 
+                    li
+                        a(href="/ui.html")
+                            .header-bottom__menu-svg: include ~@icons/menu.svg
+                            |   Каталог товаров
+                    li: a(href="/ui.html") Наши бренды
+                    li: a(href="/ui.html") Азбука здоровья
+                    li: a(class= "header-bottom__active" href="/ui.html") Статьи
+                    li: a(href= "/ui.html") О компании
+                    li 
+                        a(href="/ui.html")
+                            .header-bottom__map-icon: include ~@icons/map-icon.svg
+                            |   Где купить
+                    li: a(href="/ui.html") Контакты
+                    

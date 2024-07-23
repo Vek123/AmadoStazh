@@ -1,4 +1,8 @@
 .like {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
     path {
         transition: fill var(--main-hover-delay);
     }

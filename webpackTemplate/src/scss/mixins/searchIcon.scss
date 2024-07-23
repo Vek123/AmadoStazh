@@ -1,4 +1,8 @@
 .search-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
     path {
         transition: fill var(--main-hover-delay);
     }
