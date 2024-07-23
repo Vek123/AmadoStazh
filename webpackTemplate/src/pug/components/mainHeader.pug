@@ -13,7 +13,7 @@ include ~@mixins/like
                 .search-input 
                     .input-text.search-input__input
                         form(method="GET")
-                            input(type="text", placeholder="Поиск товара")
+                            input(type="text", name="item", placeholder="Поиск товара")
                             button.input-text__icon(type="submit"): +searchIcon()
                     .search-input__like: +like()
     .header-bottom
