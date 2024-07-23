@@ -12,8 +12,9 @@ include ~@mixins/like
                             img(src="./images/header/logo.svg" alt="Импловит")
                 .search-input 
                     .input-text.search-input__input
-                        input(type="text", placeholder="Поиск товара")
-                        .input-text__icon: +searchIcon()
+                        form(method="GET")
+                            input(type="text", placeholder="Поиск товара")
+                            button.input-text__icon(type="submit"): +searchIcon()
                     .search-input__like: +like()
     .header-bottom
         .template-container 
