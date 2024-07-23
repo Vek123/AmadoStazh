@@ -1,0 +1,36 @@
+include ~@mixins/inTextLink
+
+.main-footer 
+    .main-footer-top
+        .template-container 
+            .main-footer-top__container 
+                .main-footer-top__logo: a(href="/ui.html"): include ~@images/footer/logo.svg
+                ul.footer-list
+                    li.footer-list__item 
+                        ul 
+                            li: +inTextLink("", "Каталог товаров", true, "/ui.html")
+                            li: +inTextLink("", "О компании", true, "/ui.html")
+                            li: +inTextLink("", "Наши бренды", true, "/ui.html")
+                            li: +inTextLink("", "Акции", true, "/ui.html")
+                    li.footer-list__item 
+                        ul
+                            li: +inTextLink("", "Азбука здоровья", true, "/ui.html")
+                            li: +inTextLink("", "Статьи", true, "/ui.html")
+                            li: +inTextLink("", "Где купить", true, "/ui.html")
+                            li: +inTextLink("", "Контакты", true, "/ui.html")
+                .requisites 
+                    ul 
+                        li ООО «НЕО-ФАРМ»
+                        li 117246, Россия, г. Москва, ул. Обручева, д. 55А
+                        li: +inTextLink("", "+7 (499) 648 - 37 - 27", true, "tel:+74996483727")
+                        li: br
+                        li: +inTextLink("", "customer@implovit.ru", true, "mailto:customer@implovit.ru")
+    .main-footer-bottom
+        .template-container 
+            .amado-brand: a(href="https://amado-id.ru/" target="_blank"): include ~@images/amado-brand.svg
+        .template-container.main-footer-bottom__container 
+            .main-footer-bottom__attention
+                picture 
+                    source(srcset="./images/footer/attention-text-360.png" media="(max-width: 360px)")
+                    source(srcset="./images/footer/attention-text-780.png" media="(max-width: 780px)")
+                    img(src="./images/footer/attention-text.png")

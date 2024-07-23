@@ -1,0 +1,136 @@
+.main-footer {
+    background-color: rgb(var(--color-main));
+    margin-top: 50px;
+    position: relative;
+    &-top {
+        border-bottom: 1px solid rgba(var(--color-background), 0.2);
+        @include fontAdaptive(18px, 21.09px, 700);
+        margin-bottom: 30px;
+        * {
+            color: rgb(var(--color-white));
+        }
+        &__logo {
+            path {
+                transition: var(--main-hover-delay);
+            }
+            &:hover {
+                path {
+                    fill: rgb(var(--color-main-lighter));
+                }
+            }
+        }
+        &__container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 50px 0;
+            .footer-list {
+                display: flex;
+                width: 39%;
+                justify-content: center;
+                &__item {
+                    min-width: 150px;
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                    ul li {
+                        margin-bottom: 10px;
+                        width: max-content;
+                    }
+                }
+            }
+            .requisites {
+                width: 230px;
+                ul li {
+                    line-height: 28px;
+                }
+            }
+        }
+        }
+    &-bottom {
+        .amado-brand {
+            text-align: right;
+            padding-right: 5px;
+            margin-bottom: 65px;
+        }
+        &__container {
+            width: 95vw;
+            display: flex;
+            justify-content: center;
+        }
+        &__attention {
+            padding-bottom: 10px;
+            max-width: 1768px;
+            img {
+                object-fit: contain;
+            }
+        }
+    }
+}
+@include laptop {
+    .main-footer {
+        margin-bottom: 64px;
+        &-top {
+            &__container {
+                .requisites {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+@include medium {
+    .main-footer {
+        &-top {
+            &__logo {
+                width: 100%;
+                text-align: center;
+                padding-bottom: 30px;
+                transform: none;
+            }
+            &__container {
+                padding: 30px 0;
+                .footer-list {
+                    flex-direction: column;
+                    &__item {
+                        align-items: flex-start;
+                    }
+                }
+                .requisites {
+                    width: 230px;
+                }
+            }
+        }
+        &-bottom {
+            &__attention img {
+                height: 30px;
+            }
+        }
+    }
+}
+@include tablet {
+    .main-footer {
+        &-top {
+            * {
+                line-height: 40px;
+            }
+            .template-container {
+                padding: 0 50px;
+            }
+            &__container {
+                .footer-list {
+                    width: 100%;
+                }
+            }
+        }
+        &-bottom {
+            &__attention {
+                height: 28px;
+                width: 100%;
+            }
+            .amado-brand {
+                text-align: center;
+            }
+        }
+    }
+}
