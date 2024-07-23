@@ -1,0 +1,119 @@
+.article-ball-card {
+    width: 300px;
+    &__image {
+        height: 235px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__info {
+        padding-left: 27px;
+    }
+    &__title {
+        cursor: pointer;
+        transition: color var(--main-hover-delay);
+        color: rgb(var(--color-black));
+        h6 {
+            margin-top: 30px;
+        }
+        &:hover {
+            color: rgb(var(--color-main));
+        }
+    }
+    &__desc {
+        margin-top: 15px;
+        color: rgb(var(--color-black));
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        line-clamp: 4;
+        -webkit-line-clamp: 4;
+    }
+    &__link {
+        margin-top: 15px;
+    }
+    &--big {
+        width: 558px;
+        .article-ball-card {
+            &__image {
+                height: 497px;
+            }
+        }
+    }
+}
+@include desktop {
+    .article-ball-card {
+        &__info {
+            padding-left: 0;
+        }
+        &--big {
+            width: 487px;
+            .article-ball {
+                transform: scale(.87);
+            }
+            .article-ball-card {
+                &__image {
+                    height: 434px;
+                }
+            }
+        }
+    }
+}
+@include laptop {
+    .article-ball-card {
+        &--big {
+            width: 476px;
+            .article-ball {
+                transform: scale(.85);
+            }
+            .article-ball-card {
+                &__image {
+                    height: 424px;
+                }
+            }
+        }
+    }
+}
+@include medium {
+    .article-ball-card {
+        &--big {
+            width: 482px;
+            .article-ball {
+                transform: scale(.73);
+            }
+            .article-ball-card {
+                &__image {
+                    height: 363px;
+                }
+                &__title {
+                    h6 {
+                        margin-top: 24px;
+                    }
+                }
+            }
+        }
+    }
+}
+@include tablet {
+    .article-ball-card {
+        &--big {
+            width: 326px;
+            .article-ball {
+                transform: scale(.58);
+            }
+            .article-ball-card {
+                &__image {
+                    height: 290px;
+                    .article-ball {
+                        &__image {
+                            opacity: 1;
+                        }
+                    }
+                }
+                &__desc {
+                    display: none;
+                }
+            }
+        }
+    }
+}

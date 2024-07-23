@@ -13,7 +13,7 @@ include ~@mixins/searchIcon
 include ~@mixins/like
 include ~@mixins/articlesCategListing
 include ~@mixins/articleBall
-//- include ~@mixins/articleBallCard
+include ~@mixins/articleBallCard
 
 block vars
   - title = 'ui страница'
@@ -126,9 +126,17 @@ block content
     br
     h5 Заголовок H5
     br
-    +articleBall("", "./images/articleBalls/first-article.jpeg", 1, true, 1)
-    +articleBall("", "./images/articleBalls/second-article.jpeg", 1, false, 2)
-    +articleBall("", "./images/articleBalls/third-article.jpeg", 2, false, 3)
-    +articleBall("", "./images/articleBalls/fourth-article.jpeg", 3, false, 4)
-    +articleBall("", "./images/articleBalls/fifth-article.jpeg", 4, false, 5)
+    h6 Заголовок H6 
     br
+    +articleBall("", "./images/articleBalls/first-article.jpeg", 1, true, 1)
+    .article-balls
+      +articleBall("", "./images/articleBalls/second-article.jpeg", 1, false, 2)
+      +articleBall("", "./images/articleBalls/third-article.jpeg", 2, false, 3)
+      +articleBall("", "./images/articleBalls/fourth-article.jpeg", 3, false, 4)
+      +articleBall("", "./images/articleBalls/fifth-article.jpeg", 4, false, 5)
+    br
+    .article-balls
+      +articleBallCard("", "./images/articleBalls/first-article.jpeg", "Урчит, болит, волнует: вся правда о синдроме раздраженного кишечника", "Согласно статистике, примерно каждый третий человек на земле сталкивается с синдромом раздраженного кишечника (СРК). Он проявляется выраженным дискомфортом в животе: вздутие, урчание, тяжесть, расстройство стула. Симптомы СРК мешают нормальной жизни, порой заставляя человека ограничивать свою привычную активность.", "#", true, 6, 1)
+      +articleBallCard("", "./images/articleBalls/second-article.jpeg", "В тренде! Отвечаем на главные вопросы о БАДах", "Описание", "#", false, 7, 2)
+      +articleBallCard("", "./images/articleBalls/third-article.jpeg", "В тренде! Отвечаем на главные вопросы о БАДах", "Описание", "#", false, 8, 3)
+      +articleBallCard("", "./images/articleBalls/fourth-article.jpeg", "Ангина. Лечим, не калечим", "Описание", "#", false, 9, 4)

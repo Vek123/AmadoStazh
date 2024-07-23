@@ -61,6 +61,13 @@
   }
 }
 
+// ниже 1024
+@mixin medium {
+	@media screen and (max-width: 1023px) {
+		@content
+	}
+}
+
 // ниже 780
 @mixin tablet {
   @media screen and (max-width: 779px) {

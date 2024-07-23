@@ -20,6 +20,10 @@
     display: flex;
     flex-wrap: wrap;
 }
+.article-balls {
+    display: flex;
+    flex-wrap: wrap;
+}
 @media screen and (max-width: 1023px) {
     .my-card {
         width: 350px;
