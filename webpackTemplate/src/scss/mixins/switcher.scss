@@ -38,7 +38,7 @@
             }
         }
     }
-    .left-block-title, .right-block-title {
+    &__left-block-title, &__right-block-title {
         &--mobile {
             display: none;
         }
@@ -51,13 +51,13 @@
             }
         }
     }
-    .left-block-title {
+    &__left-block-title {
         margin-right: 30px;
     }
-    .right-block-title {
+    &__right-block-title {
         margin-left: 30px;
     }
-    .left-block-content, .right-block-content {
+    &__left-block-content, &__right-block-content {
         &--hidden {
             display: none;
         }
@@ -75,7 +75,7 @@
             height: 100%;
             z-index: -1;
         }
-        .left-block-title, .right-block-title {
+        &__left-block-title, &__right-block-title {
             width: 50%;
             margin: 0;
             text-align: center;
@@ -93,7 +93,7 @@
         &__header {
             justify-content: space-between;
         }
-        .left-block-title, .right-block-title {
+        &__left-block-title, &__right-block-title {
             width: max-content;
             padding: 7px 12px;
         }
