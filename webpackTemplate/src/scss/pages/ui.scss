@@ -24,8 +24,14 @@
     display: flex;
     flex-wrap: wrap;
 }
-@media screen and (max-width: 1023px) {
+.card-reverse {
+    flex-direction: row-reverse;
+}
+@include medium {
     .my-card {
         width: 350px;
+    }
+    .card-reverse {
+        flex-direction: column;
     }
 }

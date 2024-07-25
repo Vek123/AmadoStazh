@@ -14,6 +14,7 @@ include ~@mixins/like
 include ~@mixins/articlesCategListing
 include ~@mixins/articleBall
 include ~@mixins/articleBallCard
+include ~@mixins/productionCard
 include ~@mixins/productionBall
 
 block vars
@@ -148,3 +149,8 @@ block content
     +productionBall("", "./images/productionCards/production1.png", 11, 1)
     br
     +productionBall("", "./images/productionCards/production2.jpeg", 12, 2)
+    br
+    .template-container: +productionCard("card-reverse", "./images/productionCards/production2.jpeg","Смотреть видео о производстве", 10, 2, "Мы заботимся о безопасности своей продукции и здоровье потребителей, постоянно улучшая и обеспечивая контроль качества в течение всего жизненного цикла препаратов: от стадии разработки до этапа проверки выпускаемой продукции")
+    br
+    .template-container: +productionCard("", "./images/productionCards/production1.png","О нашем подходе к качеству", 11, 1, "Мы заботимся о безопасности своей продукции и здоровье потребителей, постоянно улучшая и обеспечивая контроль качества в течение всего жизненного цикла препаратов: от стадии разработки до этапа проверки выпускаемой продукции")
+    br

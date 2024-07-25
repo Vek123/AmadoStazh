@@ -1,0 +1,135 @@
+.production-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+    }
+    &__info {
+        max-width: 637px;
+    }
+    &__desc {
+        margin-bottom: 22px;
+        font-size: 18px;
+        line-height: 26px;
+    }
+    &__button {
+        width: 457px;
+        a {
+            height: 46px;
+        }
+    }
+    &--type2 {
+        .production-card {
+            &__image {
+                width: 612px;
+                .production-ball {
+                    transform: scale(.9);
+                }
+            }
+        }
+    }
+}
+@include desktop {
+    .production-card {
+        &__info {
+            max-width: 505px;
+        }
+        &__button {
+            width: 397px;
+        }
+    }
+}
+@include laptop {
+    .production-card {
+        &__image {
+            width: 482px;
+            .production-ball {
+                transform: scale(.83);
+            }
+        }
+        &__info {
+            max-width: 443px;
+        }
+        &__button {
+            width: 100%;
+        }
+        &--type2 {
+            .production-card {
+                &__image {
+                    width: 483px;
+                    .production-ball {
+                        transform: scale(.71);
+                    }
+                }
+            }
+        }
+    }
+}
+@include medium {
+    .production-card {
+        flex-direction: column;
+        justify-content: flex-start;
+        &__image {
+            align-items: flex-end;
+            width: unset;
+            margin-bottom: 52px;
+            .production-ball {
+                transform: scale(1);
+                transform-origin: bottom;
+            }
+        }
+        &__info {
+            max-width: 640px;
+        }
+        &__desc {
+            margin-bottom: 53px;
+        }
+        &__button {
+            width: 397px;
+            margin: 0 auto;
+        }
+        &--type2 {
+            .production-card {
+                &__image {
+                    .production-ball {
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+    }
+}
+@include tablet {
+    .production-card {
+        &__image {
+            .production-ball {
+                transform: scale(.56);
+            }
+            height: 276px;
+            margin-bottom: 46px;
+        }
+        &__desc {
+            display: none;
+        }
+        &__info {
+            width: 100%;
+        }
+        &__button {
+            max-width: 320px;
+        }
+        &--type2 {
+            .production-card {
+                &__image {
+                    .production-ball {
+                        transform: scale(.504);
+                        transform-origin: bottom;
+                    }
+                }
+            }
+        }
+    }
+}
