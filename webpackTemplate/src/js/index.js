@@ -42,8 +42,8 @@ function moveSwitcher(event) {
 
 function scaleSwitcherBar() {
     if (window.innerWidth < 780) {
-        let left = document.querySelectorAll("switcher__left-block-title");
-        let right = document.querySelectorAll("switcher__right-block-title");
+        let left = document.querySelectorAll(".switcher__left-block-title");
+        let right = document.querySelectorAll(".switcher__right-block-title");
         let bar = document.querySelectorAll(".switch__bar");
         bar.forEach(x => {
             if (x.classList.contains("switch__bar--right")) {
