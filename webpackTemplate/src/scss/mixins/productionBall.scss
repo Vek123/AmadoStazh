@@ -1,0 +1,41 @@
+.production-ball {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    height: max-content;
+    cursor: pointer;
+    position: relative;
+    &:hover {
+        .production-ball__background {
+            &--type1 {
+                transform: rotate(-17.26deg) translate(8px, 10px) scale(1.02, 1.03);
+            }
+            &--type2 {
+                transform: rotate(-16.45deg) translate(10px, 8px) scale(1.01, 1.02);
+            }
+        }
+    }
+    &__image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        image {
+            width: 100%;
+            height: 100%;
+        }
+        &--type1 {
+            svg {
+                transform: translate(31px, 24px);
+            }
+        }
+        &--type2 {
+            svg {
+                transform: translate(42px, 27px)
+            }
+        }
+    }
+    &__background {
+        transition: transform var(--main-hover-delay);
+    }
+}
