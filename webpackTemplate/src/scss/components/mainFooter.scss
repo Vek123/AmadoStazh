@@ -36,6 +36,9 @@
                     ul li {
                         margin-bottom: 10px;
                         width: max-content;
+                        a {
+                            @include fontAdaptive(18px, 21.09px, 700);
+                        }
                     }
                 }
             }
