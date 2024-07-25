@@ -43,7 +43,9 @@
                     height: 65px;
                     &:nth-child(1) {
                         background-color: rgba(var(--color-main-lighter), .2);
-                        border-bottom: 2px solid rgb(var(--color-main));
+                        a {
+                            border-bottom: 2px solid rgb(var(--color-main));
+                        }
                     }
                     a {
                         color: rgb(var(--color-black));
@@ -63,12 +65,12 @@
                             border-bottom: 2px solid rgba(var(--color-main), 1);
                         }
                     }
+                    .header-bottom__active {
+                        color: rgb(var(--color-main));
+                        border-bottom: 2px solid rgba(var(--color-main), 1);
+                    }
                 }
             }
-        }
-        &__active {
-            color: rgb(var(--color-main));
-            border-bottom: 2px solid rgba(var(--color-main), 1);
         }
         &__menu-svg {
             margin: 0 10px 3px 0;
