@@ -1,0 +1,19 @@
+.angle-image {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: max-content;
+    height: max-content;
+    &__image {
+        position: absolute;
+        width: max-content;
+        height: max-content;
+        top: 0;
+        right: 0;
+        image {
+            height: 100%;
+            width: auto;
+        }
+    }
+}
