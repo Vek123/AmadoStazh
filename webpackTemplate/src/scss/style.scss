@@ -189,3 +189,8 @@ h5 {
 h6 {
   @include font(var(--font-montserrat), 18px, 25.2px, 800);
 }
+@include tablet {
+  h2 {
+    @include fontAdaptive(24px, 33.6px, 800);
+  }
+}

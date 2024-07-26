@@ -1,0 +1,13 @@
+include ~@mixins/mainButton
+
+mixin about(className, tag, title, desc, buttonText, blue=true, link="#")
+    .about(class= blue ? "" : "about--pink" class= className)
+        .template-container
+            .about__content
+                .about__tag= tag 
+                .about__container
+                    h2.about__title= title 
+                    .about__info 
+                        .about__desc= desc 
+                        +mainButton("about__button", buttonText, false, link)
+                +mainButton("about__button--center", buttonText, false, link)

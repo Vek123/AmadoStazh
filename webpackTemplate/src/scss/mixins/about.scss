@@ -1,0 +1,164 @@
+.about {
+    background-image: url("/images/about/blue/blue-background.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 435px;
+    position: relative;
+    color: rgb(var(--color-white));
+    .template-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    &__tag {
+        margin-bottom: 5px;
+    }
+    &__content {
+        width: 100%;
+    }
+    &__container {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__title {
+        width: 444px;
+    }
+    &__info {
+        width: 727px;
+    }
+    &__desc {
+        @include fontAdaptive(18px, 26px, 400);
+        margin-bottom: 30px;
+    }
+    &__button, &__button--center {
+        color: rgb(var(--color-white));
+        border-color: rgb(var(--color-white));
+        width: 274px;
+        &--center {
+            display: none;
+            margin: 0 auto;
+        }
+        &:hover {
+            background-color: rgb(var(--color-white));
+            color: rgb(var(--color-main-lighter));
+        }
+    }
+    &--pink {
+        background-image: url("/images/about/pink/pink-background.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        .about {
+            &__button, &__button--center {
+                &:hover {
+                    color: rgb(var(--color-pink));
+                }
+            }
+        }
+    }
+}
+
+@include wide {
+    .about {
+        background-image: url("/images/about/blue/blue-background-wide.png");
+        height: 538px;
+        &--pink {
+            background-image: url("/images/about/pink/pink-background-wide.png");
+        }
+    }
+}
+@include desktop {
+    .about {
+        background-image: url("/images/about/blue/blue-background-desktop.png");
+        &__desc {
+            margin-bottom: 21px;
+        }
+        &__info {
+            width: 705px;
+        }
+        &--pink {
+            background-image: url("/images/about/pink/pink-background-desktop.png");
+        }
+    }
+}
+@include laptop {
+    .about {
+        background-image: url("/images/about/blue/blue-background-laptop.png");
+        height: 467px;
+        &__button {
+            display: none;
+            &--center {
+                display: block;
+            }
+        }
+        &__desc {
+            margin-bottom: 0;
+        }
+        &__container {
+            margin-bottom: 32px;
+        }
+        &__info {
+            width: 481px;
+        }
+        &--pink {
+            background-image: url("/images/about/pink/pink-background-laptop.png");
+            height: 487px;
+            .about {
+                &__button {
+                    display: block;
+                    &--center {
+                        display: none;
+                    }
+                }
+                &__desc {
+                    margin-bottom: 39px;
+                }
+                &__container {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+@include medium {
+    .about {
+        background-image: url("/images/about/blue/blue-background-tablet.png");
+        text-align: center;
+        height: 403px;
+        &__container {
+            justify-content: center;
+            margin-bottom: 35px;
+            min-width: 320px;
+        }
+        &__info {
+            display: none;
+        }
+        &--pink {
+            background-image: url("/images/about/pink/pink-background-tablet.png");
+            height: 370px;
+            .about {
+                &__container {
+                    margin-bottom: 35px;
+                }
+                &__button {
+                    display: none;
+                    &--center {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+@include tablet {
+    .about {
+        background-image: url("/images/about/blue/blue-background-phone.png");
+        height: 308px;
+        &__title {
+            width: 320px;
+        }
+        &--pink {
+            background-image: url("/images/about/pink/pink-background-phone.png");
+            height: 262px;
+        }
+    }
+}

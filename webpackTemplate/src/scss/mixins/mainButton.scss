@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     transition: background-color var(--main-hover-delay), color var(--main-hover-delay);
     &:hover {
         background-color: rgb(var(--color-main));
