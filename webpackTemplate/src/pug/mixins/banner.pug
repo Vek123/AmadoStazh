@@ -1,0 +1,19 @@
+include ~@mixins/mainButton
+include ~@mixins/inTextLink
+include ~@mixins/angleImage
+
+
+mixin banner(className, title, desc, buttonText, buttonLink, linkText, link, productImage, backgroundImage, imageId, backgroundColor)
+    .banner(class= className)
+        .template-container
+            .banner__background
+                +angleImage("", backgroundColor, backgroundImage, imageId)
+            .banner__content 
+                h1.banner__title= title
+                .banner__desc= desc
+                .banner__buttons-container 
+                    +mainButton("banner__button", buttonText, true, link)
+                    +inTextLink("banner__link", linkText, false, link)
+            .banner__product 
+                img(src= productImage)
+                    

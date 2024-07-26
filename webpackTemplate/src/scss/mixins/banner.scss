@@ -1,0 +1,142 @@
+.banner {
+    position: relative;
+    height: 820px;
+    overflow: hidden;
+    .template-container {
+        height: 100%;
+    }
+    &__background {
+        position: absolute;
+        left: 508px;
+    }
+    &__product {
+        position: absolute;
+        width: max-content;
+        height: max-content;
+        right: 35%;
+        top: 50%;
+        transform: translate(50%, -50%);
+    }
+    &__content {
+        width: 489px;
+        z-index: 10;
+        position: relative;
+        padding-top: 87px;
+    }
+    &__buttons-container {
+        display: flex;
+        flex-grow: 1;
+        justify-content: space-between;
+        position: relative;
+    }
+    &__desc, &__title {
+        margin-bottom: 20px;
+    }
+    &__desc {
+        @include fontAdaptive(18px, 26px, 400)
+    }
+    &__button, &__link {
+        width: 48%;
+        height: 46px;
+    }
+}
+
+@include desktop {
+    .banner {
+        height: 625px;
+        &__title {
+            @include fontAdaptive(40px, 48px, 800);
+            margin-bottom: 12px;
+        }
+        &__background {
+            right: 0;
+            left: unset;
+            transform-origin: top right;
+            transform: scale(.7);
+        }
+        &__content {
+            width: 440px;
+        }
+        &__desc {
+            margin-bottom: 30px;
+        }
+        &__product {
+            top: 78px;
+            right: unset;
+            left: 319px;
+            transform: scale(.74);
+            transform-origin: left top;
+        }
+    }
+}
+@include laptop {
+    .banner {
+        height: auto;
+        &__title {
+            margin-bottom: 22px;
+            padding-top: 557px;
+        }
+        &__desc {
+            display: none;
+        }
+        &__background {
+            transform: scale(.8);
+        }
+        &__content {
+            width: 698px;
+            height: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding-top: 0;
+        }
+        &__button {
+            display: none;
+        }
+        &__link {
+            width: max-content;
+            height: max-content;
+        }
+        &__buttons-container {
+            flex-grow: 0;
+        }
+        &__product {
+            top: 66px;
+            left: 50%;
+            transform: scale(.88) translateX(-50%);
+            transform-origin: left;
+        }
+    }
+}
+@include medium {
+    .banner {
+        &__background {
+            transform: scale(.71);
+        }
+    }
+}
+@include tablet {
+    .banner {
+        .template-container {
+            padding: 0 16px;
+        }
+        &__title {
+            @include fontAdaptive(26px, 31.2px, 800);
+            margin-bottom: 30px;
+            padding-top: 345px;
+        }
+        &__content {
+            width: 100%;
+        }
+        &__background {
+            right: -64px;
+            transform: scale(.463);
+        }
+        &__product {
+            transform: scale(.5) translateX(-50%);
+            top: -44px;
+        }
+    }
+}
