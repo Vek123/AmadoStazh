@@ -1,8 +1,8 @@
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 
 
-Swiper.use([Navigation, Pagination]);
+Swiper.use([Navigation, Pagination, EffectFade]);
 const iconsSwipers = new Swiper('.medicament-card__icons-swiper', {
   nested: true,
   slidesPerView: 1,
@@ -26,15 +26,15 @@ document.querySelectorAll(".medicament-list__swiper").forEach(swiper => {
                 horizontalClass: 'medicament-list__swiper-pagination',
                 clickable: true,
                 enabled: true,
-                bulletClass: 'medicament-list__bullet',
-                bulletActiveClass: 'medicament-list__bullet--active',
+                bulletClass: 'swiper__gray-bullet',
+                bulletActiveClass: 'swiper__gray-bullet--active',
                 dynamicBullets: true,
                 dynamicMainBullets: 1,
             },
             navigation: {
                 nextEl: [swiper.parentElement.querySelectorAll('.medicament-list__button--next')[0], swiper.parentElement.querySelectorAll('.medicament-list__button--next')[1]],
                 prevEl: [swiper.parentElement.querySelectorAll('.medicament-list__button--prev')[0], swiper.parentElement.querySelectorAll('.medicament-list__button--prev')[1]],
-                disabledClass: 'medicament-list__button--disabled',
+                disabledClass: 'swiper__navigation--disabled',
             },
             breakpoints: {
                 1280: {
@@ -45,4 +45,29 @@ document.querySelectorAll(".medicament-list__swiper").forEach(swiper => {
         })
     );
 })
-export { iconsSwipers, medicinesSwipers };
+
+let bannerSwipers = [];
+document.querySelectorAll(".banner-slider__swiper").forEach(swiper => {
+    bannerSwipers.push(
+        new Swiper(swiper, {
+            spaceBetween: 30,
+            effect: "fade",
+            fadeEffect: { crossFade: true },
+            slidesPerView: 1,
+            pagination: {
+                el: swiper.querySelector('.banner-slider__pagination'),
+                horizontalClass: 'banner-slider__pagination',
+                clickable: true,
+                bulletClass: 'swiper__gray-bullet',
+                bulletActiveClass: 'swiper__gray-bullet--active',
+            },
+            navigation: {
+                nextEl: [swiper.querySelectorAll('.banner-slider__button--next')[0], swiper.querySelectorAll('.banner-slider__button--next')[1]],
+                prevEl: [swiper.querySelectorAll('.banner-slider__button--prev')[0], swiper.querySelectorAll('.banner-slider__button--prev')[1]],
+                disabledClass: 'swiper__navigation--disabled',
+            }
+        })
+    );
+})
+console.log(bannerSwipers);
+export { iconsSwipers, medicinesSwipers, bannerSwipers };

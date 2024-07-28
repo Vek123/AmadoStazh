@@ -1,7 +1,6 @@
 .banner {
     position: relative;
-    height: 820px;
-    overflow: hidden;
+    height: 700px;
     .template-container {
         height: 100%;
     }
@@ -28,6 +27,7 @@
         flex-grow: 1;
         justify-content: space-between;
         position: relative;
+        align-items: center;
     }
     &__desc, &__title {
         margin-bottom: 20px;
@@ -37,13 +37,28 @@
     }
     &__button, &__link {
         width: 48%;
-        height: 46px;
+        height: 35px;
+    }
+    &--brand {
+        .banner {
+            &__button {
+                height: 46px;
+                &--brand {
+                    display: none;
+                }
+            }
+            &__link {
+                text-decoration: underline dashed;
+                text-underline-offset: 6px;
+                text-decoration-thickness: 1px;
+            }
+        }
     }
 }
 
 @include desktop {
     .banner {
-        height: 625px;
+        height: 600px;
         &__title {
             @include fontAdaptive(40px, 48px, 800);
             margin-bottom: 12px;
@@ -108,6 +123,18 @@
             transform: scale(.88) translateX(-50%);
             transform-origin: left;
         }
+        &--brand {
+            .banner {
+                &__buttons-container {
+                    width: 250px;
+                }
+                &__button {
+                    &--brand {
+                        display: flex;
+                    }
+                }
+            }
+        }
     }
 }
 @include medium {
@@ -137,6 +164,13 @@
         &__product {
             transform: scale(.5) translateX(-50%);
             top: -44px;
+        }
+        &--brand {
+            .banner {
+                &__product {
+                    top: -70px;
+                }
+            }
         }
     }
 }

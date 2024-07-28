@@ -1,0 +1,19 @@
+include ~@mixins/arrow
+include ~@mixins/banner
+
+
+mixin bannerSlider(className, bannerList)
+    .banner-slider(class= className)
+        .swiper.banner-slider__swiper
+            .swiper-wrapper
+                each banner in bannerList 
+                    .swiper-slide.banner-slider__slide
+                        +banner(banner.className, banner.title, banner.desc, banner.buttonText, banner.buttonLink, banner.linkText, banner.link, banner.productImage, banner.backgroundImage, banner.imageId, banner.backgroundColor, banner.brand)
+            .template-container
+                .banner-slider__navigation
+                    .banner-slider__buttons
+                        .banner-slider__button.banner-slider__button--prev
+                            include ~@icons/slider/left-arrow.svg
+                        .banner-slider__button.banner-slider__button--next
+                            include ~@icons/slider/left-arrow.svg
+                    .banner-slider__pagination

@@ -19,6 +19,7 @@ include ~@mixins/productionBall
 include ~@mixins/about
 include ~@mixins/banner
 include ~@mixins/angleImage
+include ~@mixins/bannerSlider
 
 block vars
   - title = 'ui страница'
@@ -55,6 +56,12 @@ block vars
       {name: "Уход за кожей", slug: "uhod-za-kozhey3"},
       {name: "Уход за волосами", slug: "uhod-za-volosami3"},
       {name: "Сон и прочие важные вещи для здоровья", slug: "son-i-prochie-vazhnie-veschi-dlya-zdorovya3"},
+    ]
+    var banners = [
+      {className: "", title: "Российский производитель БАДов", desc: "Импловит — динамично-развивающаяся компания, занимающаяся производством биологически активных добавок (БАД) под одноименным брендом.", buttonText: "В каталог", buttonLink: "#", linkText: "Подробнее о компании", link: "#", productImage: "./images/banner/products/first.png", backgroundImage: "./images/angleImages/first.jpg", imageId: 17, backgroundColor: "blue", brand: false},
+      {className: "", title: "Кардиола", desc: "БАД для здоровья сердца и активной жизни, в составе которой преобладают натуральные экстракты лекарственных растений и важные элементы, необходимые для заботы о серце и сосудах.", buttonText: "Подробнее", buttonLink: "#", linkText: "Отзывы (15)", link: "#", productImage: "./images/banner/products/third.png", backgroundImage: "./images/angleImages/second.png", imageId: 18, backgroundColor: "pink", brand: true},
+      {className: "", title: "Российский производитель БАДов", desc: "Импловит — динамично-развивающаяся компания, занимающаяся производством биологически активных добавок (БАД) под одноименным брендом.", buttonText: "В каталог", buttonLink: "#", linkText: "Подробнее о компании", link: "#", productImage: "./images/banner/products/second.png", backgroundImage: "./images/angleImages/second.png", imageId: 19, backgroundColor: "pink", brand: false},
+      {className: "", title: "Российский производитель БАДов", desc: "Импловит — динамично-развивающаяся компания, занимающаяся производством биологически активных добавок (БАД) под одноименным брендом.", buttonText: "В каталог", buttonLink: "#", linkText: "Подробнее о компании", link: "#", productImage: "./images/banner/products/second.png", backgroundImage: "./images/angleImages/second.png", imageId: 20, backgroundColor: "pink", brand: false},
     ]
 
 block content
@@ -166,3 +173,5 @@ block content
     //- +angleImage("", "pink", "./images/angleImages/second.png", 15, true)
     br
     +banner("", "Российский производитель БАДов", "Импловит — динамично-развивающаяся компания, занимающаяся производством биологически активных добавок (БАД) под одноименным брендом.", "В каталог", "#", "Подробнее о компании", "#", "./images/banner/products/first.png", "./images/angleImages/first.jpg", 16, "blue")
+    br
+    +bannerSlider("", banners)

@@ -194,3 +194,37 @@ h6 {
     @include fontAdaptive(24px, 33.6px, 800);
   }
 }
+
+.swiper {
+  &__gray-bullet {
+    position: relative;
+    display: inline-block;
+    margin: 0 15px;
+    background-color: rgb(var(--color-grey-lighter));
+    border-radius: 50px;
+    width: 6px;
+    height: 6px;
+    transition: var(--main-hover-delay) transform, var(--main-hover-delay) left;
+    cursor: pointer;
+    &--active {
+        background-color: unset;
+        width: 15px;
+        height: 15px;
+        border: 1px solid rgb(var(--color-grey-lighter));
+    }
+  }
+  &__navigation {
+    &--disabled {
+      path {
+          fill: rgb(var(--color-main-lighter));
+      }
+      &:hover {
+          cursor: unset;
+          background-color: unset;
+          path {
+              fill: rgb(var(--color-main-lighter));
+          }
+      }
+    }
+  }
+}
