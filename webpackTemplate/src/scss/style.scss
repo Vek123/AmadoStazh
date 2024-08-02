@@ -204,6 +204,7 @@ h6 {
     border-radius: 50px;
     width: 6px;
     height: 6px;
+    margin-bottom: 4.5px;
     transition: var(--main-hover-delay) transform, var(--main-hover-delay) left;
     cursor: pointer;
     &--active {
@@ -211,6 +212,7 @@ h6 {
         width: 15px;
         height: 15px;
         border: 1px solid rgb(var(--color-grey-lighter));
+        margin-bottom: 0;
     }
   }
   &__navigation {

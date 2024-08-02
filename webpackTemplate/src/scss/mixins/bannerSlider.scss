@@ -8,8 +8,8 @@
         z-index: 10;
     }
     &__pagination {
-        display: flex;
-        align-items: center;
+        display: block;
+        height: 17px;
     }
     &__buttons {
         display: flex;
