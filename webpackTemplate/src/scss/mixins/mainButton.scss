@@ -4,7 +4,7 @@
     color: rgb(var(--color-main));
     background-color: unset;
     @include font(var(--font-montserrat), 16px, 22.4px, 700);
-    padding: 14px 0;
+    padding: 14px 14px;
     display: flex;
     align-items: center;
     justify-content: center;
