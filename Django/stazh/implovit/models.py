@@ -2,6 +2,8 @@ import os
 import shutil
 
 from django.db import models
+from django.dispatch import receiver
+from django.db.models.signals import pre_delete
 
 from stazh import settings
 
@@ -48,9 +50,11 @@ class Medicines(models.Model):
         verbose_name_plural = "Медицина"
 
 
+def upload_to(instance, filename):
+    return 'images/catalog/%s/%s' % (instance.product.title, filename)
+
+
 class ProductImages(models.Model):
-    def upload_to(instance, filename):
-        return 'images/catalog/%s/%s' % (instance.product.title, filename)
 
     product = models.ForeignKey(Medicines, related_name="images", on_delete=models.CASCADE, verbose_name="Продукт")
     image = models.ImageField(upload_to=upload_to, verbose_name="Картинка")
@@ -59,18 +63,21 @@ class ProductImages(models.Model):
     def __str__(self):
         return f"{self.product.title}" or self.caption
 
-    def delete(self, using=None, keep_parents=False):
-        path = f"{settings.MEDIA_ROOT}\\{self.image.name}".replace("/", "\\")
-        if os.path.exists(path):
-            os.remove(path)
-        super().delete(using=using, keep_parents=keep_parents)
-
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-        path = f"{settings.MEDIA_ROOT}\\{ProductImages.objects.get(pk=self.pk).image.name}".replace("/", "\\")
-        if os.path.exists(path):
-            os.remove(path)
+        try:
+            old_version = ProductImages.objects.get(pk=self.pk).image
+            path = f"{settings.MEDIA_ROOT}\\{old_version.name}".replace("/", "\\")
+            if os.path.exists(path) and old_version != self.image:
+                os.remove(path)
+        except ProductImages.DoesNotExist:
+            pass
         super().save(force_insert=False, force_update=force_update, using=using, update_fields=update_fields)
 
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Изображения продукта"
+
+
+# @receiver(pre_delete, sender=ProductImages)
+# def delete_apartment_image(sender: ProductImages, instance: ProductImages, **kwargs) -> None:
+#     instance.image.delete(False)
