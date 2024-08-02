@@ -42,14 +42,15 @@ function moveSwitcher(event) {
 
 function scaleSwitcherBar() {
     if (window.innerWidth < 780) {
-        let left = document.querySelectorAll(".switcher__left-block-title");
-        let right = document.querySelectorAll(".switcher__right-block-title");
-        let bar = document.querySelectorAll(".switch__bar");
-        bar.forEach(x => {
-            if (x.classList.contains("switch__bar--right")) {
-                x.style.width = right[0].clientWidth ? `${right[0].clientWidth}px` : `${right[1].clientWidth}px`;
+        let switchers = document.querySelectorAll(".switcher")
+        switchers.forEach(x => {
+            let left = x.querySelectorAll(".switcher__left-block-title");
+            let right = x.querySelectorAll(".switcher__right-block-title");
+            let bar = x.querySelector(".switch__bar");
+            if (bar.classList.contains("switch__bar--right")) {
+                bar.style.width = right[0].clientWidth ? `${right[0].clientWidth}px` : `${right[1].clientWidth}px`;
             } else {
-                x.style.width = left[0].clientWidth ? `${left[0].clientWidth}px` : `${left[1].clientWidth}px`;
+                bar.style.width = left[0].clientWidth ? `${left[0].clientWidth}px` : `${left[1].clientWidth}px`;
             }
         });
     } else {
