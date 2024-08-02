@@ -3,11 +3,12 @@ include ~@mixins/inTextLink
 include ~@mixins/angleImage
 
 
-mixin banner(className, title, desc, buttonText, buttonLink, linkText, link, productImage, backgroundImage, imageId, backgroundColor, brand=false)
+mixin banner(className, title, desc, buttonText, buttonLink, linkText, link, productImage, backgroundImage, backgroundImageWide, imageId, brand=false)
     .banner(class= className class= brand ? "banner--brand" : "")
+        picture.banner__background
+            source(srcset=backgroundImage media="(max-width: 1920px)")
+            img(src=backgroundImageWide)
         .template-container
-            .banner__background
-                +angleImage("", backgroundColor, backgroundImage, imageId)
             .banner__content 
                 h1.banner__title= title
                 .banner__desc= desc

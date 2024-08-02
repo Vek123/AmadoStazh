@@ -1,5 +1,8 @@
 .banner-slider {
     position: relative;
+    .swiper {
+        overflow: visible;
+    }
     &__navigation {
         display: flex;
         align-items: center;

@@ -6,12 +6,12 @@
     }
     &__background {
         position: absolute;
-        left: 508px;
+        right: 0;
     }
     &__product {
         position: absolute;
-        width: max-content;
-        height: max-content;
+        width: 812px;
+        height: 533px;
         right: 35%;
         top: 50%;
         transform: translate(50%, -50%);
@@ -55,7 +55,17 @@
         }
     }
 }
-
+@include wide {
+    .banner {
+        &__background {
+            right: unset;
+            left: 50%;
+            img {
+                width: unset;
+            }
+        }
+    }
+}
 @include desktop {
     .banner {
         height: 600px;
@@ -65,9 +75,7 @@
         }
         &__background {
             right: 0;
-            left: unset;
-            transform-origin: top right;
-            transform: scale(.7);
+            width: 881px;
         }
         &__content {
             width: 440px;
@@ -95,7 +103,7 @@
             display: none;
         }
         &__background {
-            transform: scale(.8);
+            width: 904px;
         }
         &__content {
             width: 698px;
@@ -140,7 +148,7 @@
 @include medium {
     .banner {
         &__background {
-            transform: scale(.71);
+            width: 818px;
         }
     }
 }
@@ -159,7 +167,7 @@
         }
         &__background {
             right: -64px;
-            transform: scale(.463);
+            width: 509px;
         }
         &__product {
             transform: scale(.5) translateX(-50%);
