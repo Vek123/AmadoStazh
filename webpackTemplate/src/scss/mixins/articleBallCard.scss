@@ -1,14 +1,11 @@
 .article-ball-card {
-    width: 300px;
+    width: 282px;
     &__image {
-        height: 235px;
+        height: 248px;
         display: flex;
         justify-content: center;
         align-items: center;
         margin-bottom: 24px;
-    }
-    &__info {
-        padding-left: 27px;
     }
     &__title {
         cursor: pointer;
@@ -36,14 +33,15 @@
             &__image {
                 height: 497px;
             }
+            &__info {
+                padding-left: 27px;
+            }
         }
     }
 }
 @include desktop {
     .article-ball-card {
-        &__info {
-            padding-left: 0;
-        }
+        width: 262px;
         &--big {
             width: 487px;
             .article-ball {
@@ -54,7 +52,16 @@
                     height: 434px;
                     margin-bottom: 87px;
                 }
+                &__info {
+                    padding-left: 0;
+                }
             }
+        }
+        .article-ball {
+            transform: scale(.86);   
+        }
+        &__image {
+            height: 213px;
         }
     }
 }
@@ -93,7 +100,7 @@
 @include tablet {
     .article-ball-card {
         &--big {
-            width: 326px;
+            width: 320px;
             .article-ball {
                 transform: scale(.58);
             }
