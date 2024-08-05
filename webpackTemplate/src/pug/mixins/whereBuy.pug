@@ -1,0 +1,13 @@
+mixin whereBuy(className, title, cards)
+    .where-buy(class= className)
+        .template-container
+            .where-buy__content
+                .where-buy__header
+                    .where-buy__tag Где купить
+                    h2.where-buy__title= title 
+                .where-buy__items
+                    each card in cards
+                        .where-buy__item-container
+                            a.where-buy__pharmacy
+                                img.where-buy__logo(src= card.image)
+                                .where-buy__domain= card.domain

@@ -1,0 +1,107 @@
+.where-buy {
+    display: flex;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("/images/whereBuy/background/wherebuy-background.png");
+    min-height: 435px;
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__header {
+        width: 440px;
+    }
+    &__tag {
+        color: rgb(var(--color-grey));
+    }
+    &__items {
+        width: 646px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    &__item-container {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+    }
+    &__pharmacy {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+        grid-gap: 21px;
+        justify-items: center;
+        height: 130px;
+        cursor: pointer;
+        &:nth-child(n+3) {
+            margin-top: 30px;
+        }
+    }
+    &__logo {
+        height: 100%;
+        width: unset;
+    }
+    &__domain {
+        @include font("Montserrat", 16px, 22.4px, 700);
+    }
+}
+@include desktop {
+    .where-buy {
+        background-image: url("/images/whereBuy/background/wherebuy-background-desktop.png");
+    }
+}
+@include laptop {
+    .where-buy {
+        min-height: 424px;
+        background-image: url("/images/whereBuy/background/wherebuy-background-laptop.png");
+        &__header {
+            margin-right: 30px;
+        }
+        &__items {
+            width: unset;
+            flex-grow: 1;
+        }
+        &__pharmacy {
+            height: 118px;
+        }
+    }
+}
+@include medium {
+    .where-buy {
+        background-image: url("/images/whereBuy/background/wherebuy-background-tablet.png");
+        &__content {
+            flex-direction: column;
+        }
+        &__header {
+            text-align: center;
+            margin-right: 0;
+            margin-bottom: 47px;
+        }
+        &__tag {
+            margin-bottom: 5px;
+        }
+        &__items {
+            width: 100%;
+            justify-content: space-around;
+            grid-gap: 30px;
+        }
+    }
+}
+@include tablet {
+    .where-buy {
+        min-height: 522px;
+        background-image: url("/images/whereBuy/background/wherebuy-background-phone.png");
+        &__header {
+            margin-bottom: 47px;
+        }
+        &__tag {
+            margin-bottom: 22px;
+        }
+        &__items {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
