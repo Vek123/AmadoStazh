@@ -164,13 +164,6 @@ button {
 @import './_imports';
 
 
-
-@include tablet {
-  body {
-    @include fontAdaptive(14px, 100%);
-  }
-}
-
 h1 {
   @include font(var(--font-montserrat), 50px, 60px, 800);
 }
