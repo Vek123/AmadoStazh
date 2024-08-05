@@ -6,6 +6,25 @@
     height: max-content;
     cursor: pointer;
     position: relative;
+    &--type1 {
+        width: 581px;
+        height: 491px;
+        .production-ball {
+            &__image {
+                transform: scale(0.93);
+                transform-origin: 230px 250px;
+            }
+        }
+    }
+    &--type2 {
+        width: 680px;
+        height: 544px;
+        .production-ball {
+            &__image {
+                transform: scale(.9);
+            }
+        }
+    }
     &:hover {
         .production-ball__background {
             &--type1 {
@@ -24,18 +43,10 @@
             width: 100%;
             height: 100%;
         }
-        &--type1 {
-            svg {
-                transform: translate(31px, 24px);
-            }
-        }
-        &--type2 {
-            svg {
-                transform: translate(42px, 27px)
-            }
-        }
     }
     &__background {
         transition: transform var(--main-hover-delay);
+        height: 100%;
+        width: 100%;
     }
 }

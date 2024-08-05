@@ -1,10 +1,12 @@
 include ~@mixins/productionBall
 include ~@mixins/mainButton
 
-mixin productionCard(className, image, buttonText, image_id=0, type=1, desc="Описание", link="#")
-    .production-card(class= className class= "production-card--type" + type)
+mixin productionCard(className, image, buttonText, title, image_id=0, type=1, desc="Описание", link="#")
+    .production-card(class= "production-card--type" + type, class= className)
         .production-card__image: +productionBall("", image, image_id, type, link)
         .production-card__info
+            if title
+                h3.production-card__title= title
             .production-card__desc= desc
             .production-card__button: +mainButton("", buttonText, true, link)
 

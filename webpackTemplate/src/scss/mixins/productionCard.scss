@@ -11,6 +11,9 @@
     &__info {
         max-width: 637px;
     }
+    &__title {
+        margin-bottom: 16px;
+    }
     &__desc {
         margin-bottom: 22px;
         font-size: 18px;
@@ -22,13 +25,11 @@
             padding: 12px 12px;
         }
     }
-    &--type2 {
-        .production-card {
-            &__image {
+    &__image {
+        .production-ball {
+            &--type2 {
                 width: 612px;
-                .production-ball {
-                    transform: scale(.9);
-                }
+                height: 489px;
             }
         }
     }
@@ -46,9 +47,15 @@
 @include laptop {
     .production-card {
         &__image {
-            width: 482px;
             .production-ball {
-                transform: scale(.83);
+                &--type1 {
+                    width: 486px;
+                    height: 411px;
+                }
+                &--type2 {
+                    width: 471px;
+                    height: 376px;
+                }
             }
         }
         &__info {
@@ -57,31 +64,12 @@
         &__button {
             width: 100%;
         }
-        &--type2 {
-            .production-card {
-                &__image {
-                    width: 483px;
-                    .production-ball {
-                        transform: scale(.71);
-                    }
-                }
-            }
-        }
     }
 }
 @include medium {
     .production-card {
         flex-direction: column;
         justify-content: flex-start;
-        &__image {
-            align-items: flex-end;
-            width: unset;
-            margin-bottom: 52px;
-            .production-ball {
-                transform: scale(1);
-                transform-origin: bottom;
-            }
-        }
         &__info {
             max-width: 640px;
         }
@@ -92,12 +80,16 @@
             width: 397px;
             margin: 0 auto;
         }
-        &--type2 {
-            .production-card {
-                &__image {
-                    .production-ball {
-                        transform: scale(1);
-                    }
+        &__image {
+            margin-bottom: 52px;
+            .production-ball {
+                &--type1 {
+                    width: 581px;
+                    height: 491px;
+                }
+                &--type2 {
+                    width: 612px;
+                    height: 489px;
                 }
             }
         }
@@ -105,12 +97,8 @@
 }
 @include tablet {
     .production-card {
-        &__image {
-            .production-ball {
-                transform: scale(.56);
-            }
-            height: 276px;
-            margin-bottom: 46px;
+        &__tag {
+            margin-bottom: 13px;
         }
         &__desc {
             display: none;
@@ -121,12 +109,25 @@
         &__button {
             max-width: 320px;
         }
-        &--type2 {
-            .production-card {
-                &__image {
+        &__image {
+            margin-bottom: 46px;
+            .production-ball {
+                &--type1 {
+                    height: 275px;
+                    width: 325px;
                     .production-ball {
-                        transform: scale(.504);
-                        transform-origin: bottom;
+                        &__image {
+                            transform-origin: unset;
+                        }
+                    }
+                }
+                &--type2 {
+                    height: 275px;
+                    width: 344px;
+                    .production-ball {
+                        &__image {
+                            transform-origin: 200px;
+                        }
                     }
                 }
             }
