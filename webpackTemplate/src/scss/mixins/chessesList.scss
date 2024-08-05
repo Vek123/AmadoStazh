@@ -39,6 +39,9 @@
 }
 @include tablet {
     .chesses-list {
+        &__tag {
+            margin-bottom: 13px;
+        }
         &__title {
             margin-bottom: 20px;
         }
