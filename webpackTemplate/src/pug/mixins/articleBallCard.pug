@@ -4,7 +4,7 @@ mixin articleBallCard(className, image, title="Заголовок", desc="Опи
     .article-ball-card(class= className class= big ? "article-ball-card--big" : "")
         .article-ball-card__image: +articleBall("", image, type, big, image_id, link)
         .article-ball-card__info
-            a.article-ball-card__title(href= link): h6= title
+            a.article-ball-card__title(href= link): h3= title
             if big 
                 .article-ball-card__desc(href= link)= desc
             +inTextLink("article-ball-card__link", "Подробнее", false, link, true)

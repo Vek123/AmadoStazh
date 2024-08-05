@@ -178,16 +178,10 @@ h2 {
   @include font(var(--font-montserrat), 36px, 50.4px, 800);
 }
 h3 {
-  @include font(var(--font-montserrat), 30px, 42.5px, 800);
+  @include font(var(--font-montserrat), 22px, 30.8px, 800);
 }
 h4 {
-  @include font(var(--font-montserrat), 24px, 33.6px, 500);
-}
-h5 {
   @include font(var(--font-montserrat), 20px, 28px, 800);
-}
-h6 {
-  @include font(var(--font-montserrat), 18px, 25.2px, 800);
 }
 @include tablet {
   h2 {

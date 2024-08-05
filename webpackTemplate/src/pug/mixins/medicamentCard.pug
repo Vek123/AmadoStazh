@@ -16,7 +16,7 @@ mixin medicamentCard(className, card)
                 .swiper-pagination
         .medicament-card__info
             a(href= card.link).medicament-card__pharmacy= card.pharmacy
-            a(href= card.link).medicament-card__title: h5= card.title
+            a(href= card.link).medicament-card__title: h4= card.title
             a(href= card.link).medicament-card__description= card.description
             +mainButton('medicament-card__button', text= 'Подробнее', false, link= card.link)
         
