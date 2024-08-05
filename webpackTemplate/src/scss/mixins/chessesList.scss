@@ -1,0 +1,46 @@
+.chesses-list {
+    &__tag {
+        @include font(Montserrat, 16px, 22.4px, 400);
+        color: rgb(var(--color-grey));
+    }
+    &__title {
+        margin-bottom: 35px;
+    }
+    &__card {
+        &:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        &:nth-child(n+2) {
+            margin-top: 35px;
+        }
+    }
+}
+@include laptop {
+    .chesses-list {
+        &__tag, &__title {
+            text-align: center;
+        }
+        &__title {
+            margin-bottom: 100px;
+        }
+    }
+}
+@include medium {
+    .chesses-list {
+        &__title {
+            margin-bottom: 50px;
+        }
+        &__card {
+            &:nth-child(n+2) {
+                display: none;
+            }
+        }
+    }
+}
+@include tablet {
+    .chesses-list {
+        &__title {
+            margin-bottom: 20px;
+        }
+    }
+}

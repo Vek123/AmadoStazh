@@ -20,6 +20,7 @@ include ~@mixins/about
 include ~@mixins/banner
 include ~@mixins/angleImage
 include ~@mixins/bannerSlider
+include ~@mixins/chessesList
 
 block vars
   - title = 'ui страница'
@@ -62,6 +63,11 @@ block vars
       {className: "", title: "Кардиола", desc: "БАД для здоровья сердца и активной жизни, в составе которой преобладают натуральные экстракты лекарственных растений и важные элементы, необходимые для заботы о серце и сосудах.", buttonText: "Подробнее", buttonLink: "#", linkText: "Отзывы (15)", link: "#", productImage: "./images/banner/products/third.png", backgroundImage: "https://f.stolichki.ru/implovit/3ced4934/8c500125_1920.png", backgroundImageWide: "https://f.stolichki.ru/implovit/3ced4934/8c500125_more-1920png.png", imageId: 18, brand: true},
       {className: "", title: "Российский производитель БАДов", desc: "Импловит — динамично-развивающаяся компания, занимающаяся производством биологически активных добавок (БАД) под одноименным брендом.", buttonText: "В каталог", buttonLink: "#", linkText: "Подробнее о компании", link: "#", productImage: "./images/banner/products/second.png", backgroundImage: "https://f.stolichki.ru/implovit/3ced4934/8c500125_1920.png", backgroundImageWide: "https://f.stolichki.ru/implovit/3ced4934/8c500125_more-1920png.png", imageId: 19, brand: false},
       {className: "", title: "Российский производитель БАДов", desc: "Импловит — динамично-развивающаяся компания, занимающаяся производством биологически активных добавок (БАД) под одноименным брендом.", buttonText: "В каталог", buttonLink: "#", linkText: "Подробнее о компании", link: "#", productImage: "./images/banner/products/second.png", backgroundImage: "https://f.stolichki.ru/implovit/3ced4934/8c500125_1920.png", backgroundImageWide: "https://f.stolichki.ru/implovit/3ced4934/8c500125_more-1920png.png", imageId: 20, brand: false},
+    ]
+    var chessesCards = [
+      {className: "", cardImage: "./images/productionCards/production2.jpeg", buttonText:"Смотреть видео о производстве", title: "", image_id: 10, type: 2, desc: "Мы заботимся о безопасности своей продукции и здоровье потребителей, постоянно улучшая и обеспечивая контроль качества в течение всего жизненного цикла препаратов: от стадии разработки до этапа проверки выпускаемой продукции", link: "#"},
+      {className: "", cardImage: "./images/productionCards/production1.png", buttonText:"О нашем подходе к качеству", title: "Доступно для вас, и под нашим контролем качества!", image_id: 11, type: 1, desc: "Мы заботимся о безопасности своей продукции и здоровье потребителей, постоянно улучшая и обеспечивая контроль качества в течение всего жизненного цикла препаратов: от стадии разработки до этапа проверки выпускаемой продукции", link: "#"},
+      {className: "", cardImage: "./images/productionCards/production2.jpeg", buttonText:"Смотреть видео о производстве", title: "", image_id: 13, type: 2, desc: "Мы заботимся о безопасности своей продукции и здоровье потребителей, постоянно улучшая и обеспечивая контроль качества в течение всего жизненного цикла препаратов: от стадии разработки до этапа проверки выпускаемой продукции", link: "#"},
     ]
 
 block content
@@ -136,10 +142,6 @@ block content
     br
     h4 Заголовок H4
     br
-    h5 Заголовок H5
-    br
-    h6 Заголовок H6 
-    br
     +articleBall("", "./images/articleBalls/first-article.jpeg", 1, true, 1)
     .article-balls
       +articleBall("", "./images/articleBalls/second-article.jpeg", 1, false, 2)
@@ -160,18 +162,11 @@ block content
     br
     +productionBall("", "./images/productionCards/production2.jpeg", 13, 2)
     br
-    .template-container: +productionCard("card-reverse", "./images/productionCards/production2.jpeg","Смотреть видео о производстве", 10, 2, "Мы заботимся о безопасности своей продукции и здоровье потребителей, постоянно улучшая и обеспечивая контроль качества в течение всего жизненного цикла препаратов: от стадии разработки до этапа проверки выпускаемой продукции")
-    br
-    .template-container: +productionCard("", "./images/productionCards/production1.png","О нашем подходе к качеству", 11, 1, "Мы заботимся о безопасности своей продукции и здоровье потребителей, постоянно улучшая и обеспечивая контроль качества в течение всего жизненного цикла препаратов: от стадии разработки до этапа проверки выпускаемой продукции")
-    br
     +about("", "О компании", "У здоровья есть имя — Импловит!", "Импловит® дает возможность каждому человеку сохранить и укрепить свое здоровье, используя натуральные, эффективные, качественные препараты. Продуктовая линейка бренда насчитывает порядка 50 наименований биологически активных добавок для мужчин и женщин любого возраста, а также детей.", "Узнать о компании")
     br
     +about("", "Наши компоненты", "Азбука здоровья", "В основе всех средств производства Импловит® лежат полезные для здоровья формы. Их состав — необходимые для полноценной жизни вещества в формах для лучшего усвоения способные качественно восполнить дефицит важных элементов в организме. Самое важное при этом - доступное не только по качеству, но и цене!", "Подробнее", false)
-    //- br
-    //- +angleImage("", "blue", "./images/angleImages/first.jpg", 14)
-    //- br
-    //- +angleImage("", "pink", "./images/angleImages/second.png", 15, true)
     br
-    //- +banner("", "Российский производитель БАДов", "Импловит — динамично-развивающаяся компания, занимающаяся производством биологически активных добавок (БАД) под одноименным брендом.", "В каталог", "#", "Подробнее о компании", "#", "./images/banner/products/first.png", "./images/angleImages/first.jpg", 16, "blue")
     br
     +bannerSlider("", banners)
+    +chessesList("", "Наше производство", "7 ступеней контроля качества", chessesCards)
+    br

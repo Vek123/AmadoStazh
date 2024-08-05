@@ -1,0 +1,12 @@
+include ~@mixins/productionCard
+
+mixin chessesList(className, tag, title, cards)
+    .chesses-list(class= className)
+        .template-container 
+            if tag 
+                .chesses-list__tag= tag
+            h2.chesses-list__title= title
+            .chesses-list__container
+                each card in cards
+                    +productionCard("chesses-list__card", card.cardImage, card.buttonText, card.title, card.image_id, card.type, card.desc, card.link)(class= card.className)
+                
