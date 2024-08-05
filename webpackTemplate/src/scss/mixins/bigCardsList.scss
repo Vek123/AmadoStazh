@@ -1,0 +1,104 @@
+.big-cards-list {
+    &__tag {
+        color: rgb(var(--color-grey));
+    }
+    &__title {
+        margin-bottom: 30px;
+    }
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 55px;
+    }
+    &__swiper {
+        display: none;
+        overflow: visible;
+        .swiper-wrapper {
+            margin-bottom: 120px;
+        }
+    }
+    &__slide {
+        display: flex;
+        justify-content: center;
+    }
+    &__navigation {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__pagination {
+        text-wrap: nowrap;
+        height: 17px;
+    }
+    &__minis {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        justify-content: space-between;
+        grid-gap: 30px;
+        width: 51%;
+    }
+    &__button {
+        width: 396px;
+        min-height: 46px;
+        margin: 0 auto;
+        z-index: 1;
+    }
+}
+@include laptop {
+    .big-cards-list {
+        &__tag {
+            text-align: center;
+        }
+        &__title {
+            text-align: center;
+        }
+        &__minis {
+            width: 282px;
+            .big-cards-list {
+                &__card {
+                    margin-left: auto;
+                    &:nth-child(even) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+@include medium {
+    .big-cards-list {
+        &__container {
+            display: none;
+        }
+        &__swiper {
+            display: block;
+        }
+        &__button {
+            position: absolute;
+            bottom: 47px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+@include tablet {
+    .big-cards-list {
+        padding-bottom: 76px;
+        &__tag {
+            margin-bottom: 11px;
+        }
+        &__title {
+            margin-bottom: 18px;
+        }
+        &__swiper {
+            .swiper-wrapper {
+                margin-bottom: 30px;
+            }
+        }
+        &__button {
+            width: 320px;
+            bottom: 0px;
+        }
+    }
+}

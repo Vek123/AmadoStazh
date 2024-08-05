@@ -69,5 +69,29 @@ document.querySelectorAll(".banner-slider__swiper").forEach(swiper => {
         })
     );
 })
-console.log(bannerSwipers);
+
+let bigCardsSwipers = [];
+document.querySelectorAll(".big-cards-list__swiper").forEach(swiper => {
+    bigCardsSwipers.push(
+        new Swiper(swiper, {
+            spaceBetween: 30,
+            slidesPerView: 1,
+            pagination: {
+                el: swiper.querySelector(".big-cards-list__pagination"),
+                horizontalClass: "big-cards-list__pagination",
+                clickable: true,
+                bulletClass: 'swiper__gray-bullet',
+                bulletActiveClass: 'swiper__gray-bullet--active',
+                dynamicBullets: true,
+                dynamicMainBullets: 1,
+            },
+            navigation: {
+                nextEl: [swiper.querySelectorAll('.big-cards-list__nav-button--next')[0], swiper.querySelectorAll('.big-cards-list__nav-button--next')[1]],
+                prevEl: [swiper.querySelectorAll('.big-cards-list__nav-button--prev')[0], swiper.querySelectorAll('.big-cards-list__nav-button--prev')[1]],
+                disabledClass: 'swiper__navigation--disabled',
+            }
+        })
+    );
+})
+
 export { iconsSwipers, medicinesSwipers, bannerSwipers };

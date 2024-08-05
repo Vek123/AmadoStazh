@@ -1,0 +1,25 @@
+include ~@mixins/articleBallCard
+include ~@mixins/mainButton
+
+mixin bigCardsList(className, tag, title, buttonText, link, cards)
+    - var iter = 1
+    .big-cards-list(class= className)
+        .big-cards-list__tag= tag
+        h2.big-cards-list__title= title
+        .big-cards-list__container
+            .big-cards-list__big
+                +articleBallCard(cards[0].className ? cards[0].className : "big-cards-list__card big-cards-list__card--big", cards[0].image, cards[0].title, cards[0].desc, cards[0].link, cards[0].big, cards[0].image_id, cards[0].type)
+            .big-cards-list__minis
+                while iter < cards.length
+                    +articleBallCard(cards[iter].className ? cards[iter].className : "big-cards-list__card", cards[iter].image, cards[iter].title, cards[iter].desc, cards[iter].link, cards[iter].big, cards[iter].image_id, cards[iter].type)
+                    - iter++
+        .swiper.big-cards-list__swiper
+            .swiper-wrapper
+                each card in cards 
+                    .swiper-slide.big-cards-list__slide 
+                        +articleBallCard(card.className ? cards[iter].className : "big-cards-list__card", card.image, card.title, card.desc, card.link, true, card.big_image_id, 1)
+            .big-cards-list__navigation
+                +arrow("big-cards-list__nav-button big-cards-list__nav-button--prev", left= true) 
+                .big-cards-list__pagination
+                +arrow("big-cards-list__nav-button big-cards-list__nav-button--next", left= false)
+        +mainButton("big-cards-list__button", buttonText, true, link)
