@@ -5,6 +5,7 @@
     background-size: 100% 100%;
     background-image: url("/images/whereBuy/background/wherebuy-background.png");
     min-height: 435px;
+    padding: 60px 0;
     &__content {
         display: flex;
         justify-content: space-between;
@@ -12,12 +13,14 @@
     }
     &__header {
         width: 440px;
+        flex-shrink: 0;
     }
     &__tag {
         color: rgb(var(--color-grey));
     }
     &__items {
         width: 646px;
+        grid-gap: 30px;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -26,6 +29,7 @@
         flex-grow: 1;
         display: flex;
         justify-content: center;
+        flex-basis: 40%;
     }
     &__pharmacy {
         display: grid;
@@ -102,6 +106,9 @@
         &__items {
             flex-direction: column;
             align-items: center;
+        }
+        &__item-container {
+            flex-basis: auto;
         }
     }
 }
