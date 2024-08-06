@@ -1,0 +1,121 @@
+.brands-list {
+    &__tag {
+        @include font(Montserrat, 16px, 22.4px, 400);
+        color: rgb(var(--color-grey));
+    }
+    &__header {
+        margin-bottom: 38px;
+    }
+    &__brands-container {
+        margin-bottom: 49px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        grid-row-gap: 19px;
+    }
+    &__brand {
+        width: 32.1%;
+        &--medium {
+            width: 46.7%;
+            &:nth-last-child(1) {
+                width: 51.4%;
+            }
+        }
+        &--big {
+            width: 100%;
+        }
+    }
+    &__button {
+        width: 335px;
+        margin: 0 auto;
+    }
+}
+@include desktop {
+    .brands-list {
+        &__header {
+            margin-bottom: 52px;
+        }
+        &__brands-container {
+            grid-row-gap: 13px;
+        }
+        &__brand {
+            width: 32.63%;
+            &--medium {
+                width: 48%;
+                &:nth-last-child(1) {
+                    width: 51%;
+                }
+            }
+        }
+    }
+}
+@include laptop {
+    .brands-list {
+        &__header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        &__brands-container {
+            grid-row-gap: 24px;
+            margin-bottom: 30px;
+        }
+        &__brand {
+            width: 48.8%;
+            &--medium {
+                &:nth-last-child(1) {
+                    width: 100%;
+                    .brand-card {
+                        &__header {
+                            position: absolute;
+                            z-index: 10;
+                            top: 50%;
+                            left: 60px;
+                            transform: translateY(-60%);
+                        }
+                        &__product-mobile {
+                            transform: unset;
+                            left: unset;
+                            right: 0;
+                            bottom: 26px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@include tablet {
+    .brands-list {
+        &__tag {
+            margin-bottom: 7px;
+        }
+        &__header {
+            margin-bottom: 13px;
+        }
+        &__brands-container {
+            grid-row-gap: 20px;
+            margin-bottom: 41px;
+        }
+        &__brand {
+            width: 100%;
+            &--medium {
+                &:nth-last-child(1) {
+                    .brand-card {
+                        &__header {
+                            left: unset;
+                            top: unset;
+                            position: relative;
+                            transform: unset;
+                        }
+                        &__product-mobile {
+                            transform: translateX(-50%);
+                            right: unset;
+                            left: 50%;
+                            bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -47,7 +47,7 @@
         svg {
             margin: 2px 0 0 9px;
             path {
-                transition: fill var(--main-hover-delay);
+                transition: fill var(--main-hover-delay), stroke var(--main-hover-delay);
             }
         }
     }
@@ -78,113 +78,240 @@
         position: absolute;
         bottom: 0;
         right: 0;
-        transition: transform var(--brand-cards-hover-delay);
+        transition: all var(--brand-cards-hover-delay);
     }
     &__animation-mobile {
         display: none;
         bottom: -30px;
         right: -40px;
     }
-    .brand-card__animation-img1 {
+    &__animation-img1 {
         z-index: 5;
     }
-    .brand-card__animation-img2 {
+    &__animation-img2 {
         z-index: 3;
     }
     &:hover {
-        .brand-card__animation-img1, .brand-card__animation-img2, .brand-card__animation-mobile {
-            transform: scale(10);
+        .brand-card {
+            &__animation-img1, &__animation-img2, &__animation-mobile {
+                transform: scale(10);
+            }
+            &__desc, &__link, &__category {
+                color: rgb(var(--color-white));
+            }
+            &__link {
+                path {
+                    fill: rgb(var(--color-white));
+                    stroke: rgb(var(--color-white));
+                }
+            }
         }
     }
     &--big {
         width: 100%;
         &:hover {
-            .brand-card__animation-img1, .brand-card__animation-img2 {
-                transform: scale(10);
+            .brand-card {
+                &__animation-img1, &__animation-img2 {
+                    transform: scale(15);
+                }
             }
         }
     }
     &--biruse {
         &:hover {
-            .brand-card__brand-logo {
-                path {
-                    fill: rgb(var(--color-white));
-                }
-            }
-            .brand-card__desc, .brand-card__link, .brand-card__category {
-                color: rgb(var(--color-white));
-            }
-            .brand-card__link {
-                path {
-                    fill: rgb(var(--color-white));
+            .brand-card {
+                &__brand-logo {
+                    path {
+                        fill: rgb(var(--color-white));
+                    }
                 }
             }
         }
     }
     &--pink {
-        .brand-card__animation-mobile  {
-            bottom: -105px;
-            right: -20px;
+        .brand-card {
+            &__animation-mobile  {
+                bottom: -105px;
+                right: -20px;
+            }
+            &__link {
+                color: rgb(var(--color-red-lighter));
+                path {
+                    fill: rgb(var(--color-red-lighter));
+                    stroke: rgb(var(--color-red-lighter));
+                }
+            }
         }
     }
     &--blue {
-        .brand-card__animation-mobile  {
-            bottom: -105px;
-            right: auto;
+        .brand-card {
+            &__animation-mobile  {
+                bottom: -105px;
+                right: -5px;
+            }
+            &__link {
+                color: rgb(var(--color-blue-darker));
+                path {
+                    fill: rgb(var(--color-blue-darker));
+                    stroke: rgb(var(--color-blue-darker));
+                }
+            }
+        }
+        &:hover {
+            .brand-card {
+                &__desc, &__category {
+                    color: rgb(var(--color-black));
+                }
+                &__link {
+                    color: rgb(var(--color-blue-darker));
+                    path {
+                        fill: rgb(var(--color-blue-darker));
+                        stroke: rgb(var(--color-blue-darker));
+                    }
+                }
+            }
         }
     }
     &--gray {
-        .brand-card__animation-mobile  {
-            bottom: -270px;
-            right: -65px;
+        .brand-card {
+            &__animation-mobile  {
+                bottom: -270px;
+                right: -65px;
+            }
+            &__link {
+                color: rgb(var(--color-orange));
+                path {
+                    fill: rgb(var(--color-orange));
+                    stroke: rgb(var(--color-orange));
+                }
+            }
+        }
+        &:hover {
+            .brand-card {
+                &__desc, &__category {
+                    color: rgb(var(--color-black));
+                }
+                &__link {
+                    color: rgb(var(--color-orange));
+                    path {
+                        fill: rgb(var(--color-orange));
+                        stroke: rgb(var(--color-orange));
+                    }
+                }
+            }
         }
     }
     &--green {
-        .brand-card__animation-img1 {
-            &--green {
-                bottom: -50px;
-                right: -120px;
+        .brand-card {
+            &__animation-img1 {
+                &--green {
+                    bottom: -50px;
+                    right: -120px;
+                }
+            }
+            &__animation-img2 {
+                &--green {
+                    bottom: -80px;
+                    right: -150px;
+                }
+            }
+            &__animation-mobile  {
+                right: -115px;
+                bottom: -150px;
+            }
+            &__link {
+                color: rgb(var(--color-green-lighter));
+                path {
+                    fill: rgb(var(--color-green-lighter));
+                    stroke: rgb(var(--color-green-lighter));
+                }
             }
         }
-        .brand-card__animation-img2 {
-            &--green {
-                bottom: -80px;
-                right: -150px;
+        &:hover {
+            .brand-card {
+                &__desc, &__category {
+                    color: rgb(var(--color-black));
+                }
+                &__link {
+                    color: rgb(var(--color-green-lighter));
+                    path {
+                        fill: rgb(var(--color-green-lighter));
+                        stroke: rgb(var(--color-green-lighter));
+                    }
+                }
             }
-        }
-        .brand-card__animation-mobile  {
-            right: -115px;
-            bottom: -150px;
         }
     }
     &--red {
-        .brand-card__animation-img1{
-            right: -58px;
-            bottom: -74px;
-        }
-        .brand-card__animation-img2  {
-            right: -50px;
-            bottom: -70px;
-        }
-        .brand-card__animation-mobile  {
-            bottom: -10px;
-            right: 0;
+        .brand-card {
+            &__animation-img1{
+                right: -58px;
+                bottom: -74px;
+            }
+            &__animation-img2  {
+                right: -50px;
+                bottom: -70px;
+            }
+            &__animation-mobile  {
+                bottom: -10px;
+                right: 0;
+                transform-origin: bottom right;
+            }
+            &__link {
+                color: rgb(var(--color-red-lighter));
+                path {
+                    fill: rgb(var(--color-red-lighter));
+                    stroke: rgb(var(--color-red-lighter));
+                }
+            }
         }
     }
     &--violet {
-        .brand-card__animation-mobile  {
-            bottom: -220px;
-            right: 0;
+        .brand-card {
+            &__animation-mobile  {
+                bottom: -220px;
+                right: 0;
+            }
+            &__link {
+                color: rgb(var(--color-violet-lighter));
+                path {
+                    fill: rgb(var(--color-violet-lighter));
+                    stroke: rgb(var(--color-violet-lighter));
+                }
+            }
         }
     }
     &--yellow {
-        .brand-card__animation-mobile  {
-            right: 8px;
-            bottom: -150px;
+        .brand-card {
+            &__animation-mobile  {
+                right: 8px;
+                bottom: -150px;
+            }
+            &__link {
+                color: rgb(var(--color-yellow-darker));
+                path {
+                    fill: rgb(var(--color-yellow-darker));
+                    stroke: rgb(var(--color-yellow-darker));
+                }
+            }
+        }
+        &:hover {
+            .brand-card {
+                &__category, &__desc {
+                    color: rgb(var(--color-black));
+                }
+                &__link {
+                    color: rgb(var(--color-yellow-darker));
+                    path {
+                        fill: rgb(var(--color-yellow-darker));
+                        stroke: rgb(var(--color-yellow-darker));
+                    }
+                }
+            }
         }
     }
 }
-@media screen and (max-width: 1023px) {
+@include medium {
     .brand-card {
         height: 320px;
         padding: 20px;
@@ -202,7 +329,7 @@
             display: none;
         }
         &__link {
-            text-align: center;
+            justify-content: center;
         }
         &__product {
             display: none;

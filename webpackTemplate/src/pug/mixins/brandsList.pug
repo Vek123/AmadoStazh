@@ -1,0 +1,21 @@
+include ~@mixins/brandCard
+include ~@mixins/mainButton
+
+mixin brandsList(className, tag, title, cards, buttonText, link="#")
+    -
+        var last = cards.length % 3
+        var iter = 0
+        var iterClassName = ""
+    .brands-list(class= className)
+        .template-container
+            .brands-list__header
+                .brands-list__tag= tag
+                h2.brands-list__title= title
+            .brands-list__brands-container
+                while iter < cards.length
+                    if iter >= cards.length - last
+                        - cards[iter].big = true
+                        - iterClassName = last == 2 ? "brands-list__brand--medium" : "brands-list__brand--big"
+                    +brandCard([cards[iter].className, "brands-list__brand", iterClassName], cards[iter].color, cards[iter].big, cards[iter].brand, cards[iter].category, cards[iter].desc, cards[iter].link, cards[iter].product_image, cards[iter].product_image_mobile)
+                    - iter++
+            +mainButton("brands-list__button", buttonText, true, link)

@@ -60,11 +60,12 @@ mixin brandCard(className, color, big=false, brand, category, desc, link="#", pr
                     img(src= "./images/brandCardImages/animation/pinkLight.png")
                 .brand-card__animation-mobile 
                     img(src= "./images/brandCardImages/animation/pinkMobile.png")
-        .brand-card__brand-logo!= brand
-        .brand-card__category= category
-        .brand-card__desc= desc
-        .brand-card__link Подробнее
-            include ~@icons/link/right-arrow-angle.svg
+        .brand-card__header
+            .brand-card__brand-logo!= brand
+            .brand-card__category= category
+            .brand-card__desc= desc
+            .brand-card__link Подробнее
+                include ~@icons/link/right-arrow-angle.svg
         .brand-card__product
             img(src= product_image, alt= "Product Image1")
         .brand-card__product-mobile
