@@ -1,29 +1,56 @@
 mixin advantage(className, color, title, desc)
-    .advantage(class= className)
-        case color 
-            when "red"
+    case color 
+        when "red"
+            .advantage(class= className).advantage--red
                 .advantage__background
-                    img(src="./images/advantageImages/red.png")
-                    img(src="./images/advantageImages/redLight.png")
-            when "biruse"
+                    .advantage__background-light
+                        include ~@images/advantageImages/red/background.svg
+                    .advantage__background-image
+                        img(src="./images/advantageImages/red.png")
+                .advantage__title= title
+                .advantage__desc= desc
+        when "biruse"
+            .advantage(class= className).advantage--biruse
                 .advantage__background
-                    img(src="./images/advantageImages/biruse.png")
-                    img(src="./images/advantageImages/biruseLight.png")
-            when "blue"
+                    .advantage__background-light
+                        include ~@images/advantageImages/biruse/background.svg
+                    .advantage__background-image
+                        img(src="./images/advantageImages/biruse.png")
+                .advantage__title= title
+                .advantage__desc= desc
+        when "blue"
+            .advantage(class= className).advantage--blue
                 .advantage__background
-                    img(src="./images/advantageImages/blue.png")
-                    img(src="./images/advantageImages/blueLight.png")
-            when "yellow"
+                    .advantage__background-light
+                        include ~@images/advantageImages/blue/background.svg
+                    .advantage__background-image
+                        img(src="./images/advantageImages/blue.png")
+                .advantage__title= title
+                .advantage__desc= desc
+        when "yellow"
+            .advantage(class= className).advantage--yellow
                 .advantage__background
-                    img(src="./images/advantageImages/yellow.png")
-                    img(src="./images/advantageImages/yellowLight.png")
-            when "pink"
+                    .advantage__background-light
+                        include ~@images/advantageImages/yellow/background.svg
+                    .advantage__background-image
+                        img(src="./images/advantageImages/yellow.png")
+                .advantage__title= title
+                .advantage__desc= desc
+        when "pink"
+            .advantage(class= className).advantage--pink
                 .advantage__background
-                    img(src="./images/advantageImages/pink.png")
-                    img(src="./images/advantageImages/pinkLight.png")
-            when "green"
+                    .advantage__background-light
+                        include ~@images/advantageImages/pink/background.svg
+                    .advantage__background-image
+                        img(src="./images/advantageImages/pink.png")
+                .advantage__title= title
+                .advantage__desc= desc
+        when "green"
+            .advantage(class= className).advantage--green
                 .advantage__background
-                    img(src="./images/advantageImages/green.png")
-                    img(src="./images/advantageImages/greenLight.png")
-        .advantage__title= title
-        .advantage__desc= desc
+                    .advantage__background-light
+                        include ~@images/advantageImages/green/background.svg
+                    .advantage__background-image
+                        img(src="./images/advantageImages/green.png")
+                .advantage__title= title
+                .advantage__desc= desc

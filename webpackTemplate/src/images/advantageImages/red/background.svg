@@ -1,0 +1,17 @@
+<svg width="199" height="217" viewBox="0 0 199 217" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.3" filter="url(#filter-advantage-background-red)">
+<path d="M28.8838 29.3673C-7.70439 53.9779 1.19544 124.162 1.84543 134.506C3.9668 168.288 54.9712 230.185 112.334 213.652C194.023 190.107 207.205 103.934 195.124 55.3479C173.859 -30.1789 65.4719 4.7568 28.8838 29.3673Z" fill="#F4ACBA"/>
+</g>
+<defs>
+<filter id="filter-advantage-background-red" x="0.433594" y="0.989258" width="200.562" height="219.417" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="2" dy="8"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.839216 0 0 0 0 0.666667 0 0 0 0 0.698039 0 0 0 0.6 0"/>
+<feBlend mode="multiply" in2="shape" result="effect-advantage-background-red"/>
+</filter>
+</defs>
+</svg>
