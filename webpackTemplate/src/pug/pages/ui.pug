@@ -24,6 +24,7 @@ include ~@mixins/chessesList
 include ~@mixins/bigCardsList
 include ~@mixins/whereBuy
 include ~@mixins/brandsList
+include ~@mixins/advantagesList
 
 block vars
   - title = 'ui страница'
@@ -90,6 +91,14 @@ block vars
     var pharmacyCards = [
       {image: "./images/whereBuy/stolichki.svg", domain: "stolichki.ru"},
       {image: "./images/whereBuy/neopharm.svg", domain: "neopharm.ru"},
+    ]
+    var advantages = [
+      {className: "", color: "biruse", title: "Современное производство", desc: "Лучший опыт и передовые технологии в сотрудничестве с хорошо зарекомендованными производителями"},
+      {className: "", color: "blue", title: "Широкий асортимент", desc: "ТОП востребованных потребителями позиций"},
+      //- {className: "", color: "green", title: "Дизайн упаковки", desc: "Аптечная направленность и четкая цветовая дифференциация продуктов"},
+      {className: "", color: "pink", title: "Доступные цены", desc: "Высокое качество продукции по доступным ценам"},
+      {className: "", color: "red", title: "Контроль качества", desc: "Каждый продукт проходит несколько проверок на всех этапах производства и упаковки"},
+      {className: "", color: "yellow", title: "Импортная сырьевая база", desc: "В продуктах используется растительное сырье импортного производства"}
     ]
 
 block content
@@ -197,3 +206,5 @@ block content
     +whereBuy("", "Спрашивайте продукты Импловит в аптеках", pharmacyCards)
     br
     +brandsList("", "У нас несколько линеек продуктов", "Наши бренды", brandCards, "Перейти ко всем брендам")
+    br
+    +advantagesList("", advantages)

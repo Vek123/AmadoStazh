@@ -1,0 +1,29 @@
+.advantages-list {
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        grid-row-gap: 20px;
+        grid-column-gap: 52px;
+        padding: 0 20px;
+    }
+}
+@include desktop {
+    .advantages-list {
+        &__container {
+            grid-column-gap: 22px;
+        }
+    }
+}
+@include laptop {
+    .advantages-list {
+        &__container {
+            grid-column-gap: 110px;
+        }
+    }
+}
+@include medium {
+    .advantages-list {
+        display: none;
+    }
+}

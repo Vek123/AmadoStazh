@@ -1,0 +1,8 @@
+include ~@mixins/advantage
+
+mixin advantagesList(className, advantages)
+    .advantages-list
+        .template-container
+            .advantages-list__container
+                each advantage in advantages 
+                    +advantage(["advantages-list__advantage", advantage.className], advantage.color, advantage.title, advantage.desc)
