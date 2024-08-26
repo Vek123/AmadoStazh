@@ -1,0 +1,5 @@
+mixin componentHeader(className, tag, title)
+    .component-header(class= className)
+        if tag
+            .component-header__tag= tag
+        h2.component-header__title= title

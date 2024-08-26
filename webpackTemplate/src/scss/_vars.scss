@@ -1,5 +1,12 @@
 :root {
   // =============================================================================
+  // Margins and paddings
+  // =============================================================================
+
+  --padding-header: 68px;
+  --padding-mobile-menu: 64px;
+
+  // =============================================================================
   // Delays
   // =============================================================================
 
@@ -20,10 +27,13 @@
   --color-grey-lighter: 189, 189, 189; // #bdbdbd
   --color-grey-shadow: 178, 178, 178;
   --color-grey-border: 224, 224, 224;
+  --color-grey-border-lighter: 242, 242, 242;
+  --color-grey-background: 236, 248, 250;
   --color-green-lighter: 96, 185, 152;
   --color-green: 151, 224, 197;
   --color-white: 255, 255, 255;
   --color-black: 51, 51, 51; // #333333
+  --color-black-full: 0, 0, 0;
   --color-violet-lighter: 70, 192, 193;
   --color-pink: 244, 172, 186; // #F4ACBA
   --color-pink-dark: 222, 161, 210; // #dea1d2

@@ -1,0 +1,11 @@
+.component-header {
+    &__tag {
+        @include font(Montserrat, 16px, 22.4px, 400);
+        color: rgb(var(--color-grey));
+    }
+}
+@include laptop {
+    .component-header {
+        text-align: center;
+    }
+}
