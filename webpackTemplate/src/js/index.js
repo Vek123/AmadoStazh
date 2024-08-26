@@ -175,7 +175,7 @@ let mapCitiesSimpleBars = [];
 let mapAddressesSimpleBars = [];
 document.querySelectorAll('.buy-map__scroll-points').forEach(x => mapAddressesSimpleBars.push(new SimpleBar(x, {autoHide: false})));
 document.querySelectorAll('.buy-map__scroll-cities').forEach(x => mapCitiesSimpleBars.push(new SimpleBar(x, {autoHide: false})));
-new SimpleBar(document.querySelector(".mobile-modal-menu__body"), {autoHide: false});
+document.querySelectorAll(".mobile-modal-menu__body").forEach(x => new SimpleBar(x, {autoHide: false}));
 
 
 function createPlacemarks(addresses) {
@@ -329,18 +329,18 @@ function openMobileModalMenu() {
     let modal = document.querySelector(".mobile-modal-menu")
     openModal(modal);
 }
-document.querySelector(".mobile-modal-menu__close-sub-list").addEventListener("click", closeMobileModalMenuSubList);
+document.querySelectorAll(".mobile-modal-menu__close-sub-list").forEach(x => x.addEventListener("click", closeMobileModalMenuSubList));
 document.querySelectorAll(".mobile-modal-menu__body li a + ul").forEach(x => {
     x.parentElement.querySelector("a").addEventListener("click", openMobileModalMenuSubList);
 });
-document.querySelector(".mobile-modal-menu__close").addEventListener("click", closeModal);
-document.querySelector(".mobile-fixed-menu__modal-button").addEventListener("click", openMobileModalMenu);
-document.querySelector(".mobile-modal-menu__open-search").addEventListener("click", function() {
+document.querySelectorAll(".mobile-modal-menu__close").forEach(x => x.addEventListener("click", closeModal));
+document.querySelectorAll(".mobile-fixed-menu__modal-button").forEach(x => x.addEventListener("click", openMobileModalMenu));
+document.querySelectorAll(".mobile-modal-menu__open-search").forEach(x => x.addEventListener("click", function() {
     this.closest(".mobile-modal-menu__header").classList.add("mobile-modal-menu__header--search");
-});
-document.querySelector(".mobile-modal-menu__close-search").addEventListener("click", function() {
+}));
+document.querySelectorAll(".mobile-modal-menu__close-search").forEach(x => x.addEventListener("click", function() {
     this.closest(".mobile-modal-menu__header").classList.remove("mobile-modal-menu__header--search");
-});
+}));
 document.querySelectorAll(".search-input input").forEach(x => {
     x.addEventListener("focus", function(event) {
         event.target.closest(".search-input").classList.add("search-input--active");
@@ -356,12 +356,12 @@ document.querySelectorAll(".search-input input").forEach(x => {
         }
     });
 });
-document.querySelector(".header-bottom__close-icon").addEventListener("click", function(event) {
+document.querySelectorAll(".header-bottom__close-icon").forEach(x => x.addEventListener("click", function(event) {
     event.target.closest(".header-bottom").classList.remove("header-bottom--search");
-});
-document.querySelector(".header-bottom__search-icon").addEventListener("click", function(event) {
+}));
+document.querySelectorAll(".header-bottom__search-icon").forEach(x => x.addEventListener("click", function(event) {
     event.target.closest(".header-bottom").classList.add("header-bottom--search");
-});
+}));
 const switchBarContainer = document.querySelectorAll(".switch__bar-container");
 switchBarContainer.forEach(x => x.addEventListener("click", moveSwitcher));
 const articlesCategListingContentLabel = document.querySelectorAll(".articles-categ-listing__content label");
