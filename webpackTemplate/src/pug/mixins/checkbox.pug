@@ -1,7 +1,10 @@
 mixin checkbox(text, inputId, required=false)
+    - let requiredClass = ""
+    if required 
+        - requiredClass = "_req"
     .checkbox
         if required
-            input(type="checkbox" id=inputId checked required)
+            input(class= requiredClass type="checkbox" id=inputId checked)
         else 
             input(type="checkbox" id=inputId)
         label.checkbox__label(for=inputId)
