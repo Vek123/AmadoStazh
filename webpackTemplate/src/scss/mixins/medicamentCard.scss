@@ -44,6 +44,7 @@
     }
     &__title {
         color: rgb(var(--color-black));
+        @include font("Montserrat", 20px, 28px, 800);
         margin-bottom: 4px;
     }
     &__description {
@@ -77,6 +78,7 @@
 @include laptop {
     .medicament-card {
         background-color: rgb(var(--color-white));
+        text-align: center;
     }
 }
 @include tablet {

@@ -1,6 +1,8 @@
 .medicament-list {
+    position: relative;
     &__swiper-slide {
         height: auto;
+        width: 320px;
     }
     .medicament-card {
         height: 100%;
@@ -23,7 +25,7 @@
     &__button {
         position: absolute;
         top: 50%;
-        z-index: 10;
+        z-index: var(--z-pre-middle);
         transform: scale(-1, 1) translateY(-50%);
         &--prev {
             left: -8px;
@@ -65,6 +67,9 @@
 }
 @include tablet {
     .medicament-list {
+        &__swiper-slide {
+            width: 290px;
+        }
         &__button {
             &--prev {
                 left: calc(20px - 7.5px);
