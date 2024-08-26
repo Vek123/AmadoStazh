@@ -1,0 +1,8 @@
+mixin checkbox(text, inputId, required=false)
+    .checkbox
+        if required
+            input(type="checkbox" id=inputId checked required)
+        else 
+            input(type="checkbox" id=inputId)
+        label.checkbox__label(for=inputId)
+            .checkbox__text!= text
