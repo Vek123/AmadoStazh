@@ -7,6 +7,7 @@
     }
     &__label {
         color: rgb(var(--color-grey));
+        user-select: none;
         display: inline-flex;
         align-items: center;
         cursor: pointer;
@@ -29,6 +30,11 @@
             transition: transform var(--main-hover-delay);
             top: 3px;
             left: 5px;
+        }
+    }
+    &__text {
+        .intext-link {
+            @include font("Roboto", 16px, 22.4px, 400);
         }
     }
 }
