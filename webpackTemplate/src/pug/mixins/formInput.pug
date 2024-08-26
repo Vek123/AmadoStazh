@@ -1,15 +1,15 @@
-mixin formInput(placeholder, types, name, required="false")
+mixin formInput(placeholder, type, classNames, name, required="false")
     - let requiredClass = ""
-    - let typesClasses = []
+    - let classes = []
     if required 
         - requiredClass = "_req"
     -
-        for (let i = 0; i < types.length; i++) {
-            typesClasses.push("form-input__" + types[i]);
+        for (let i = 0; i < classNames.length; i++) {
+            classes.push("form-input__" + classNames[i]);
         }
     .form-input
-        if types[0] === "textarea"
-            textarea.form-input__input(class=typesClasses, class=requiredClass, name=name placeholder=" " rows="7")
+        if type === "textarea"
+            textarea.form-input__input(class=classes, class=requiredClass, name=name placeholder=" " rows="7")
         else
-            input.form-input__input(class=typesClasses, class=requiredClass, type=text name=name placeholder=" ")
+            input.form-input__input(class=classes, class=requiredClass, type=type, name=name placeholder=" ")
         span.form-input__placeholder= placeholder
