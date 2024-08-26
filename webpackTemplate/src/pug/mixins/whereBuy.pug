@@ -1,10 +1,10 @@
-mixin whereBuy(className, title, cards)
+include ~@mixins/componentHeader
+
+mixin whereBuy(className, tag, title, cards)
     .where-buy(class= className)
         .template-container
             .where-buy__content
-                .where-buy__header
-                    .where-buy__tag Где купить
-                    h2.where-buy__title= title 
+                +componentHeader("where-buy__header", tag, title)
                 .where-buy__items
                     each card in cards
                         .where-buy__item-container

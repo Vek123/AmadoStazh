@@ -4,15 +4,15 @@ import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 
 Swiper.use([Navigation, Pagination, EffectFade]);
 const iconsSwipers = new Swiper('.medicament-card__icons-swiper', {
-  nested: true,
-  slidesPerView: 1,
-  pagination: {
-    el: '.medicament-card__icons-swiper .swiper-pagination',
-    clickable: true,
-    dynamicBullets: true,
-    bulletClass: 'medicament-card__bullet',
-    bulletActiveClass: 'medicament-card__bullet--active',
-  },
+    nested: true,
+    slidesPerView: 1,
+    pagination: {
+        el: '.medicament-card__icons-swiper .swiper-pagination',
+        clickable: true,
+        dynamicBullets: true,
+        bulletClass: 'medicament-card__bullet',
+        bulletActiveClass: 'medicament-card__bullet--active',
+    },
 });
 let medicinesSwipers = [];
 document.querySelectorAll(".medicament-list__swiper").forEach(swiper => {
@@ -54,6 +54,7 @@ document.querySelectorAll(".banner-slider__swiper").forEach(swiper => {
             effect: "fade",
             fadeEffect: { crossFade: true },
             slidesPerView: 1,
+            lazyPreloadPrevNext: 2,
             pagination: {
                 el: swiper.querySelector('.banner-slider__pagination'),
                 horizontalClass: 'banner-slider__pagination',
@@ -76,6 +77,7 @@ document.querySelectorAll(".big-cards-list__swiper").forEach(swiper => {
         new Swiper(swiper, {
             spaceBetween: 30,
             slidesPerView: 1,
+            lazyPreloadPrevNext: 2,
             pagination: {
                 el: swiper.querySelector(".big-cards-list__pagination"),
                 horizontalClass: "big-cards-list__pagination",

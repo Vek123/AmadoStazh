@@ -6,8 +6,8 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title #{title}
-
-  body
+    script(src="https://api-maps.yandex.ru/2.1/?apikey=2576fab9-6c7f-4b86-ab8e-560da0c5d849&lang=ru_RU")
+  body(class="preload")
     include ~@components/header
     main.main#main
       block content

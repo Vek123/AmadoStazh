@@ -1,9 +1,138 @@
+include ~@mixins/searchIcon
+include ~@mixins/like
+include ~@mixins/searchInput
+include ~@mixins/closeSmallIcon
+include ~@mixins/squareCloseButton
+include ~@mixins/modal
+
+-
+    let navMenu = {
+        listClassName: "",
+        list: [
+        {name: "Каталог товаров", link: "/ui.html", icon: "/images/header/catalog.svg", className: "catalog", active: false, submenu: [{name: "По направлениям", link: "", listClassName: "mobile-modal-menu__categories-list", className: "", active: false, submenu: [{name: "Антиоксиданты", icon: "/images/header/mobileMenuImages/antioxidanti.svg", link: "#", submenu: []}, {name: "Антистресс", icon: "/images/header/mobileMenuImages/antistress.svg", link: "#", className: "", submenu: []}, {name: "Борьба с вредными привычками", icon: "/images/header/mobileMenuImages/vrednieprivichki.svg", link: "#", className: "", submenu: []}]}, {name: "По активному компоненту", link: "#", className: "", submenu: []}, {name: "По названию", link: "#", className: "", submenu: []}]},
+        {name: "Наши бренды", link: "/ui.html", className: "", active: false, submenu: []},
+        {name: "Акции", link: "/ui.html", className: "", active: false, submenu: []},
+        {name: "Азбука здоровья", link: "/ui.html", className: "", active: false, submenu: []},
+        {name: "Статьи", link: "/ui.html", className: "", active: true, submenu: []},
+        {name: "О компании", link: "/ui.html", className: "", active: false, submenu: []},
+        {name: "Где купить", link: "/ui.html", icon: "/images/header/wherebuy.svg", className: "where-buy", active: false, submenu: []},
+        {name: "Контакты", link: "/ui.html", className: "", active: false, submenu: []},
+        ]};
+    let fixedMenu = [
+        {name: "Каталог", link: "/ui.html", icon: "/images/header/catalog.svg"},
+        {name: "Где купить", link: "/ui.html", icon: "/images/header/wherebuy.svg"},
+    ];
+
 header.header
-  nav.header__nav
-    ul
-      li
-        a(href="/index.html") главная страница
-      li
-        a(href="/404.html") страница 404
-      li
-        a(href="/ui.html") страница ui
+    .header-top
+        .template-container
+            .header-top__inner
+                a(href="/ui.html")
+                    .header-top__logo 
+                        picture 
+                            source(srcset="./images/header/logo-360.svg" media="(max-width: 779px)")
+                            img(src="./images/header/logo.svg" alt="Импловит")
+                .search
+                    +searchInput("search__input", "text", "item", "Поиск товара", "Введите первые буквы")
+                    button.search__like: +like()
+    .header-bottom
+        .template-container 
+            nav.header-bottom__nav
+                ul 
+                    .header-bottom__logo
+                        a(href="/ui.html")
+                            picture
+                                img(src="./images/header/logo-fixed.svg" alt="Импловит")
+                    each item in navMenu.list
+                        li
+                            a(class=[item.className ? "header-bottom__" + item.className : "", item.active ? "header-bottom__active" : ""] href=item.link)
+                                .header-bottom__nav-item-icon
+                                    img(src=item.icon)
+                                =item.name
+                    .header-bottom__actions
+                        .header-bottom__search
+                            +searchInput("header-bottom__input", "text", "item", "Поиск товара", "Введите первые буквы")
+                            button.header-bottom__search-icon 
+                                +searchIcon("")
+                            button.header-bottom__close-icon
+                                +closeSmallIcon("")
+                        button.header-bottom__like: +like("", true)
+    .mobile-fixed-menu
+        ul 
+            li: a(href="/ui.html"): img(src= "/images/header/home.svg" alt="homeIcon")
+            li
+                each item in fixedMenu
+                    a(class=item.className href=item.link)
+                        .mobile-fixed-menu__item-icon
+                            img(src=item.icon)
+                        =item.name
+            li: button.mobile-fixed-menu__modal-button: img(src="/images/header/hamburger.svg")
+    +modal("mobile-modal-menu")
+        .mobile-modal-menu__menu
+            .mobile-modal-menu__header 
+                .mobile-modal-menu__header-left
+                    a.mobile-modal-menu__logo(href="/")
+                        img(src="/images/header/logo-fixed.svg")
+                    button.mobile-modal-menu__close-sub-list
+                        span: include ~@icons/slider/left-arrow-angle.svg
+                        | Назад
+                .mobile-modal-menu__actions
+                    .mobile-modal-menu__search
+                        button.mobile-modal-menu__open-search: +searchIcon("", true)
+                        .mobile-modal-menu__search-input
+                            +searchInput("", "text", "item", "Поиск товара", "Введите первые буквы")
+                            button.mobile-modal-menu__close-search: +closeSmallIcon()
+                    button.mobile-modal-menu__close
+                        +squareCloseButton()
+            .mobile-modal-menu__body 
+                ul(class= navMenu.listClassName)
+                    each item in navMenu.list
+                        - let attributes = {};
+                        if !item.submenu.length 
+                            - attributes.href = item.link;
+                        li
+                            a(class=item.className ? "mobile-modal-menu__" + item.className : "")&attributes(attributes)
+                                if item.icon
+                                    .mobile-modal-menu__item-icon
+                                        img(src=item.icon alt="itemIcon")
+                                = item.name
+                                if item.submenu.length
+                                    span: include ~@icons/slider/left-arrow-angle.svg
+                            if item.submenu.length
+                                ul(class= item.listClassName)
+                                    each subItem in item.submenu
+                                        - let attributes = {};
+                                        if !subItem.submenu.length 
+                                            - attributes.href = subItem.link;
+                                        li
+                                            a(class= subItem.className ? "mobile-modal-menu__" + subItem.className : "")&attributes(attributes)
+                                                if subItem.icon
+                                                    .mobile-modal-menu__item-icon
+                                                        img(src=subItem.icon alt="itemIcon")
+                                                = subItem.name
+                                                if subItem.submenu.length
+                                                    span: include ~@icons/slider/left-arrow-angle.svg
+                                            ul(class= subItem.listClassName class="_no-footer")
+                                                each subSubItem in subItem.submenu
+                                                    - let attributes = {};
+                                                    if !subSubItem.submenu.length 
+                                                        - attributes.href = subSubItem.link;
+                                                    li
+                                                        a(class= subSubItem.className ? "mobile-modal-menu__" + subSubItem.className : "" )&attributes(attributes)
+                                                            if subSubItem.icon
+                                                                .mobile-modal-menu__item-icon
+                                                                    img(src=subSubItem.icon alt="itemIcon")
+                                                            = subSubItem.name
+            .mobile-modal-menu__footer
+                a.mobile-modal-menu__tagline(href="/ui.html")
+                    img(src="/images/header/tagline.svg")
+                a.mobile-modal-menu__favorite(href="#")
+                    +like()
+                    |   Избранное
+                    
+
+                 
+
+
+
+                    

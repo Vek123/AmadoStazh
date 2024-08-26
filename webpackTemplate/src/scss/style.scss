@@ -15,9 +15,12 @@ body {
   min-height: 100vh;
   background-color: rgb(var(--color-background));
 }
-@include phone {
-  body {
-    overflow-x: scroll;
+@include laptop {
+  main {
+    padding-top: var(--padding-header);
+  }
+  footer {
+    padding-bottom: var(--padding-mobile-menu);
   }
 }
 /* Указываем box sizing */
@@ -108,13 +111,51 @@ button {
 
 // end common styles
 
+.preload * {
+  transition: none !important;
+}
+
 
 .swiper-container {
   position: relative;
 }
+.simplebar {
+  &-scrollbar.simplebar-visible::before {
+    opacity: 1;
+  }
+  &-scrollbar {
+    &::before {
+      right: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      opacity: 1;
+      background-color: rgb(var(--color-main));
+    }
+  }
+  &-track.simplebar-vertical, &-track.simplebar-horizontal {
+    background-color: rgb(var(--color-grey-border));
+    border-radius: 7px;
+  }
+  &-track.simplebar-vertical {
+    width: 6px;
+    .simplebar-scrollbar::before {
+      width: 6px;
+    }
+  }
+  &-track.simplebar-horizontal {
+    height: 6px;
+    .simplebar-scrollbar::before {
+      height: 6px;
+    }
+  }
+}
 .template-container {
   width: 1300px;
   margin: 0 auto;
+  position: relative;
+}
+.main {
   position: relative;
 }
 .input-text {
@@ -139,10 +180,54 @@ button {
     position: absolute;
     right: 13px;
   }
+  &__reset {
+    position: absolute;
+    right: 13px;
+    display: none;
+  }
 }
+.plant {
+  position: absolute;
+  z-index: var(--z-hidden);
+  &__second {
+    left: 0;
+    transform-origin: left top;
+  }
+  &__third {
+    right: 0px;
+    transform-origin: right top;
+  }
+  &__fourth {
+    left: 0;
+    transform-origin: left top;
+  }
+  &__fifth {
+    right: 0;
+    transform-origin: right top;
+  }
+  &__sixth {
+    bottom: 0;
+    left: 0;
+    transform-origin: left bottom;
+  }
+}
+
 @include desktop {
   .template-container {
     width: 1180px;
+  }
+  .plant {
+    transform: scale(.63);
+    &__fourth {
+      transform: scale(1);
+    }
+    &__fifth {
+      transform: scale(.7);
+    }
+    &__sixth {
+      bottom: -40px;
+      transform: scale(.9);
+    }
   }
 }
 @include laptop {
@@ -153,10 +238,50 @@ button {
   .medicine-container {
     padding: 0;
   }
+  .plant {
+    &__second {
+      transform: scale(.8);
+    }
+    &__fifth {
+      transform: scale(.8);
+    }
+  }
+}
+@include medium {
+  .plant {
+    transform: scale(.6);
+    &__fourth {
+      transform: scale(.7);
+    }
+    &__fifth {
+      transform: scale(.7);
+    }
+    &__sixth {
+      transform: scale(.75);
+    }
+  }
 }
 @include tablet {
   .template-container {
     padding: 0 20px;
+  }
+  .plant {
+    transform: scale(.41);
+    &__second {
+      transform: scale(.7);
+    }
+    &__third {
+      transform: scale(.5);
+    }
+    &__fourth {
+      transform: scale(.55)
+    }
+    &__fifth {
+      transform: scale(.5)
+    }
+    &__sixth {
+      transform: scale(.6);
+    }
   }
 }
 
@@ -174,7 +299,7 @@ h3 {
   @include font(var(--font-montserrat), 22px, 30.8px, 800);
 }
 h4 {
-  @include font(var(--font-montserrat), 20px, 28px, 800);
+  @include font(var(--font-montserrat), 18px, 25.2px, 800);
 }
 @include tablet {
   h2 {

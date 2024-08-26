@@ -1,5 +1,7 @@
-mixin switcher(className, tag, leftName, leftNameMobile, rightName, rightNameMobile)
-    .switcher
+mixin switcher(className, tag, leftName, leftNameMobile, rightName, rightNameMobile, leftBlockClassName, rightBlockClassName, mobileScaling="True", parentNode="")
+    - var attributes = {"data-left-content-class": leftBlockClassName, "data-right-content-class": rightBlockClassName, "data-mobile-scaling": mobileScaling, "data-parent-node": parentNode}
+    .switcher(class=className)&attributes(attributes)
+        .switcher__tag= tag
         .switcher__header
             h2.switcher__left-block-title= leftName
             h2.switcher__left-block-title.switcher__left-block-title--mobile= leftNameMobile

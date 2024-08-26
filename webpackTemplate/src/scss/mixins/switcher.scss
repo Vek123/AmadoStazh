@@ -1,5 +1,10 @@
 .switcher {
     position: relative;
+    margin: 0 auto;
+    &__tag {
+        @include font("Montserrat", 16px, 22.4px, 400);
+        color: rgb(var(--color-grey));
+    }
     &__header {
         position: relative;
         display: flex;
@@ -11,8 +16,8 @@
         border-radius: 50px;
         outline: 1px solid rgb(var(--color-main));
         outline-offset: 3px;
-        height: 30px;
         flex-grow: 1;
+        height: 28px;
         &__bar-container {
             position: relative;
             width: 100%;
@@ -65,9 +70,13 @@
 }
 @include laptop {
     .switcher {
+        max-width: 586px;
+        &__tag {
+            text-align: center;
+            margin-bottom: 5px;
+        }
         &__header {
             justify-content: unset;
-            margin: 4px 0;
         }
         .switch {
             position: absolute;
@@ -80,7 +89,7 @@
             margin: 0;
             text-align: center;
             @include fontAdaptive(16px, 19.2px, 700);
-            padding: 7px 0;
+            padding: 5px 0;
             display: none;
             &--mobile {
                 display: block;
@@ -90,12 +99,17 @@
 }
 @include tablet {
     .switcher {
-        &__header {
-            justify-content: space-between;
-        }
-        &__left-block-title, &__right-block-title {
-            width: max-content;
-            padding: 7px 12px;
+        max-width: 480px;
+        &[data-mobile-scaling="True"] {
+            .switcher {
+                &__header {
+                    justify-content: space-between;
+                }
+                &__left-block-title, &__right-block-title {
+                    width: max-content;
+                    padding: 7px;
+                }
+            }
         }
     }
 }

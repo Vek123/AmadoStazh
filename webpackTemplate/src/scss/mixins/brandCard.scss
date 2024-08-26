@@ -14,7 +14,7 @@
         position: relative;
         display: flex;
         margin-bottom: 20px;
-        z-index: 20;
+        z-index: var(--z-pre-middle);
         path {
             transition: fill var(--main-hover-delay);
         }
@@ -23,7 +23,7 @@
         display: none;
         position: relative;
         color: rgb(var(--color-black));
-        z-index: 30;
+        z-index: var(--z-middle);
         transition: color var(--main-hover-delay);
         margin-bottom: 10px;
         @include font("Roboto", 18px, 25.2px, 500);
@@ -33,14 +33,14 @@
         margin-bottom: 14px;
         color: rgb(var(--color-black));
         max-width: 201px;
-        z-index: 30;
+        z-index: var(--z-middle);
         transition: color var(--main-hover-delay);
     }
     &__link {
         position: relative;
         @include font("Montserrat", 16px, 22.4px, 500);
         color: rgb(var(--color-main));
-        z-index: 30;
+        z-index: var(--z-middle);
         transition: color var(--main-hover-delay);
         display: flex;
         align-items: center;
@@ -55,7 +55,7 @@
         position: absolute;
         bottom: 0px;
         right: 18px;
-        z-index: 10;
+        z-index: var(--z-pre-middle);
         width: 332px;
         height: 332px;
         img {
@@ -86,10 +86,10 @@
         right: -40px;
     }
     &__animation-img1 {
-        z-index: 5;
+        z-index: var(--z-bottom);
     }
     &__animation-img2 {
-        z-index: 3;
+        z-index: var(--z-background);
     }
     &:hover {
         .brand-card {

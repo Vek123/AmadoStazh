@@ -15,9 +15,6 @@
         width: 440px;
         flex-shrink: 0;
     }
-    &__tag {
-        color: rgb(var(--color-grey));
-    }
     &__items {
         width: 646px;
         grid-gap: 30px;
@@ -83,7 +80,7 @@
             margin-right: 0;
             margin-bottom: 47px;
         }
-        &__tag {
+        .component-header__tag {
             margin-bottom: 5px;
         }
         &__items {
@@ -100,7 +97,7 @@
         &__header {
             margin-bottom: 47px;
         }
-        &__tag {
+        .component-header__tag {
             margin-bottom: 22px;
         }
         &__items {

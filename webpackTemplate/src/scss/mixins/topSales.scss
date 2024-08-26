@@ -1,0 +1,46 @@
+.top-sales {
+    &__header {
+        display: none;
+    }
+    &__switcher {
+        margin-bottom: 35px;
+    }
+    &__left-block, &__right-block {
+        &--hidden {
+            visibility: hidden;
+            position: absolute;
+        }
+    }
+}
+
+@include laptop {
+    .top-sales {
+        &__header {
+            display: block;
+            margin-bottom: 31px;
+        }
+        &__switcher {
+            margin-bottom: 20px;
+            .switcher__tag {
+                display: none;
+            }
+        }
+    }
+}
+@include medium {
+    .top-sales {
+        &__header {
+            margin-bottom: 43px;
+        }
+        &__switcher {
+            margin-bottom: 30px;
+        }
+    }
+}
+@include tablet {
+    .top-sales {
+        &__header {
+            margin-bottom: 23px;
+        }
+    }
+}

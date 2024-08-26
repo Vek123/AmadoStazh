@@ -1,8 +1,8 @@
 include ~@mixins/productionBall
 include ~@mixins/mainButton
 
-mixin productionCard(className, image, buttonText, title, image_id=0, type=1, desc="Описание", link="#")
-    .production-card(class= "production-card--type" + type, class= className)
+mixin productionCard(className, image, buttonText, title, image_id=0, type=1, desc="Описание", link="#", reverse=false)
+    .production-card(class= "production-card--type" + type, class= className, class= reverse ? "production-card--reverse" : "")
         .production-card__image: +productionBall("", image, image_id, type, link)
         .production-card__info
             if title

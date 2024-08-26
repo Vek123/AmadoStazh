@@ -1,0 +1,12 @@
+.modal {
+    z-index: var(--z-top);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    visibility: hidden;
+    transition: all var(--main-hover-delay);
+    &--visible {
+        background-color: rgba(0, 0, 0, .3);
+        visibility: visible;
+    }
+  }

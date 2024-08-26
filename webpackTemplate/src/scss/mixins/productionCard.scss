@@ -9,7 +9,7 @@
         width: fit-content;
     }
     &__info {
-        max-width: 637px;
+        max-width: 627px;
     }
     &__title {
         margin-bottom: 16px;
@@ -25,11 +25,11 @@
             padding: 12px 12px;
         }
     }
-    &__image {
-        .production-ball {
-            &--type2 {
-                width: 612px;
-                height: 489px;
+    &--reverse {
+        flex-direction: row-reverse;
+        .production-card {
+            &__info {
+                max-width: 525px;
             }
         }
     }

@@ -1,8 +1,6 @@
 //components
 @import './components/header';
 @import './components/footer';
-@import './components/mainHeader.scss';
-@import './components/mainFooter.scss';
 
 //mixins
 @import './mixins/card';
@@ -17,6 +15,7 @@
 @import './mixins/tag.scss';
 @import './mixins/brandCard.scss';
 @import './mixins/arrow.scss';
+@import './mixins/modal.scss';
 @import './mixins/switcher.scss';
 @import './mixins/advantage.scss';
 @import './mixins/searchIcon.scss';
@@ -36,12 +35,16 @@
 @import './mixins/whereBuy.scss';
 @import './mixins/brandsList.scss';
 @import './mixins/advantagesList.scss';
+@import './mixins/searchInput.scss';
+@import './mixins/buyMap.scss';
+@import './mixins/topSales.scss';
 
 
 //pages
 @import './pages/404';
 @import './pages/index';
 @import './pages/ui';
+@import './pages/main.scss';
 
 //templates
 @import './templates/main-template';

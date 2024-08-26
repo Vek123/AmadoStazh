@@ -1,6 +1,6 @@
 .tag {
     position: absolute;
-    z-index: 10;
+    z-index: var(--z-pre-middle);
     background-color: rgb(var(--color-green));
     border-radius: 5px;
     padding: 4px 15px;

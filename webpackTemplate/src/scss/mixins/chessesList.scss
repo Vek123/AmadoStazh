@@ -1,15 +1,8 @@
 .chesses-list {
-    &__tag {
-        @include font(Montserrat, 16px, 22.4px, 400);
-        color: rgb(var(--color-grey));
-    }
-    &__title {
+    &__header {
         margin-bottom: 35px;
     }
     &__card {
-        &:nth-child(even) {
-            flex-direction: row-reverse;
-        }
         &:nth-child(n+2) {
             margin-top: 35px;
         }
@@ -17,17 +10,14 @@
 }
 @include laptop {
     .chesses-list {
-        &__tag, &__title {
-            text-align: center;
-        }
-        &__title {
+        &__header {
             margin-bottom: 100px;
         }
     }
 }
 @include medium {
     .chesses-list {
-        &__title {
+        &__header {
             margin-bottom: 50px;
         }
         &__card {
@@ -39,10 +29,10 @@
 }
 @include tablet {
     .chesses-list {
-        &__tag {
+        .component-header__tag {
             margin-bottom: 13px;
         }
-        &__title {
+        &__header {
             margin-bottom: 20px;
         }
     }

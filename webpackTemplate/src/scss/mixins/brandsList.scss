@@ -1,8 +1,4 @@
 .brands-list {
-    &__tag {
-        @include font(Montserrat, 16px, 22.4px, 400);
-        color: rgb(var(--color-grey));
-    }
     &__header {
         margin-bottom: 38px;
     }
@@ -52,7 +48,6 @@
 @include laptop {
     .brands-list {
         &__header {
-            text-align: center;
             margin-bottom: 30px;
         }
         &__brands-container {
@@ -67,7 +62,7 @@
                     .brand-card {
                         &__header {
                             position: absolute;
-                            z-index: 10;
+                            z-index: var(--z-pre-middle);
                             top: 50%;
                             left: 60px;
                             transform: translateY(-60%);
@@ -86,7 +81,7 @@
 }
 @include tablet {
     .brands-list {
-        &__tag {
+        .component-header__tag {
             margin-bottom: 7px;
         }
         &__header {
@@ -116,6 +111,9 @@
                     }
                 }
             }
+        }
+        &__button {
+            width: 320px;
         }
     }
 }

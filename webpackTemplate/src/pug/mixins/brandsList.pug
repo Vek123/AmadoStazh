@@ -1,5 +1,6 @@
 include ~@mixins/brandCard
 include ~@mixins/mainButton
+include ~@mixins/componentHeader
 
 mixin brandsList(className, tag, title, cards, buttonText, link="#")
     -
@@ -8,9 +9,7 @@ mixin brandsList(className, tag, title, cards, buttonText, link="#")
         var iterClassName = ""
     .brands-list(class= className)
         .template-container
-            .brands-list__header
-                .brands-list__tag= tag
-                h2.brands-list__title= title
+            +componentHeader("brands-list__header", tag, title)
             .brands-list__brands-container
                 while iter < cards.length
                     if iter >= cards.length - last

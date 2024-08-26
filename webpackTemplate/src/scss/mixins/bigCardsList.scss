@@ -1,8 +1,5 @@
 .big-cards-list {
-    &__tag {
-        color: rgb(var(--color-grey));
-    }
-    &__title {
+    &__header {
         margin-bottom: 30px;
     }
     &__container {
@@ -12,6 +9,7 @@
     }
     &__swiper {
         display: none;
+        overflow: visible;
         .swiper-wrapper {
             margin-bottom: 120px;
         }
@@ -41,22 +39,23 @@
         width: 396px;
         min-height: 46px;
         margin: 0 auto;
-        z-index: 1;
+        z-index: var(--z-bottom);
     }
 }
 @include laptop {
     .big-cards-list {
-        &__tag {
-            text-align: center;
+        &__header {
+            margin-bottom: 72px;
         }
-        &__title {
-            text-align: center;
+        &__container {
+            justify-content: center;
+            column-gap: 150px;
         }
         &__minis {
             width: 282px;
+            flex-direction: column;
             .big-cards-list {
                 &__card {
-                    margin-left: auto;
                     &:nth-child(even) {
                         display: none;
                     }
@@ -67,6 +66,9 @@
 }
 @include medium {
     .big-cards-list {
+        &__header {
+            margin-bottom: 32px;
+        }
         &__container {
             display: none;
         }
@@ -84,10 +86,10 @@
 @include tablet {
     .big-cards-list {
         padding-bottom: 76px;
-        &__tag {
+        .component-header__tag {
             margin-bottom: 11px;
         }
-        &__title {
+        &__header {
             margin-bottom: 18px;
         }
         &__swiper {

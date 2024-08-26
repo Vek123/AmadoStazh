@@ -9,6 +9,7 @@ mixin bannerSlider(className, bannerList)
                 each banner in bannerList 
                     .swiper-slide.banner-slider__slide
                         +banner(banner.className, banner.title, banner.desc, banner.buttonText, banner.buttonLink, banner.linkText, banner.link, banner.productImage, banner.backgroundImage, banner.backgroundImageWide, banner.imageId, banner.brand)
+                        .swiper-lazy-preloader
             .template-container
                 .banner-slider__navigation
                     .banner-slider__buttons

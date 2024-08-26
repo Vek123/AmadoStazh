@@ -1,0 +1,226 @@
+.buy-map {
+    &__switcher {
+        display: none;
+    }
+    &__header {
+        margin-bottom: 33px;
+    }
+    &__city {
+        display: flex;
+        margin-bottom: 33px;
+        @include font("Montserrat", 18px, 25.2px, 400);
+        &-button {
+            display: flex;
+            align-items: center;
+            @include font("Montserrat", 18px, 25.2px, 700);
+            svg {
+                display: flex;
+                margin-left: 9px;
+                transition: transform var(--main-hover-delay);
+            }
+        }
+        span {
+            margin-right: 9px;
+        }
+    }
+    &__button-container {
+        position: relative;
+        &--active {
+            .buy-map {
+                &__scroll-cities {
+                    border: 1px solid rgb(var(--color-grey-border));
+                    transform: scaleY(1);
+                }
+                &__cities-menu {
+                    label {
+                        color: rgb(var(--color-black-full));
+                    }
+                }
+                &__city {
+                    &-button {
+                        svg {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__scroll-cities {
+        border: 0px solid rgb(var(--color-grey-border));
+        box-sizing: content-box;
+        overflow-y: auto;
+        border-radius: 0px 0px 10px 10px;
+        background-color: rgb(var(--color-white));
+        line-height: 25.2px;
+        max-height: 200px;
+        width: max-content;
+        position: absolute;
+        transform: scaleY(0);
+        transform-origin: top;
+        will-change: transform;
+        z-index: var(--z-pre-middle);
+        transition: transform var(--main-hover-delay), border var(--main-hover-delay);
+        .simplebar-track.simplebar-vertical {
+            margin: 4px 4px 14px 0px;
+        }
+    }
+    &__cities-menu {
+        padding: 10px 28px 24px 18px;
+        bottom: 0;
+        input {
+            display: none;
+        }
+        label {
+            display: block;
+            cursor: pointer;
+            color: transparent;
+            width: 250px;
+            transition: color var(--main-hover-delay);
+            padding: 6px 0;
+            &:hover {
+                color: rgb(var(--color-main));
+            }
+        }
+    }
+    &__content {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__map-points {
+        width: 433px;
+    }
+    &__scroll-points {
+        padding-right: 18px;
+    }
+    &__search-pharmacy {
+        margin-bottom: 41px;
+    }
+    &__scroll-points {
+        height: 410px;
+        overflow-y: auto;
+        li:not(:last-child) {
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgb(var(--color-grey-border));
+        }
+        li {
+            color: rgb(var(--color-black-full));
+            .buy-map__address {
+                &-title {
+                    transition: color var(--main-hover-delay);
+                    @include font("Montserrat", 16px, 22.4px, 700);
+                }
+                &-desc {
+                    @include font("Montserrat", 16px, 26px, 400);
+                }
+            }
+        }
+    }
+    &__point-button {
+        text-align: left;
+        width: 100%;
+        cursor: pointer;
+        padding: 11px;
+        border-radius: 20px;
+        transition: background-color var(--main-hover-delay);
+        &--active, &:hover {
+            background-color: rgb(var(--color-white));
+            .buy-map__address-title {
+                color: rgb(var(--color-main));
+            }
+        }
+    }
+    &__ya-map {
+        width: 764px;
+        height: 494px;
+    }
+}
+@include desktop {
+    .buy-map {
+        &__ya-map {
+            width: 671px;
+        }
+    }
+}
+@include laptop {
+    .buy-map {
+        &__header {
+            text-align: center;
+            margin-bottom: 27px;
+        }
+        &__city {
+            justify-content: center;
+            margin-bottom: 41px;
+        }
+        &__content {
+            justify-content: center;
+            column-gap: 18px;
+        }
+        &__scroll-points {
+            padding-right: 8px;
+        }
+        &__map-points {
+            flex-grow: 1;
+            flex-basis: 50%;
+        }
+        &__ya-map {
+            flex-grow: 1;
+            flex-basis: 50%;
+        }
+    }
+}
+@include medium {
+    .buy-map {
+        &__header {
+            margin-bottom: 30px;
+        }
+        &__city {
+            margin-bottom: 30px;
+        }
+        &__map-points {
+            width: 100%;
+        }
+        &__content {
+            display: block;
+        }
+        &__switcher {
+            display: block;
+            margin-bottom: 33px;
+        }
+        &__scroll-points {
+            &--hidden {
+                display: none;
+            }
+        }
+        &__search-pharmacy {
+            margin-bottom: 30px;
+        }
+        &__ya-map {
+            width: 100%;
+            &--hidden {
+                display: none;
+            }
+        }
+    }
+}
+@include tablet {
+    .buy-map {
+        .component-header__tag {
+            margin-bottom: 16px;
+        }
+        &__header {
+            margin-bottom: 25px;
+        }
+        &__city {
+            margin-bottom: 27px;
+        }
+        &__switcher {
+            width: 100%;
+            margin-bottom: 39px;
+        }
+        &__header {
+            margin-bottom: 27px;
+        }
+    }
+}

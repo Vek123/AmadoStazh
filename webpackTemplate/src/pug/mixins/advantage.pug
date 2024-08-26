@@ -1,7 +1,7 @@
 mixin advantage(className, color, title, desc)
     case color 
         when "red"
-            .advantage(class= className).advantage--red
+            .advantage.advantage--red(class= className)
                 .advantage__background
                     .advantage__background-light
                         include ~@images/advantageImages/red/background.svg
@@ -10,7 +10,7 @@ mixin advantage(className, color, title, desc)
                 .advantage__title= title
                 .advantage__desc= desc
         when "biruse"
-            .advantage(class= className).advantage--biruse
+            .advantage.advantage--biruse(class= className)
                 .advantage__background
                     .advantage__background-light
                         include ~@images/advantageImages/biruse/background.svg
@@ -19,7 +19,7 @@ mixin advantage(className, color, title, desc)
                 .advantage__title= title
                 .advantage__desc= desc
         when "blue"
-            .advantage(class= className).advantage--blue
+            .advantage.advantage--blue(class= className)
                 .advantage__background
                     .advantage__background-light
                         include ~@images/advantageImages/blue/background.svg
@@ -28,7 +28,7 @@ mixin advantage(className, color, title, desc)
                 .advantage__title= title
                 .advantage__desc= desc
         when "yellow"
-            .advantage(class= className).advantage--yellow
+            .advantage.advantage--yellow(class= className)
                 .advantage__background
                     .advantage__background-light
                         include ~@images/advantageImages/yellow/background.svg
@@ -37,7 +37,7 @@ mixin advantage(className, color, title, desc)
                 .advantage__title= title
                 .advantage__desc= desc
         when "pink"
-            .advantage(class= className).advantage--pink
+            .advantage.advantage--pink(class= className)
                 .advantage__background
                     .advantage__background-light
                         include ~@images/advantageImages/pink/background.svg
@@ -46,7 +46,7 @@ mixin advantage(className, color, title, desc)
                 .advantage__title= title
                 .advantage__desc= desc
         when "green"
-            .advantage(class= className).advantage--green
+            .advantage.advantage--green(class= className)
                 .advantage__background
                     .advantage__background-light
                         include ~@images/advantageImages/green/background.svg

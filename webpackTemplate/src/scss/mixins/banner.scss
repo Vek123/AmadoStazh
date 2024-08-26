@@ -18,7 +18,7 @@
     }
     &__content {
         width: 489px;
-        z-index: 10;
+        z-index: var(--z-pre-middle);
         position: relative;
         padding-top: 87px;
     }

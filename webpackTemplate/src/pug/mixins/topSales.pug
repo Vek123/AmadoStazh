@@ -1,0 +1,36 @@
+include ~@mixins/componentHeader
+
+mixin topSales(className, tag, title)
+    -
+        var popularMedicaments = [
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Новинка"},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image2.png", "./images/medicamentCardIcons/image1.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Акция"},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3."},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Акция"},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3."},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image2.png", "./images/medicamentCardIcons/image1.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3."},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3."},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Новинка"},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Новинка"},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Новинка"},
+        ]
+        var customersMedicaments = [
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image2.png", "./images/medicamentCardIcons/image1.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Новинка"},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image2.png", "./images/medicamentCardIcons/image1.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Акция"},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image2.png", "./images/medicamentCardIcons/image1.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3."},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image2.png", "./images/medicamentCardIcons/image1.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Акция"},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3."},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3."},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3."},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Новинка"},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Новинка"},
+            {title: "Витамин D3 2000 ME", link: "#", icons: ["./images/medicamentCardIcons/image1.png", "./images/medicamentCardIcons/image2.png"], pharmacy: "Импловит", description: "Дополнительный источник витамина D3.", tag: "Новинка"},
+        ]
+    
+    .top-sales(class= className)
+        +componentHeader("top-sales__header", tag, title)
+        .template-container: .top-sales__switcher: +switcher("", "Топ продаж", "Популярные товары", "Популярное", "Выбор покупателя", "Выбор покупателя", "top-sales__left-block", "top-sales__right-block", "True", "top-sales")
+        .top-sales__left-block
+            .template-container.medicine-container: +medicamentList("", popularMedicaments)
+        .top-sales__right-block.top-sales__right-block--hidden
+            .template-container.medicine-container: +medicamentList("", customersMedicaments)

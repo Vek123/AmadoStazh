@@ -25,6 +25,7 @@ include ~@mixins/bigCardsList
 include ~@mixins/whereBuy
 include ~@mixins/brandsList
 include ~@mixins/advantagesList
+include ~@mixins/buyMap
 
 block vars
   - title = 'ui страница'
@@ -100,6 +101,23 @@ block vars
       {className: "", color: "red", title: "Контроль качества", desc: "Каждый продукт проходит несколько проверок на всех этапах производства и упаковки"},
       {className: "", color: "yellow", title: "Импортная сырьевая база", desc: "В продуктах используется растительное сырье импортного производства"}
     ]
+    var whereBuyCities = [
+        {name: "Москва", slug: "moscow"},
+        {name: "Александров", slug: "alexandrov"}
+      ];
+    var whereBuyAddresses = {
+      "Москва": [
+        {id: 0, title: "г. Москва, Открытое ш., д. 2 к.12", desc: "м.Бульвар Рокоссовского<br/> +7 (495) 215-52-15<br/> Пн-Пт: 08:00-22:00; Сб-Вс: 09:00-21:00;"},
+        {id: 1, title: "г. Москва, ул. Воронцовская, д. 48", desc: "м. Пролетарская<br/> +7 (495) 215-52-15<br/> Пн-Пт: 08:00-21:00; Сб-Вс: 09:00-21:00;"},
+        {id: 2, title: "г. Москва, ул. Парковая 3-я, д. 8/19", desc: "м. Измайловская<br/> +7 (495) 215-52-15<br/> Пн-Пт: 08:00-21:00; Сб-Вс: 09:00-21:00;"},
+        {id: 3, title: "г. Москва, Зелёный пр-кт, д. 8", desc: "м. Перово<br/>+7 (495) 215-52-15<br>Пн-Вс: 09:00-21:00;"}
+      ], 
+      "Александров": [
+        {id: 0, title: "ВО, г. Александров, ул. Терешковой, д. 6", desc: "+7 (492) 222-24-96<br/>Пн-Вс: 08:00-20:00;"},
+        {id: 1, title: "г. Александров, ул. Ленина, д. 13 к. 1", desc: "+7 (492) 222-24-96<br/>Пн-Вс: 09:00-21:00;"},
+        {id: 2, title: "ВО, г. Александров, ул. Ленина, д. 26", desc: "+7 (492) 222-24-96<br/>Пн-Вс: 08:00-21:00;"}
+      ],
+    }
 
 block content
   section.ui
@@ -145,11 +163,11 @@ block content
     br
     +arrow("", false)
     br
-    .template-container: +switcher("", "Топ продаж", "Популярные товары", "Популярное моё", "Выбор покупателя", "Выбор покупателя")
+    .template-container: +switcher("", "Топ продаж", "Популярные товары", "Популярное моё", "Выбор покупателя", "Выбор покупателя", "switcher__left-block-content", "switcher__right-block-content", "False")
       .switcher__left-block-content Контент левого блока
       .switcher__right-block-content.switcher__right-block-content--hidden Контент правого блока
     br
-    .template-container: +switcher("", "Топ продаж", "Популярные товары", "Популярное", "Выбор покупателя", "Выбор покупателя")
+    .template-container: +switcher("", "Топ продаж", "Популярные товары", "Популярное", "Выбор покупателя", "Выбор покупателя", "switcher__left-block-content", "switcher__right-block-content")
       .switcher__left-block-content Контент левого блока
       .switcher__right-block-content.switcher__right-block-content--hidden Контент правого блока
     br
@@ -185,9 +203,6 @@ block content
       +articleBallCard("", "./images/articleBalls/second-article.jpeg", "В тренде! Отвечаем на главные вопросы о БАДах", "Описание", "#", false, 7, 4)
       +articleBallCard("", "./images/articleBalls/third-article.jpeg", "В тренде! Отвечаем на главные вопросы о БАДах", "Описание", "#", false, 8, 3)
       +articleBallCard("", "./images/articleBalls/fourth-article.jpeg", "Ангина. Лечим, не калечим", "Описание", "#", false, 9, 4)
-    include ~@components/mainHeader
-    br
-    include ~@components/mainFooter
     br
     +productionBall("", "./images/productionCards/production1.png", 12, 1)
     br
@@ -203,8 +218,12 @@ block content
     br
     .template-container: +bigCardsList("", "Журнал", "Наша забота о Вашем здоровье", "Перейти ко всем статьям", "#", articlesCards)
     br
-    +whereBuy("", "Спрашивайте продукты Импловит в аптеках", pharmacyCards)
+    +whereBuy("", "Где купить", "Спрашивайте продукты Импловит в аптеках", pharmacyCards)
     br
     +brandsList("", "У нас несколько линеек продуктов", "Наши бренды", brandCards, "Перейти ко всем брендам")
     br
-    +advantagesList("", advantages)
+    +advantagesList("")
+      each advantage in advantages 
+        +advantage(["advantages-list__advantage", advantage.className], advantage.color, advantage.title, advantage.desc)
+    br
+    +buyMap("", "Импловит в аптеках города", "Где купить", whereBuyCities, whereBuyAddresses)

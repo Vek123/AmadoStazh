@@ -1,0 +1,39 @@
+include ~@mixins/searchInput
+include ~@mixins/switcher
+include ~@mixins/componentHeader
+
+mixin buyMap(className, tag, title, cities, addresses)
+    -
+        var current_city = cities[0];
+        var city_addresses = addresses[current_city.name];
+        var _city_addresses = JSON.stringify(city_addresses);
+        var mapId = "ya-map-" + mapId;
+        
+        
+    .buy-map
+        .template-container
+            +componentHeader("buy-map__header", "Импловит в аптеках города", "Где купить")
+            .buy-map__switcher
+                +switcher("", "", "Списком", "Списком", "На карте", "На карте", "buy-map__scroll-points", "buy-map__ya-map", "False", "buy-map")
+            .buy-map__city
+                span Город:
+                .buy-map__button-container
+                    button.buy-map__city-button
+                        .buy-map__city-name= current_city.name
+                        include ~@icons/buttons/arrow-angle-down.svg
+                    .buy-map__scroll-cities
+                        .buy-map__cities-menu
+                            each city in cities
+                                input(id= city.slug, type= "radio", name= city.slug)
+                                label(for= city.slug, )= city.name
+            .buy-map__content
+                .buy-map__map-points
+                    +searchInput("buy-map__search-pharmacy", "text", "address", "Введите адрес аптеки") 
+                    .buy-map__scroll-points
+                        ul
+                            each address in city_addresses
+                                li
+                                    button(data-address-id=address.id).buy-map__point-button
+                                        .buy-map__address-title!= address.title
+                                        .buy-map__address-desc!= address.desc
+                .buy-map__ya-map.buy-map__ya-map--hidden#ya-map
