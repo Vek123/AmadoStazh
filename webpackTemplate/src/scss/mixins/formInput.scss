@@ -1,0 +1,14 @@
+.form-input {
+    padding: 18px;
+    @include fontAdaptive(17px, 19.92px, 400);
+    color: rgb(var(--color-grey));
+    width: 100%;
+    border: 1px solid rgb(var(--color-grey-border));
+    border-radius: 50px;
+    &__textarea {
+        border-radius: 20px;
+        height: 178px;
+        resize: none;
+        vertical-align: text-top;
+    }
+}

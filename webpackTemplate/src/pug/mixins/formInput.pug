@@ -1,0 +1,11 @@
+mixin formInput(placeholder, type, name, required="false")
+    if type === "textarea"
+        if required
+            textarea.form-input(class="form-input__" + type, name=name placeholder=placeholder required)
+        else
+            textarea.form-input(class="form-input__" + type, name=name placeholder=placeholder)
+    else
+        if required
+            input.form-input(class="form-input__" + type, type=text name=name placeholder=placeholder required)
+        else 
+            input.form-input(class="form-input__" + type, type=text name=name placeholder=placeholder)
