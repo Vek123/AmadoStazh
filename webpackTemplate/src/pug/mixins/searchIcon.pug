@@ -1,3 +1,6 @@
-mixin searchIcon(className)
+mixin searchIcon(className, big=false)
     .search-icon(class= className)
-        include ~@icons/search.svg
+        if big 
+            include ~@icons/search-big.svg
+        else
+            include ~@icons/search.svg
