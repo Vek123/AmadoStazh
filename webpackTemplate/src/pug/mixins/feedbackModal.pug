@@ -1,0 +1,24 @@
+include ~@mixins/formInput
+include ~@mixins/checkbox
+include ~@mixins/mainButton
+include ~@mixins/squareCloseButton
+
+mixin feedbackModal(className, title, subtitle)
+    .feedback-modal(class=className)
+        .feedback-modal__close-button
+            +squareCloseButton()
+        .form-container
+            h2.feedback-modal__title= title
+            .feedback-modal__subtitle= subtitle
+            .feedback-modal__form
+                form.form(action="#" method="POST")
+                    .form__item
+                        +formInput("Введите ваше имя:", "text", "name")
+                    .form__item
+                        +formInput("Введите ваш телефон или e-mail:", "text", "contact", true)
+                    .form__item
+                        +formInput("Введите ваше сообщение", "textarea", "message", true)
+                    .form__item
+                        +checkbox(`Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a href="#">персональных данных</a>`, "feedback-modal-form__checkbox", true)
+                    .form__button
+                        +mainButton("", "Отправить", true, "", true, "submit")

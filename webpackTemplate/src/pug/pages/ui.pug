@@ -26,6 +26,9 @@ include ~@mixins/whereBuy
 include ~@mixins/brandsList
 include ~@mixins/advantagesList
 include ~@mixins/buyMap
+include ~@mixins/formInput
+include ~@mixins/checkbox
+include ~@mixins/feedbackModal
 
 block vars
   - title = 'ui страница'
@@ -227,3 +230,9 @@ block content
         +advantage(["advantages-list__advantage", advantage.className], advantage.color, advantage.title, advantage.desc)
     br
     +buyMap("", "Импловит в аптеках города", "Где купить", whereBuyCities, whereBuyAddresses)
+    br
+    +formInput("", "Введите ваше имя:", "text", "name")
+    +formInput("", "Ваше сообщение", "textarea", "name")
+    +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a href="#">персональных данных</a>`, "checkbox")
+    br
+    +feedbackModal("", "Обратная связь", "Ваше мнение очень важно для нас")

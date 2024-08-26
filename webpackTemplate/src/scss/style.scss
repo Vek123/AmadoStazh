@@ -155,6 +155,11 @@ button {
   margin: 0 auto;
   position: relative;
 }
+.form-container {
+  padding-top: 71px;
+  width: 450px;
+  margin: 0 auto;
+}
 .main {
   position: relative;
 }
@@ -184,6 +189,11 @@ button {
     position: absolute;
     right: 13px;
     display: none;
+  }
+}
+.form {
+  &__item {
+    margin-bottom: 20px;
   }
 }
 .plant {
