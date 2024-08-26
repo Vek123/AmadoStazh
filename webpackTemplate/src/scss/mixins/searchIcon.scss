@@ -1,14 +1,13 @@
 .search-icon {
     display: flex;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
     path {
-        transition: fill var(--main-hover-delay);
+        transition: fill var(--main-hover-delay), stroke var(--main-hover-delay);
     }
     &:hover {
         path {
             fill: rgb(var(--color-main-lighter));
+            stroke: rgb(var(--color-main-lighter));
         }
     }
 }
