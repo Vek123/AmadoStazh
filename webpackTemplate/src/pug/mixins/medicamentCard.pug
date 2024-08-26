@@ -12,11 +12,12 @@ mixin medicamentCard(className, card)
                         .swiper-slide
                             .medicament-card__image-container
                                 a(href= card.link).medicament-card__image
-                                            img(src= icon)
+                                            img(src= icon, loading="lazy", alt="Product image")
+                            .swiper-lazy-preloader
                 .swiper-pagination
         .medicament-card__info
             a(href= card.link).medicament-card__pharmacy= card.pharmacy
-            a(href= card.link).medicament-card__title: h4= card.title
+            a(href= card.link).medicament-card__title= card.title
             a(href= card.link).medicament-card__description= card.description
             +mainButton('medicament-card__button', text= 'Подробнее', false, link= card.link)
         
