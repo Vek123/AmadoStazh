@@ -3,7 +3,7 @@
     color: rgb(var(--color-main));
     transition: color var(--main-hover-delay);
     width: max-content;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     svg {
         display: inline-block;
