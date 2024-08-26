@@ -1,5 +1,8 @@
-mixin mainButton(className, text= 'Кнопка', invert= false, link='#')
+mixin mainButton(className, text= 'Кнопка', invert= false, link='#', button=false, type="")
     - var classList = ['main-button']
     if invert 
         - classList.push('main-button--inverted')
-    a(class= classList, class= className, href= link)= text
+    if button
+        button(class= classList, class= className, type=type)= text
+    else
+        a(class= classList, class= className, href= link)= text
