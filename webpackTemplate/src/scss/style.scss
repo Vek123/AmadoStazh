@@ -164,7 +164,6 @@ button {
   position: relative;
 }
 .input-text {
-  border: 1px solid rgb(var(--color-grey-border));
   width: 100%;
   height: 100%;
   border-radius: 50px;
@@ -172,14 +171,14 @@ button {
   position: relative;
   display: flex;
   align-items: center;
-  input {
+  &__input {
     height: 100%;
     width: 100%;
-    padding: 15px;
+    padding: 0 15px;
     border: none;
-    position: absolute;
     border-radius: 50px;
     font-size: 15px;
+    border: 1px solid rgb(var(--color-grey-border));
   }
   &__icon {
     position: absolute;

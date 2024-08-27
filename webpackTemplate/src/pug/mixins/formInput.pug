@@ -7,9 +7,9 @@ mixin formInput(placeholder, type, classNames, name, required="false")
         for (let i = 0; i < classNames.length; i++) {
             classes.push("form-input__" + classNames[i]);
         }
-    .form-input
+    .input-text.form-input
         if type === "textarea"
-            textarea.form-input__input(class=classes, class=requiredClass, name=name placeholder=" " rows="7")
+            textarea.input-text__input.form-input__input(class=classes, class=requiredClass, name=name placeholder=" " rows="7")
         else
-            input.form-input__input(class=classes, class=requiredClass, type=type, name=name placeholder=" ")
+            input.input-text__input.form-input__input(class=classes, class=requiredClass, type=type, name=name placeholder=" ")
         span.form-input__placeholder= placeholder

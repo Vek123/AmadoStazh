@@ -2,6 +2,6 @@ mixin searchInput(className, input_type, input_name, placeholder, placeholderFoc
     .search-input(class= className)
         .input-text.search-input__input
             form(method="GET")
-                input(type=input_type, name=input_name, placeholder=placeholder, data-default-placeholder= placeholder, data-focus-placeholder= placeholderFocus)
+                input.input-text__input(type=input_type, name=input_name, placeholder=placeholder, data-default-placeholder= placeholder, data-focus-placeholder= placeholderFocus)
                 button.input-text__icon(type="submit"): +searchIcon()
                 button.input-text__reset(type="reset"): +closeSmallIcon()
