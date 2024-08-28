@@ -1,8 +1,13 @@
 .checkbox {
-    input {
+    &__input {
         display: none;
         &:checked ~ .checkbox__label::after {
             transform: scale(1);
+        }
+        &--error {
+            ~ .checkbox__label::before {
+                border-color: rgb(var(--color-red-darker));
+            }
         }
     }
     &__label {

@@ -1,0 +1,6 @@
+mixin inputText(className, type, name, placeholder, errorMessage)
+    .input-text(class= className)
+        input.input-text__input(type=type, name=name placeholder=" ")
+        span.input-text__placeholder= placeholder
+        span.input-text__icon
+        span.input-text__error-message= errorMessage

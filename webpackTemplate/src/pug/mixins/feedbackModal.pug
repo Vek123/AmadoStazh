@@ -1,4 +1,5 @@
-include ~@mixins/formInput
+include ~@mixins/inputText
+include ~@mixins/textarea
 include ~@mixins/checkbox
 include ~@mixins/mainButton
 include ~@mixins/squareCloseButton
@@ -13,12 +14,12 @@ mixin feedbackModal(className, title, subtitle)
             .feedback-modal__form
                 form.form(action="#" method="POST")
                     .form__item
-                        +formInput("Введите ваше имя:", "text", ["text"], "name")
+                        +inputText("", "text", "name", "Введите ваше имя:", "Это поле обязательно для заполнения")
                     .form__item
-                        +formInput("Введите ваш телефон или e-mail:", "text", ["contacts"], "contacts", true)
+                        +inputText("", "text", "contacts", "Введите ваш телефон или e-mail:", "Это поле обязательно для заполнения")
                     .form__item
-                        +formInput("Введите ваше сообщение", "textarea", ["textarea"], "message", true)
+                        +textarea("", "message", "Введите ваше сообщение", "Это поле обязательно для заполнения", 7)
                     .form__item
-                        +checkbox(`Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" href="#">персональных данных</a>`, "feedback-modal-form__checkbox", true)
+                        +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" href="#">персональных данных</a>`, "feedback-modal-form__checkbox", "aggreement", true)
                     .form__button
                         +mainButton("", "Отправить", true, "", true, "submit")

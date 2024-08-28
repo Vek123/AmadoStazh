@@ -1,0 +1,6 @@
+mixin textarea(className, name, placeholder, errorMessage, rowsCount=7)
+    .textarea(class= className)
+        textarea.textarea__textarea(name= name, placeholder=" ", rows= rowsCount)
+        span.textarea__placeholder= placeholder
+        span.textarea__icon
+        span.textarea__error-message= errorMessage

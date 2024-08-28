@@ -1,0 +1,97 @@
+.input-text {
+    width: 100%;
+    font-size: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    &__input {
+        height: 55px;
+        width: 100%;
+        padding: 0 15px;
+        border-radius: 50px;
+        border: 1px solid rgb(var(--color-grey-border));
+        &:focus, &:not(&:placeholder-shown) {
+            + .input-text {
+                &__placeholder {
+                    top: 0;
+                    transform: scale(.8);
+                }
+            }
+        }
+        &--correct {
+            border-color: rgb(var(--color-violet-lighter));
+            ~ .input-text {
+                &__icon {
+                    content: url("/images/correct.svg");
+                    pointer-events: none;
+                }
+            }
+        }
+        &--error {
+            border-color: rgb(var(--color-red-darker));
+            ~ .input-text {
+                &__icon {
+                    content: url("/images/close-small-red.svg");
+                    cursor: pointer;
+                }
+                &__error-message {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    &__icon {
+        position: absolute;
+        right: 13px;
+    }
+    &__error-message {
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        width: 100%;
+        padding: 14px 20px 5px 20px;
+        z-index: var(--z-middle);
+        background-color: rgb(var(--color-white));
+        border: 1px solid rgb(var(--color-grey-border-middle));
+        border-radius: 8px;
+        transform: translate(-50%, 100%);
+        min-height: 40px;
+        visibility: hidden;
+        opacity: 0;
+        transition: all var(--main-hover-delay);
+        &::before, &::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        &::before {
+            border-width: 0 17.5px 13px;
+            border-color: transparent transparent rgb(var(--color-grey-border-middle));
+        }
+        &::after {
+            border-width: 0 15.5px 11.5px;
+            border-color: transparent transparent rgb(var(--color-white))
+        }
+    }
+    &__reset {
+        position: absolute;
+        right: 13px;
+        display: none;
+    }
+    &__placeholder {
+        position: absolute;
+        pointer-events: none;
+        top: 50%;
+        left: 18px;
+        transform: translateY(-50%);
+        color: rgb(var(--color-grey));
+        transform-origin: left;
+        transition: top var(--main-hover-delay-faster), transform var(--main-hover-delay-faster);
+    }
+}

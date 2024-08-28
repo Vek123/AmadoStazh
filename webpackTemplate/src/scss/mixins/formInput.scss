@@ -5,26 +5,10 @@
     &__input {
         padding: 18px;
         font-size: 17px;
-        &:focus, &:not(&:placeholder-shown) {
-            + .form-input {
-                &__placeholder {
-                    top: 0;
-                    transform: scale(.8);
-                }
-            }
-        }
     }
     &__textarea {
         border-radius: 20px;
         resize: none;
         vertical-align: text-top;
-    }
-    &__placeholder {
-        position: absolute;
-        pointer-events: none;
-        top: 20px;
-        left: 20px;
-        transform-origin: left;
-        transition: top var(--main-hover-delay-faster), transform var(--main-hover-delay-faster);
     }
 }

@@ -4,6 +4,8 @@
 
 //mixins
 @import './mixins/card';
+@import './mixins/inputText';
+@import './mixins/textarea';
 @import './mixins/componentHeader';
 @import './mixins/mainButton';
 @import './mixins/intextLink';
@@ -38,7 +40,6 @@
 @import './mixins/searchInput.scss';
 @import './mixins/buyMap.scss';
 @import './mixins/topSales.scss';
-@import './mixins/formInput.scss';
 @import './mixins/checkbox.scss';
 @import './mixins/feedbackModal.scss';
 

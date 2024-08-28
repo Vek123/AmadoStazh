@@ -163,33 +163,6 @@ button {
 .main {
   position: relative;
 }
-.input-text {
-  width: 100%;
-  height: 100%;
-  border-radius: 50px;
-  font-size: 15px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  &__input {
-    height: 100%;
-    width: 100%;
-    padding: 0 15px;
-    border: none;
-    border-radius: 50px;
-    font-size: 15px;
-    border: 1px solid rgb(var(--color-grey-border));
-  }
-  &__icon {
-    position: absolute;
-    right: 13px;
-  }
-  &__reset {
-    position: absolute;
-    right: 13px;
-    display: none;
-  }
-}
 .form {
   &__item {
     margin-bottom: 20px;

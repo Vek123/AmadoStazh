@@ -26,7 +26,8 @@ include ~@mixins/whereBuy
 include ~@mixins/brandsList
 include ~@mixins/advantagesList
 include ~@mixins/buyMap
-include ~@mixins/formInput
+include ~@mixins/inputText
+include ~@mixins/textarea
 include ~@mixins/checkbox
 include ~@mixins/feedbackModal
 
@@ -231,8 +232,8 @@ block content
     br
     +buyMap("", "Импловит в аптеках города", "Где купить", whereBuyCities, whereBuyAddresses)
     br
-    +formInput("Введите ваше имя:", "text", ["text"], "name")
-    +formInput("Ваше сообщение", "textarea", ["textarea"], "name")
-    +checkbox(`Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" href="#">персональных данных</a>`, "checkbox")
+    +inputText("", "text", "name", "Введите ваше имя:", "Это поле обязательно для заполнения")
+    +textarea("", "message", "Введите ваше сообщение", "Это поле обязательно для заполнения", 7)
+    +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" href="#">персональных данных</a>`, "checkbox", "aggreement", true)
     br
     +feedbackModal("", "Обратная связь", "Ваше мнение очень важно для нас")

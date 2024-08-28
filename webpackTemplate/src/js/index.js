@@ -329,6 +329,22 @@ function openMobileModalMenu() {
     let modal = document.querySelector(".mobile-modal-menu")
     openModal(modal);
 }
+function clearTextInputError(event) {
+    this.parentElement.querySelector(".input-text__input").classList.remove("input-text__input--error");
+    this.closest(".form__item").classList.remove("form__item--error");
+}
+function clearTextareaError(event) {
+    this.parentElement.querySelector(".textarea__textarea").classList.remove("textarea__textarea--error");
+    this.closest(".form__item").classList.remove("form__item--error");
+}
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".input-text__icon").forEach(x => {
+        x.addEventListener("click", clearTextInputError);
+    });
+    document.querySelectorAll(".textarea__icon").forEach(x => {
+        x.addEventListener("click", clearTextareaError);
+    });
+});
 document.querySelectorAll(".mobile-modal-menu__close-sub-list").forEach(x => x.addEventListener("click", closeMobileModalMenuSubList));
 document.querySelectorAll(".mobile-modal-menu__body li a + ul").forEach(x => {
     x.parentElement.querySelector("a").addEventListener("click", openMobileModalMenuSubList);
