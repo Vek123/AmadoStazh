@@ -30,6 +30,7 @@ include ~@mixins/inputText
 include ~@mixins/textarea
 include ~@mixins/checkbox
 include ~@mixins/feedbackModal
+include ~@mixins/radioButton
 
 block vars
   - title = 'ui страница'
@@ -234,6 +235,8 @@ block content
     br
     +inputText("", "text", "name", "Введите ваше имя:", "Это поле обязательно для заполнения")
     +textarea("", "message", "Введите ваше сообщение", "Это поле обязательно для заполнения", 7)
-    +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" href="#">персональных данных</a>`, "checkbox", "aggreement", true)
+    +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" href="#">персональных данных</a>`, "checkbox", "aggreement", "true", true)
+    +radioButton("", "Первый вариант", "radioButton", "radio", "a1", false)
+    +radioButton("", "Второй вариант", "radioButton2", "radio", "a2", true)
     br
     +feedbackModal("", "Обратная связь", "Ваше мнение очень важно для нас")

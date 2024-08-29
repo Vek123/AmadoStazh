@@ -3,15 +3,15 @@ import IMask from 'imask';
 
 class FormField {
     constructor(type, name, correct="_correct", error="_error", containerSelector=null, required=false, min=0, max=Infinity) {
-        this.type = type,
-        this.name = name,
-        this.required = required,
-        this.min = min,
-        this.max = max,
-        this.errorName = error,
-        this.correctName = correct,
-        this.containerSelector = containerSelector,
-        this._error = null
+        this.type = type;
+        this.name = name;
+        this.required = required;
+        this.min = min;
+        this.max = max;
+        this.errorName = error;
+        this.correctName = correct;
+        this.containerSelector = containerSelector;
+        this._error = null;
     }
     set error(value) {
         if (typeof value === "boolean") {
@@ -73,29 +73,71 @@ class Form {
                 field.classList.remove(fieldConfig.correctName);
                 this.removeContainerCorrect(form, field, fieldConfig);
             }
+        } else if ("radio" === fieldConfig.type) {
+            if (form._firstValidation && fieldConfig.required) {
+                let error = true;
+                for (let input of field) {
+                    if (input.checked) {
+                        error = false;
+                        break;
+                    }
+                }
+                if (error) {
+                    this.makeFieldError(form, field, fieldConfig);
+                } else {
+                    this.makeFieldCorrect(form, field, fieldConfig);
+                }
+                
+            } else {
+                this.makeFieldCorrect(form, field, fieldConfig);
+            }
         }
     }
     makeContainerCorrect(form, field, fieldConfig) {
         if (fieldConfig.containerSelector) {
-            field.closest(fieldConfig.containerSelector).classList.add(form.config.inputContainerCorrect);
+            if (field.length) {
+                field[0].closest(fieldConfig.containerSelector).classList.add(form.config.inputContainerCorrect);
+            } else {
+                field.closest(fieldConfig.containerSelector).classList.add(form.config.inputContainerCorrect);
+            }
         }
     }
     removeContainerCorrect(form, field, fieldConfig) {
         if (fieldConfig.containerSelector) {
-            field.closest(fieldConfig.containerSelector).classList.remove(form.config.inputContainerCorrect);
+            if (field.length) {
+                field[0].closest(fieldConfig.containerSelector).classList.remove(form.config.inputContainerCorrect);
+            } else {
+                field.closest(fieldConfig.containerSelector).classList.remove(form.config.inputContainerCorrect);
+            }
         }
     }
     makeFieldCorrect(form, field, fieldConfig) {
         if (fieldConfig.error) {
             form.errors -= 1;
             fieldConfig.error = false;
-            field.classList.remove(fieldConfig.errorName);
-            if (fieldConfig.containerSelector) {
-                field.closest(fieldConfig.containerSelector).classList.remove(form.config.inputContainerError);
+            console.log(field);
+            if (field.length) {
+                if (fieldConfig.containerSelector) {
+                    field[0].closest(fieldConfig.containerSelector).classList.remove(form.config.inputContainerError);
+                }
+                field.forEach(x => {
+                    x.classList.remove(fieldConfig.errorName);
+                });
+            } else {
+                field.classList.remove(fieldConfig.errorName);
+                if (fieldConfig.containerSelector) {
+                    field.closest(fieldConfig.containerSelector).classList.remove(form.config.inputContainerError);
+                }
             }
         }
+        if (field.length) {
+            field.forEach(x => {
+                x.classList.add(fieldConfig.correctName);
+            });
+        } else {
+            field.classList.add(fieldConfig.correctName);
+        }
         this.makeContainerCorrect(form, field, fieldConfig);
-        field.classList.add(fieldConfig.correctName);
     }
     makeFieldError(form, field, fieldConfig) {
         if (!fieldConfig.error) {
@@ -103,9 +145,18 @@ class Form {
             fieldConfig.error = true;
         }
         if (!form.config.onlyOnSubmitError && !form._firstValidation) {
-            field.classList.add(fieldConfig.errorName);
-            if (fieldConfig.containerSelector) {
-                field.closest(fieldConfig.containerSelector).classList.add(form.config.inputContainerError);
+            if (field.length) {
+                if (fieldConfig.containerSelector) {
+                    field[0].closest(fieldConfig.containerSelector).classList.add(form.config.inputContainerError);
+                }
+                field.forEach(x => {
+                    x.classList.add(fieldConfig.errorName);
+                });
+            } else {
+                field.classList.add(fieldConfig.errorName);
+                if (fieldConfig.containerSelector) {
+                    field.closest(fieldConfig.containerSelector).classList.add(form.config.inputContainerError);
+                }
             }
         }
     }
@@ -121,9 +172,18 @@ class Form {
             formObj.config.fields.forEach(field => {
                 if (field.error) {
                     let input = this._getInputElement(field);
-                    input.classList.add(field.errorName);
-                    if (field.containerSelector) {
-                        input.closest(field.containerSelector).classList.add(formObj.config.inputContainerError);
+                    if (input.length) {
+                        input.forEach(x => {
+                            x.classList.add(field.errorName);
+                            if (field.containerSelector) {
+                                x.closest(field.containerSelector).classList.add(formObj.config.inputContainerError);
+                            }
+                        });
+                    } else {
+                        input.classList.add(field.errorName);
+                        if (field.containerSelector) {
+                            input.closest(field.containerSelector).classList.add(formObj.config.inputContainerError);
+                        }
                     }
                 }
             });
@@ -132,7 +192,10 @@ class Form {
     _getInputElement(field) {
         if (field.type === "textarea") {
             return this.form.querySelector(`textarea[name=${field.name}]`);
-        } else {
+        } else if (field.type === "radio") {
+            return this.form.querySelectorAll(`input[name=${field.name}]`);
+        }
+        else {
             return this.form.querySelector(`input[name=${field.name}]`);
         }
     }
@@ -167,6 +230,15 @@ class Form {
                     this.validateField(this, input, field);
                 }
                 input.addEventListener("input", () => this.validateField(this, input, field));
+            } else if (field.type === "radio") {
+                input.forEach(x => x.addEventListener("change", () => {
+                    this.validateField(this, input, field)
+                }));
+                if (field.required) {
+                    input.forEach(() => {
+                        this.validateField(this, input, field);
+                    });
+                }
             }
         }
     }
@@ -181,6 +253,7 @@ let feedbackFormConfig = {
         new FormField("text", "name", "input-text__input--correct", "input-text__input--error", ".form__item", true),
         new FormField("contacts", "contacts", "input-text__input--correct", "input-text__input--error", ".form__item", true),
         new FormField("textarea", "message", "textarea__textarea--correct", "textarea__textarea--error", ".form__item", true),
+        new FormField("radio", "choice", "radio-button__input--correct", "radio-button__input--error", ".form__item", true),
         new FormField("checkbox", "aggreement", "checkbox__input--correct", "checkbox__input--error", ".form__item", true),
     ],
     submitButtonSelector: ".form__button",

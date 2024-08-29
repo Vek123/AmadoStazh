@@ -166,6 +166,13 @@ button {
 .form {
   &__item {
     margin-bottom: 20px;
+    > .form__text {
+      margin-bottom: 10px;
+    }
+  }
+  &__text {
+    @include fontAdaptive(17px, 19.92px, 400);
+    color: rgb(var(--color-grey));
   }
 }
 .plant {

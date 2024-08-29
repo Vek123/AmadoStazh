@@ -1,0 +1,8 @@
+mixin radioButton(className, text, inputId, name, value, checked=false)
+        .radio-button(class=className)
+            if checked
+                input.radio-button__input(type="radio" id=inputId name=name value=value checked)
+            else 
+                input.radio-button__input(type="radio" id=inputId value=value name=name)
+            label.radio-button__label(for=inputId)
+                .radio-button__text!= text

@@ -1,8 +1,8 @@
-mixin checkbox(className, text, inputId, name, checked=false)
+mixin checkbox(className, text, inputId, name, value, checked=false)
     .checkbox(class=className)
         if checked
-            input.checkbox__input(type="checkbox" id=inputId name=name checked)
+            input.checkbox__input(type="checkbox" id=inputId name=name value=value checked)
         else 
-            input.checkbox__input(type="checkbox" id=inputId name=name)
+            input.checkbox__input(type="checkbox" id=inputId value=value name=name)
         label.checkbox__label(for=inputId)
             .checkbox__text!= text
