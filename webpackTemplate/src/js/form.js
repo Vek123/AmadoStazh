@@ -38,92 +38,92 @@ class Form {
         this._firstValidation = true,
         this.submitButton = this.form.querySelector(this.config.submitButtonSelector);
     }
-    validateField(form, field, config) {
-        if (["text", "textarea"].includes(config.type)) {
-            if (config.min < field.value.length && config.max > field.value.length) {
-                this.makeFieldCorrect(form, field, config);
+    validateField(form, field, fieldConfig) {
+        if (["text", "textarea"].includes(fieldConfig.type)) {
+            if (fieldConfig.min < field.value.length && fieldConfig.max > field.value.length) {
+                this.makeFieldCorrect(form, field, fieldConfig);
             } else {
-                if (config.required) {
-                    this.makeFieldError(form, field, config);
+                if (fieldConfig.required) {
+                    this.makeFieldError(form, field, fieldConfig);
                 }
-                field.classList.remove(config.correctName);
-                this.removeContainerCorrect(form, field, config);
+                field.classList.remove(fieldConfig.correctName);
+                this.removeContainerCorrect(form, field, fieldConfig);
             }
-        } else if ("checkbox" === config.type) {
+        } else if ("checkbox" === fieldConfig.type) {
             if (field.checked) {
-                this.makeFieldCorrect(form, field, config);
+                this.makeFieldCorrect(form, field, fieldConfig);
             } else {
-                if (config.required) {
-                    this.makeFieldError(form, field, config);
+                if (fieldConfig.required) {
+                    this.makeFieldError(form, field, fieldConfig);
                 }
-                field.classList.remove(config.correctName);
-                this.removeContainerCorrect(form, field, config);
+                field.classList.remove(fieldConfig.correctName);
+                this.removeContainerCorrect(form, field, fieldConfig);
             }
-        } else if ("contacts" === config.type) {
+        } else if ("contacts" === fieldConfig.type) {
             let reEmail = new RegExp(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/);
             let rePhone = new RegExp(/^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/);
             if (reEmail.test(field.value)) {
-                this.makeFieldCorrect(form, field, config);
+                this.makeFieldCorrect(form, field, fieldConfig);
             } else if (rePhone.test(field.value)) {
-                this.makeFieldCorrect(form, field, config);
+                this.makeFieldCorrect(form, field, fieldConfig);
             } else {
-                if (config.required) {
-                    this.makeFieldError(form, field, config);
+                if (fieldConfig.required) {
+                    this.makeFieldError(form, field, fieldConfig);
                 }
-                field.classList.remove(config.correctName);
-                this.removeContainerCorrect(form, field, config);
+                field.classList.remove(fieldConfig.correctName);
+                this.removeContainerCorrect(form, field, fieldConfig);
             }
         }
     }
-    makeContainerCorrect(form, field, config) {
-        if (config.containerSelector) {
-            field.closest(config.containerSelector).classList.add(form.config.inputContainerCorrect);
+    makeContainerCorrect(form, field, fieldConfig) {
+        if (fieldConfig.containerSelector) {
+            field.closest(fieldConfig.containerSelector).classList.add(form.config.inputContainerCorrect);
         }
     }
-    removeContainerCorrect(form, field, config) {
-        if (config.containerSelector) {
-            field.closest(config.containerSelector).classList.remove(form.config.inputContainerCorrect);
+    removeContainerCorrect(form, field, fieldConfig) {
+        if (fieldConfig.containerSelector) {
+            field.closest(fieldConfig.containerSelector).classList.remove(form.config.inputContainerCorrect);
         }
     }
-    makeFieldCorrect(form, field, config) {
-        if (config.error) {
+    makeFieldCorrect(form, field, fieldConfig) {
+        if (fieldConfig.error) {
             form.errors -= 1;
-            config.error = false;
-            field.classList.remove(config.errorName);
-            if (config.containerSelector) {
-                field.closest(config.containerSelector).classList.remove(form.config.inputContainerError);
+            fieldConfig.error = false;
+            field.classList.remove(fieldConfig.errorName);
+            if (fieldConfig.containerSelector) {
+                field.closest(fieldConfig.containerSelector).classList.remove(form.config.inputContainerError);
             }
         }
-        this.makeContainerCorrect(form, field, config);
-        field.classList.add(config.correctName);
+        this.makeContainerCorrect(form, field, fieldConfig);
+        field.classList.add(fieldConfig.correctName);
     }
-    makeFieldError(form, field, config) {
-        if (!config.error) {
+    makeFieldError(form, field, fieldConfig) {
+        if (!fieldConfig.error) {
             form.errors += 1;
-            config.error = true;
+            fieldConfig.error = true;
         }
         if (!form.config.onlyOnSubmitError && !form._firstValidation) {
-            field.classList.add(config.errorName);
-            if (config.containerSelector) {
-                field.closest(config.containerSelector).classList.add(form.config.inputContainerError);
+            field.classList.add(fieldConfig.errorName);
+            if (fieldConfig.containerSelector) {
+                field.closest(fieldConfig.containerSelector).classList.add(form.config.inputContainerError);
             }
         }
     }
-    submitForm(formEl, event, form) {
+    submitForm(formEl, event, formObj) {
         event.preventDefault();
-        if (form.errors === 0) {
+        if (formObj.errors === 0) {
             const data = {};
             new FormData(formEl).forEach((value, key) => {
                 data[key] = value;
             });
             console.log(data);
         } else {
-            form.config.fields.forEach(field => {
+            formObj.config.fields.forEach(field => {
                 if (field.error) {
                     let input = this._getInputElement(field);
                     input.classList.add(field.errorName);
                     if (field.containerSelector) {
-                        input.closest(field.containerSelector).classList.add(form.config.inputContainerError);
+                        input.closest(field.containerSelector).classList.add(formObj.config.inputContainerError);
                     }
                 }
             });
@@ -188,4 +188,4 @@ let feedbackFormConfig = {
     inputContainerCorrect: "form__item--correct",
     inputContainerError: "form__item--error",
 }
-let feedbackForm = new Form(".feedback-modal__form form", feedbackFormConfig).startValidating();
+let feedbackForm = new Form(".feedback-modal__form .form", feedbackFormConfig).startValidating();
