@@ -1,0 +1,9 @@
+mixin select(className, name, inputId, list, defaultInput=null, defaultName="Выберите значение:")
+    .select(class=className)
+        .select__output
+            input.select__input(type="radio" id=inputId name=name value=defaultInput ? defaultInput.value : "none" checked)
+            label.select__label(for=inputId)= defaultInput ? defaultInput.name : defaultName
+            span.select__icon: include ~@icons/buttons/arrow-angle-down-big.svg
+        ul.select__list
+            each item in list
+                li.select__item(class= item.selected ? "select__item--selected" : "" data-value= item.value)= item.name

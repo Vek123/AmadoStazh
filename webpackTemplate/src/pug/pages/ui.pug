@@ -31,6 +31,7 @@ include ~@mixins/textarea
 include ~@mixins/checkbox
 include ~@mixins/feedbackModal
 include ~@mixins/radioButton
+include ~@mixins/select
 
 block vars
   - title = 'ui страница'
@@ -123,6 +124,13 @@ block vars
         {id: 2, title: "ВО, г. Александров, ул. Ленина, д. 26", desc: "+7 (492) 222-24-96<br/>Пн-Вс: 08:00-21:00;"}
       ],
     }
+    var selectList = [
+      {name: "Нулевое", value: "zero", selected: true},
+      {name: "Первое", value: "first", selected: false},
+      {name: "Второе", value: "second", selected: false},
+      {name: "Третье", value: "third", selected: false},
+    ]
+    
 
 block content
   section.ui
@@ -238,5 +246,6 @@ block content
     +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" href="#">персональных данных</a>`, "checkbox", "aggreement", "true", true)
     +radioButton("", "Первый вариант", "radioButton", "radio", "a1", false)
     +radioButton("", "Второй вариант", "radioButton2", "radio", "a2", true)
+    +select("", "select", "select", selectList, selectList[0])
     br
     +feedbackModal("", "Обратная связь", "Ваше мнение очень важно для нас")
