@@ -70,6 +70,7 @@
     }
     &__item {
         cursor: pointer;
+        margin-bottom: 13px;
         &:first-of-type {
             margin-top: 16px;
             &.select__item--selected {
@@ -84,7 +85,6 @@
         &:nth-last-child(2):has(+ .select__item--selected) {
             margin-bottom: 16px;
         }
-        margin-bottom: 13px;
         &--selected {
             display: none;
         }
