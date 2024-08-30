@@ -91,6 +91,17 @@ class Form {
             } else {
                 this.makeFieldCorrect(form, field, fieldConfig);
             }
+        } else if ("select" === fieldConfig.type) {
+            if (field.getAttribute("data-default-value") === field.getAttribute("value")) {
+                if (fieldConfig.required) {
+                    this.makeFieldError(form, field, fieldConfig);
+                }
+                field.classList.remove(fieldConfig.correctName);
+                this.removeContainerCorrect(form, field, fieldConfig);
+            } else {
+                
+                this.makeFieldCorrect(form, field, fieldConfig);
+            }
         }
     }
     makeContainerCorrect(form, field, fieldConfig) {
@@ -115,7 +126,6 @@ class Form {
         if (fieldConfig.error) {
             form.errors -= 1;
             fieldConfig.error = false;
-            console.log(field);
             if (field.length) {
                 if (fieldConfig.containerSelector) {
                     field[0].closest(fieldConfig.containerSelector).classList.remove(form.config.inputContainerError);
@@ -231,14 +241,19 @@ class Form {
                 }
                 input.addEventListener("input", () => this.validateField(this, input, field));
             } else if (field.type === "radio") {
-                input.forEach(x => x.addEventListener("change", () => {
-                    this.validateField(this, input, field)
-                }));
                 if (field.required) {
                     input.forEach(() => {
                         this.validateField(this, input, field);
                     });
                 }
+                input.forEach(x => x.addEventListener("change", () => {
+                    this.validateField(this, input, field)
+                }));
+            } else if (field.type === "select") {
+                if (field.required) {
+                    this.validateField(this, input, field);
+                }
+                input.addEventListener("change", () => {this.validateField(this, input, field)});
             }
         }
     }
@@ -254,6 +269,7 @@ let feedbackFormConfig = {
         new FormField("contacts", "contacts", "input-text__input--correct", "input-text__input--error", ".form__item", true),
         new FormField("textarea", "message", "textarea__textarea--correct", "textarea__textarea--error", ".form__item", true),
         new FormField("radio", "choice", "radio-button__input--correct", "radio-button__input--error", ".form__item", true),
+        new FormField("select", "selected", "select__input--correct", "select__input--error", ".form__item", false),
         new FormField("checkbox", "aggreement", "checkbox__input--correct", "checkbox__input--error", ".form__item", true),
     ],
     submitButtonSelector: ".form__button",

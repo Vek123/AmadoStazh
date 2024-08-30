@@ -4,8 +4,16 @@ include ~@mixins/checkbox
 include ~@mixins/mainButton
 include ~@mixins/squareCloseButton
 include ~@mixins/radioButton
+include ~@mixins/select
 
 mixin feedbackModal(className, title, subtitle)
+    -
+        var selectList = [
+            {name: "Нулевое", value: "zero", selected: false},
+            {name: "Первое", value: "first", selected: false},
+            {name: "Второе", value: "second", selected: false},
+            {name: "Третье", value: "third", selected: false},
+        ]
     .feedback-modal(class=className)
         .feedback-modal__close-button
             +squareCloseButton()
@@ -26,6 +34,8 @@ mixin feedbackModal(className, title, subtitle)
                             +radioButton("", "Первая кнопка", "form__radio-first", "choice", "first", false)
                         .form__radio
                             +radioButton("", "Вторая кнопка", "form__radio-second", "choice", "second", false)
+                    .form__item
+                        +select("", "selected", "selected", selectList, null)
                     .form__item
                         +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" href="#">персональных данных</a>`, "feedback-modal-form__checkbox", "aggreement", "true", true)
                     .form__button
