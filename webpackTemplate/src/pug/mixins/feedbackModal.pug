@@ -5,6 +5,7 @@ include ~@mixins/mainButton
 include ~@mixins/squareCloseButton
 include ~@mixins/radioButton
 include ~@mixins/select
+include ~@mixins/ratingInput
 
 mixin feedbackModal(className, title, subtitle)
     -
@@ -36,6 +37,8 @@ mixin feedbackModal(className, title, subtitle)
                             +radioButton("", "Вторая кнопка", "form__radio-second", "choice", "second", false)
                     .form__item
                         +select("", "selected", "selected", selectList, null)
+                    .form__item
+                        +ratingInput("", "medRating", "Поставьте Вашу оценку препарату:", "medRating-", 5)
                     .form__item
                         +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" href="#">персональных данных</a>`, "feedback-modal-form__checkbox", "aggreement", "true", true)
                     .form__button

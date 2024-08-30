@@ -1,0 +1,48 @@
+.rating-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 15px;
+    &__text {
+        @include fontAdaptive(17px, 19.92px, 400);
+        color: rgb(var(--color-grey));
+    }
+    &__input {
+        display: none;
+        &:checked ~ .rating-input__label {
+            &::after {
+                display: block;
+            }
+            &::before {
+                display: none;
+            }
+        }
+    }
+    &__rating {
+        flex-shrink: 0;
+        align-self: flex-start;
+        display: inline-flex;
+        flex-direction: row-reverse;
+    }
+    &__label {
+        cursor: pointer;
+        position: relative;
+        display: inline-flex;
+        &:nth-child(n+3) {
+            margin-right: 12px;
+        }
+        &::before {
+            content: url("/images/inputs/star-empty.svg");
+            width: 19px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+        &::after {
+            content: url("/images/inputs/star-filled.svg");
+            width: 19px;
+            height: 18px;
+            flex-shrink: 0;
+            display: none;
+        }
+    }
+}

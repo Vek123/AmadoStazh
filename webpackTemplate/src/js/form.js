@@ -73,7 +73,7 @@ class Form {
                 field.classList.remove(fieldConfig.correctName);
                 this.removeContainerCorrect(form, field, fieldConfig);
             }
-        } else if ("radio" === fieldConfig.type) {
+        } else if (["radio", "rating"].includes(fieldConfig.type)) {
             if (form._firstValidation && fieldConfig.required) {
                 let error = true;
                 for (let input of field) {
@@ -202,7 +202,7 @@ class Form {
     _getInputElement(field) {
         if (field.type === "textarea") {
             return this.form.querySelector(`textarea[name=${field.name}]`);
-        } else if (field.type === "radio") {
+        } else if (["radio", "rating"].includes(field.type)) {
             return this.form.querySelectorAll(`input[name=${field.name}]`);
         }
         else {
@@ -240,7 +240,7 @@ class Form {
                     this.validateField(this, input, field);
                 }
                 input.addEventListener("input", () => this.validateField(this, input, field));
-            } else if (field.type === "radio") {
+            } else if (["radio", "rating"].includes(field.type)) {
                 if (field.required) {
                     input.forEach(() => {
                         this.validateField(this, input, field);
@@ -269,7 +269,8 @@ let feedbackFormConfig = {
         new FormField("contacts", "contacts", "input-text__input--correct", "input-text__input--error", ".form__item", true),
         new FormField("textarea", "message", "textarea__textarea--correct", "textarea__textarea--error", ".form__item", true),
         new FormField("radio", "choice", "radio-button__input--correct", "radio-button__input--error", ".form__item", true),
-        new FormField("select", "selected", "select__input--correct", "select__input--error", ".form__item", false),
+        new FormField("select", "selected", "select__input--correct", "select__input--error", ".form__item", true),
+        new FormField("rating", "medRating", "rating__input--correct", "rating__input--error", ".form__item", true),
         new FormField("checkbox", "aggreement", "checkbox__input--correct", "checkbox__input--error", ".form__item", true),
     ],
     submitButtonSelector: ".form__button",

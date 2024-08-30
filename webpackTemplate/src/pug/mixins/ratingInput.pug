@@ -1,0 +1,29 @@
+mixin ratingInput(className, name, text, prefixId, defaultValue=0)
+    .rating-input(class=className)
+        .rating-input__text= text
+        .rating-input__rating
+            if defaultValue === 5
+                input.rating-input__input(type="radio" name=name value=5 id=prefixId + "star-5" checked)
+            else 
+                input.rating-input__input(type="radio" name=name value=5 id=prefixId + "star-5")
+            label.rating-input__label(for=prefixId + "star-5")
+            if defaultValue === 4
+                input.rating-input__input(type="radio" name=name value=4 id=prefixId + "star-4" checked)
+            else 
+                input.rating-input__input(type="radio" name=name value=4 id=prefixId + "star-4")
+            label.rating-input__label(for=prefixId + "star-4")
+            if defaultValue === 3
+                input.rating-input__input(type="radio" name=name value=3 id=prefixId + "star-3" checked)
+            else 
+                input.rating-input__input(type="radio" name=name value=3 id=prefixId + "star-3")
+            label.rating-input__label(for=prefixId + "star-3")
+            if defaultValue === 2
+                input.rating-input__input(type="radio" name=name value=2 id=prefixId + "star-2" checked)
+            else 
+                input.rating-input__input(type="radio" name=name value=2 id=prefixId + "star-2")
+            label.rating-input__label(for=prefixId + "star-2")
+            if defaultValue === 1
+                input.rating-input__input(type="radio" name=name value=1 id=prefixId + "star-1" checked)
+            else 
+                input.rating-input__input(type="radio" name=name value=1 id=prefixId + "star-1")
+            label.rating-input__label(for=prefixId + "star-1")
