@@ -41,14 +41,19 @@
     .medicament-list {
         &__swiper-pagination {
             display: block;
+            transform: translateY(50%);
         }
         &__button {
             bottom: 20px;
             top: unset;
             width: 22px;
             height: 22px;
+            transform: scale(-1, 1) translateY(50%);
+            &--prev {
+                transform: translateY(50%);
+            }
             svg {
-                transform: scale(1) translateY(50%);
+                transform: scale(1);
             }
             &:hover {
                 background-color: unset;

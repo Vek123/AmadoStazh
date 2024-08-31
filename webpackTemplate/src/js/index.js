@@ -15,10 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-     
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            
+            let toItem = document.querySelector(this.getAttribute('href'));
+            if (toItem) {
+                toItem.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 });
@@ -273,14 +276,10 @@ if (document.querySelector("#ya-map")) {
 function bodyFixPosition() {
     setTimeout( function() {
       if ( !document.body.hasAttribute('modal-opened') ) {
-        let scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        let scrollWidth = window.innerWidth - document.body.clientWidth;
+        let scrollPosition = window.scrollY || document.documentElement.scrollTop;
         document.body.setAttribute('modal-opened', scrollPosition);
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
-        document.body.style.paddingRight = scrollWidth + 'px';
-        document.querySelector(".header").style.paddingRight = scrollWidth + 'px';
-        document.querySelector(".mobile-fixed-menu").style.paddingRight = scrollWidth + 'px';
         document.body.style.top = '-' + scrollPosition + 'px';
         document.body.style.left = '0';
         document.body.style.width = '100%';
@@ -293,9 +292,6 @@ function bodyUnfixPosition() {
         document.body.removeAttribute('modal-opened');
         document.body.style.overflow = '';
         document.body.style.position = '';
-        document.body.style.paddingRight = '';
-        document.querySelector(".header").style.paddingRight = '';
-        document.querySelector(".mobile-fixed-menu").style.paddingRight = '';
         document.body.style.top = '';
         document.body.style.left = '';
         document.body.style.width = '';
