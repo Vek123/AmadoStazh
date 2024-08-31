@@ -15,7 +15,6 @@
         &__inner {
             flex-grow: 1;
             display: flex;
-            flex-shrink: 0;
             justify-content: space-between;
             align-items: center;
             .search {
@@ -28,6 +27,9 @@
                     margin-left: 10px;
                 }
             }
+        }
+        &__logo {
+            flex-shrink: 0;
         }
     }
     &-bottom {
@@ -404,6 +406,7 @@
         top: 0;
         width: 100%;
         &-top {
+            height: 64px;
             width: 100%;
             padding: unset;
             background-color: rgb(var(--color-white));
@@ -417,6 +420,9 @@
                 .search {
                     display: none;
                 }
+            }
+            &__logo {
+                height: 36px;
             }
         }
         &-bottom {

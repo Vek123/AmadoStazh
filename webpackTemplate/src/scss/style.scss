@@ -32,6 +32,12 @@ body {
 }
 html {
   overscroll-behavior: none;
+  scroll-padding: var(--padding-header-desktop);
+}
+@include laptop {
+  html {
+    scroll-padding: var(--padding-header);
+  }
 }
 
 /* Убираем внутренние отступы */

@@ -27,11 +27,10 @@ header.header
     .header-top
         .template-container
             .header-top__inner
-                a(href="/ui.html")
-                    .header-top__logo 
-                        picture 
-                            source(srcset="./images/header/logo-360.svg" media="(max-width: 779px)")
-                            img(src="./images/header/logo.svg" alt="Импловит")
+                a.header-top__logo(href="/ui.html")
+                    picture 
+                        source(srcset="./images/header/logo-360.svg" media="(max-width: 779px)")
+                        img(src="./images/header/logo.svg" alt="Импловит")
                 .search
                     +searchInput("search__input", "text", "item", "Поиск товара", "Введите первые буквы")
                     button.search__like: +like()

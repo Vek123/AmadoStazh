@@ -11,6 +11,18 @@ const mainDelay = 300;
 
 window.addEventListener("load", () => document.body.classList.remove("preload"));
 
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+     
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+});
+
 function docOnClick(event) {
     toggleMapCitiesList(event);
 }
@@ -19,8 +31,12 @@ let headerBottom = document.querySelector('.header-bottom');
 function fixHeader() {
     if (window.scrollY >= document.querySelector('.header-top').clientHeight && !document.querySelector('body').classList.contains('modal-opened')) {
         headerBottom.classList.add("header-bottom--fixed");
+        if (window.innerWidth > 1279) {
+            document.querySelector(".main").style.paddingTop = headerBottom.clientHeight + "px";
+        }
     } else if (window.screen.width > 370) {
         headerBottom.classList.remove("header-bottom--fixed");
+        document.querySelector(".main").style.paddingTop = "";
     }
 }
 

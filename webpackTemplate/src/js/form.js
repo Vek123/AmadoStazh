@@ -278,4 +278,8 @@ let feedbackFormConfig = {
     inputContainerCorrect: "form__item--correct",
     inputContainerError: "form__item--error",
 }
-let feedbackForm = new Form(".feedback-modal__form .form", feedbackFormConfig).startValidating();
+document.addEventListener("DOMContentLoaded", () => {
+    if (document.querySelector(".feedback-modal__form .form")) {
+        let feedbackForm = new Form(".feedback-modal__form .form", feedbackFormConfig).startValidating();
+    }
+});
