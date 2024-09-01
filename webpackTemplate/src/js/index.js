@@ -30,14 +30,15 @@ function docOnClick(event) {
     toggleMapCitiesList(event);
 }
 
-let headerBottom = document.querySelector('.header-bottom');
+const headerBottom = document.querySelector('.header-bottom');
+const scrollPosition = () => window.pageYOffset || window.scrollY;
+const containsFixed = () => headerBottom.classList.contains("header-bottom--fixed");
+
 function fixHeader() {
-    if (window.scrollY >= document.querySelector('.header-top').clientHeight && !document.querySelector('body').classList.contains('modal-opened')) {
+    if (scrollPosition() > document.querySelector('.header-top').clientHeight && !containsFixed() && !document.querySelector('body').classList.contains('modal-opened')) {
+        document.querySelector(".main").style.paddingTop = headerBottom.clientHeight + "px";
         headerBottom.classList.add("header-bottom--fixed");
-        if (window.innerWidth > 1279) {
-            document.querySelector(".main").style.paddingTop = headerBottom.clientHeight + "px";
-        }
-    } else if (window.screen.width > 370) {
+    } else if (scrollPosition() < document.querySelector('.header-top').clientHeight && containsFixed() && window.screen.width > 370) {
         headerBottom.classList.remove("header-bottom--fixed");
         document.querySelector(".main").style.paddingTop = "";
     }

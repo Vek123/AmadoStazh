@@ -1,0 +1,36 @@
+.tabs {
+    &__header {
+        ul {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: rgb(var(--color-white));
+            border-radius: 40px;
+            padding: 19px 0 18px;
+            li {
+                padding: 0 65px;
+            }
+        }
+    }
+    &__link {
+        cursor: pointer;
+        @include fontAdaptive(16px, 18.75px, 700);
+        color: rgb(var(--color-main));
+        transition: color var(--main-hover-delay);
+        &:hover {
+            color: rgb(var(--color-main-lighter));
+        }
+        &--selected, &--selected:hover {
+            color: rgb(var(--color-black));
+        }
+    }
+    &__content {
+
+    }
+    &__tab-content {
+        display: none;
+        &--visible {
+            display: block;
+        }
+    }
+}

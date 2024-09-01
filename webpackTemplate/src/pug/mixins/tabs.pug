@@ -1,0 +1,17 @@
+mixin tabs(className, items, prefixId)
+    - var iter = 0;
+    .tabs(class=className)
+        nav.tabs__header
+            ul
+                each item in items
+                    if item.link
+                        li: a.tabs__link(href=item.link)= item.title
+                    else
+                        li: a.tabs__link(class=item.checked ? "tabs__link--selected" : "" data-id=item.id)= item.title
+                    - iter += 1;
+        .tabs__content
+            - iter = 0
+            ul
+                each item in items
+                    li.tabs__tab-content(class=item.checked ? "tabs__tab-content--visible" : "" data-id=item.id)!= item.content
+                    - iter += 1

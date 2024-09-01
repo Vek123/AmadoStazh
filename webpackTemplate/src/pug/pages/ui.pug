@@ -33,6 +33,7 @@ include ~@mixins/feedbackModal
 include ~@mixins/radioButton
 include ~@mixins/select
 include ~@mixins/ratingInput
+include ~@mixins/tabs
 
 block vars
   - title = 'ui страница'
@@ -252,3 +253,5 @@ block content
     +ratingInput("", "rating", "Поставьте Вашу оценку препарату:", "rating-")
     br
     +feedbackModal("", "Обратная связь", "Ваше мнение очень важно для нас")
+    br
+    +tabs("", [{title: "Первый", id: "tab-first", content: "Контент первого блока", checked: true}, {title: "Второй", id: "tab-second", content: "Контент второго блока"}, {title: "Третий", link: "#header"}], "tabs-")
