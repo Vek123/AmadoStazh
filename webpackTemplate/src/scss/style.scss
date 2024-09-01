@@ -33,10 +33,6 @@ body {
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(var(--color-main-lighter), .5);
 }
-p {
-  @include fontAdaptive(18px, 26px, 400);
-  margin-bottom: 31px;
-}
 html {
   overscroll-behavior: none;
   scroll-padding: var(--padding-header-desktop);
@@ -73,6 +69,10 @@ p,
 .title1,
 li {
   margin: 0;
+}
+p {
+  @include fontAdaptive(18px, 26px, 400);
+  margin-bottom: 31px;
 }
 
 /* Элементы a, у которых есть атрибут class, сбрасываем до дефолтных стилей */

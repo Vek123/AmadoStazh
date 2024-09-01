@@ -24,13 +24,11 @@
             color: rgb(var(--color-black));
         }
     }
-    &__content {
-
-    }
     &__tab-content {
         display: none;
         &--visible {
             display: block;
+            margin-top: 34px;
         }
     }
 }
