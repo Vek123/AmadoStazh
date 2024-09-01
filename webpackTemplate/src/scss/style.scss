@@ -33,6 +33,10 @@ body {
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(var(--color-main-lighter), .5);
 }
+p {
+  @include fontAdaptive(18px, 26px, 400);
+  margin-bottom: 31px;
+}
 html {
   overscroll-behavior: none;
   scroll-padding: var(--padding-header-desktop);
@@ -295,9 +299,11 @@ h2 {
 }
 h3 {
   @include font(var(--font-montserrat), 22px, 30.8px, 800);
+  margin-bottom: 15px;
 }
 h4 {
   @include font(var(--font-montserrat), 18px, 25.2px, 800);
+  margin-bottom: 15px;
 }
 @include tablet {
   h2 {

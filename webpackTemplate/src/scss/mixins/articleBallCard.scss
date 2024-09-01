@@ -16,16 +16,13 @@
         }
     }
     &__desc {
-        margin-top: 15px;
+        margin-bottom: 15px;
         color: rgb(var(--color-black));
         display: -webkit-box;
         overflow: hidden;
         -webkit-box-orient: vertical;
         line-clamp: 4;
         -webkit-line-clamp: 4;
-    }
-    &__link {
-        margin-top: 15px;
     }
     &--big {
         width: 558px;
