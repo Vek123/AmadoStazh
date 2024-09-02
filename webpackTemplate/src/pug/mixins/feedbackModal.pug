@@ -16,7 +16,7 @@ mixin feedbackModal(className, title, subtitle)
             {name: "Четвёртое", value: "Четвёртое", selected: false},
         ]
     .feedback-modal(class=className)
-        .feedback-modal__close-button
+        .modal__close-button.feedback-modal__close-button
             +squareCloseButton()
         .form-container
             h2.feedback-modal__title= title
@@ -30,13 +30,13 @@ mixin feedbackModal(className, title, subtitle)
                     .form__item
                         +textarea("", "message", "Введите ваше сообщение", "Это поле обязательно для заполнения и должно состоять минимум из 5 знаков", 7)
                     .form__item
+                        +select("", "select", "selected", selectList, null, false, "Это поле обязательно для заполнения, необходимо выбрать один вариант из приведённого списка")
+                    .form__item
                         .form__text Выберите одно из двух:
                         .form__radio
                             +radioButton("", "Первая кнопка", "form__radio-first", "radio", "Первая кнопка", false)
                         .form__radio
                             +radioButton("", "Вторая кнопка", "form__radio-second", "radio", "Вторая кнопка", false)
-                    .form__item
-                        +select("", "select", "selected", selectList, null, false, "Это поле обязательно для заполнения, вы должны выбрать один вариант из приведённого списка")
                     .form__item
                         +ratingInput("", "medRating", "Поставьте Вашу оценку препарату:", "medRating-", 5)
                     .form__item

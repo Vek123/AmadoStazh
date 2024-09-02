@@ -28,6 +28,19 @@
 .card-reverse {
     flex-direction: row-reverse;
 }
+.feedback-modal-form__form {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    transition: transform var(--main-hover-delay);
+    transform: translateX(100%);
+}
+.feedback-modal-form.modal--visible {
+    .feedback-modal-form__form {
+        transform: translateX(0);
+    }
+}
 @include medium {
     .my-card {
         width: 350px;

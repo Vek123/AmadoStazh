@@ -35,10 +35,10 @@ const scrollPosition = () => window.pageYOffset || window.scrollY;
 const containsFixed = () => headerBottom.classList.contains("header-bottom--fixed");
 
 function fixHeader() {
-    if (scrollPosition() > document.querySelector('.header-top').clientHeight && !containsFixed() && !document.querySelector('body').classList.contains('modal-opened')) {
+    if (scrollPosition() > document.querySelector('.header-top').clientHeight && !containsFixed() && window.screen.width > 1279) {
         document.querySelector(".main").style.paddingTop = headerBottom.clientHeight + "px";
         headerBottom.classList.add("header-bottom--fixed");
-    } else if (scrollPosition() < document.querySelector('.header-top').clientHeight && containsFixed() && window.screen.width > 370) {
+    } else if (scrollPosition() < document.querySelector('.header-top').clientHeight && containsFixed() && !document.body.hasAttribute('modal-opened')) {
         headerBottom.classList.remove("header-bottom--fixed");
         document.querySelector(".main").style.paddingTop = "";
     }
@@ -330,7 +330,7 @@ function openModal(modal) {
 }
 function closeModal(event) {
     let modal = event.target.closest(".modal--visible");
-    if (event.target === modal || this.classList.contains("mobile-modal-menu__close")) {
+    if (event.target === modal || this.classList.contains("modal__close-button")) {
         modal.classList.remove("modal--visible");
         modal.removeEventListener("click", closeModal);
         setTimeout(() => {
@@ -369,7 +369,6 @@ document.querySelectorAll(".mobile-modal-menu__close-sub-list").forEach(x => x.a
 document.querySelectorAll(".mobile-modal-menu__body li a + ul").forEach(x => {
     x.parentElement.querySelector("a").addEventListener("click", openMobileModalMenuSubList);
 });
-document.querySelectorAll(".mobile-modal-menu__close").forEach(x => x.addEventListener("click", closeModal));
 document.querySelectorAll(".mobile-fixed-menu__modal-button").forEach(x => x.addEventListener("click", openMobileModalMenu));
 document.querySelectorAll(".mobile-modal-menu__open-search").forEach(x => x.addEventListener("click", function() {
     this.closest(".mobile-modal-menu__header").classList.add("mobile-modal-menu__header--search");
