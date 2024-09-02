@@ -1,11 +1,14 @@
-mixin select(className, name, inputId, list, defaultInput=null, required=false, defaultName="Выберите значение:")
+mixin select(className, name, inputId, list, defaultInput=null, required=false, errorMessage="Это поле обязательно для заполнения", defaultName="Выберите значение:")
     .select(class=className)
         .select__output(class= defaultInput ? "" : "select__output--default")
             input.select__input(type="radio" id=inputId name=name value=defaultInput ? defaultInput.value : "none" data-default-value="none"  checked)
             label.select__label(for=inputId)= defaultInput ? defaultInput.name : defaultName
             span.select__icon: include ~@icons/buttons/arrow-angle-down-big.svg
-        ul.select__list
-            if !required 
-                li.select__item(class= defaultInput ? "" : "select__item--selected" data-value= "none" data-name= defaultName) -----
-            each item in list
-                li.select__item(class= item.selected ? "select__item--selected" : "" data-value= item.value data-name= item.name)= item.name
+            span.select__error-icon: include ~@images/close-small-red.svg
+            span.select__error-message= errorMessage
+        .select__list-container
+            ul.select__list
+                if !required 
+                    li.select__item(class= defaultInput ? "" : "select__item--selected" data-value= "none" data-name= defaultName) -----
+                each item in list
+                    li.select__item(class= item.selected ? "select__item--selected" : "" data-value= item.value data-name= item.name)= item.name

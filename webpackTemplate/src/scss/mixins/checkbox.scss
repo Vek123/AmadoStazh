@@ -29,12 +29,17 @@
             align-self: flex-start;
         }
         &::after {
-            content: url("/images/form/checkbox/checkmark.svg");
+            content: "";
             position: absolute;
             transform: scale(0);
             transition: transform var(--main-hover-delay);
-            top: 3px;
-            left: 5px;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            background-image: url("/images/form/checkbox/checkmark.svg");
+            background-repeat: no-repeat;
+            background-position: center;
         }
     }
     &__text {

@@ -1,4 +1,6 @@
 .radio-button {
+    display: flex;
+    align-items: center;
     &__input {
         display: none;
         &:checked ~ .radio-button__label::after {

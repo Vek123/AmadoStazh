@@ -10,10 +10,10 @@ include ~@mixins/ratingInput
 mixin feedbackModal(className, title, subtitle)
     -
         var selectList = [
-            {name: "Нулевое", value: "zero", selected: false},
-            {name: "Первое", value: "first", selected: false},
-            {name: "Второе", value: "second", selected: false},
-            {name: "Третье", value: "third", selected: false},
+            {name: "Первое", value: "Первое", selected: false},
+            {name: "Второе", value: "Второе", selected: false},
+            {name: "Третье", value: "Третье", selected: false},
+            {name: "Четвёртое", value: "Четвёртое", selected: false},
         ]
     .feedback-modal(class=className)
         .feedback-modal__close-button
@@ -24,22 +24,22 @@ mixin feedbackModal(className, title, subtitle)
             .feedback-modal__form
                 form.form(action="#" method="POST")
                     .form__item
-                        +inputText("", "text", "name", "Введите ваше имя:", "Это поле обязательно для заполнения")
+                        +inputText("", "text", "name", "Введите ваше имя:", "Это поле обязательно для заполнения и должно состоять минимум из 2 знаков")
                     .form__item
-                        +inputText("", "text", "contacts", "Введите ваш телефон или e-mail:", "Это поле обязательно для заполнения")
+                        +inputText("", "text", "contacts", "Введите ваш телефон или e-mail:", "Это поле обязательно для заполнения и должно содержать корректный номер телефона формата \"+7(123)456-78-90\" или адрес электронной почты")
                     .form__item
-                        +textarea("", "message", "Введите ваше сообщение", "Это поле обязательно для заполнения", 7)
+                        +textarea("", "message", "Введите ваше сообщение", "Это поле обязательно для заполнения и должно состоять минимум из 5 знаков", 7)
                     .form__item
                         .form__text Выберите одно из двух:
                         .form__radio
-                            +radioButton("", "Первая кнопка", "form__radio-first", "choice", "first", false)
+                            +radioButton("", "Первая кнопка", "form__radio-first", "radio", "Первая кнопка", false)
                         .form__radio
-                            +radioButton("", "Вторая кнопка", "form__radio-second", "choice", "second", false)
+                            +radioButton("", "Вторая кнопка", "form__radio-second", "radio", "Вторая кнопка", false)
                     .form__item
-                        +select("", "selected", "selected", selectList, null)
+                        +select("", "select", "selected", selectList, null, false, "Это поле обязательно для заполнения, вы должны выбрать один вариант из приведённого списка")
                     .form__item
                         +ratingInput("", "medRating", "Поставьте Вашу оценку препарату:", "medRating-", 5)
                     .form__item
-                        +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" href="#">персональных данных</a>`, "feedback-modal-form__checkbox", "aggreement", "true", true)
+                        +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" target="_blank" href="/">персональных данных</a>`, "feedback-modal-form__checkbox", "aggreement", "true", true)
                     .form__button
                         +mainButton("", "Отправить", true, "", true, "submit")

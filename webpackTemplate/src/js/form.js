@@ -2,7 +2,7 @@ import IMask from 'imask';
 
 
 class FormField {
-    constructor(type, name, correct="_correct", error="_error", containerSelector=null, required=false, min=0, max=Infinity) {
+    constructor(type, name, correct="_correct", error="_error", containerSelector=null, required=false, min=1, max=Infinity) {
         this.type = type;
         this.name = name;
         this.required = required;
@@ -39,8 +39,8 @@ class Form {
         this.submitButton = this.form.querySelector(this.config.submitButtonSelector);
     }
     validateField(form, field, fieldConfig) {
-        if (["text", "textarea"].includes(fieldConfig.type)) {
-            if (fieldConfig.min < field.value.length && fieldConfig.max > field.value.length) {
+        if (["text", "textarea", "name"].includes(fieldConfig.type)) {
+            if (fieldConfig.min <= field.value.length && fieldConfig.max > field.value.length) {
                 this.makeFieldCorrect(form, field, fieldConfig);
             } else {
                 if (fieldConfig.required) {
@@ -60,16 +60,19 @@ class Form {
                 this.removeContainerCorrect(form, field, fieldConfig);
             }
         } else if ("contacts" === fieldConfig.type) {
-            let reEmail = new RegExp(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/);
+            let reEmail = new RegExp(/^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{2,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{0,}$/i);
             let rePhone = new RegExp(/^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/);
             if (reEmail.test(field.value)) {
+                field.setAttribute("maxLength", "");
                 this.makeFieldCorrect(form, field, fieldConfig);
             } else if (rePhone.test(field.value)) {
+                field.setAttribute("maxLength", "16");
                 this.makeFieldCorrect(form, field, fieldConfig);
             } else {
                 if (fieldConfig.required) {
                     this.makeFieldError(form, field, fieldConfig);
                 }
+                field.setAttribute("maxLength", "");
                 field.classList.remove(fieldConfig.correctName);
                 this.removeContainerCorrect(form, field, fieldConfig);
             }
@@ -212,7 +215,13 @@ class Form {
     initValidation() {
         for (let field of this.config.fields) {
             let input = this._getInputElement(field);
-            if (["text", "textarea"].includes(field.type)) {
+            if (["text", "textarea", "name"].includes(field.type)) {
+                if (field.type === "name") {
+                    input.mask = new IMask(input, {
+                        mask: /^[а-яa-z]*$/i,
+                        skipInvalid: true,
+                    });
+                }
                 if (field.max) {
                     input.setAttribute("maxLength", field.max)
                 }
@@ -265,11 +274,11 @@ class Form {
 }
 let feedbackFormConfig = {
     fields: [
-        new FormField("text", "name", "input-text__input--correct", "input-text__input--error", ".form__item", true),
+        new FormField("name", "name", "input-text__input--correct", "input-text__input--error", ".form__item", true, 2),
         new FormField("contacts", "contacts", "input-text__input--correct", "input-text__input--error", ".form__item", true),
-        new FormField("textarea", "message", "textarea__textarea--correct", "textarea__textarea--error", ".form__item", true),
-        new FormField("radio", "choice", "radio-button__input--correct", "radio-button__input--error", ".form__item", true),
-        new FormField("select", "selected", "select__input--correct", "select__input--error", ".form__item", true),
+        new FormField("textarea", "message", "textarea__textarea--correct", "textarea__textarea--error", ".form__item", true, 5),
+        new FormField("radio", "radio", "radio-button__input--correct", "radio-button__input--error", ".form__item", true),
+        new FormField("select", "select", "select__input--correct", "select__input--error", ".form__item", true),
         new FormField("rating", "medRating", "rating__input--correct", "rating__input--error", ".form__item", true),
         new FormField("checkbox", "aggreement", "checkbox__input--correct", "checkbox__input--error", ".form__item", true),
     ],
