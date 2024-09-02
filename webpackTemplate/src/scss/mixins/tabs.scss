@@ -1,14 +1,17 @@
 .tabs {
     &__header {
         ul {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(7, 179px);
+            column-gap: 10px;
+            row-gap: 15px;
             background-color: rgb(var(--color-white));
             border-radius: 40px;
-            padding: 19px 0 18px;
+            padding: 19px 15px 18px;
             li {
-                padding: 0 65px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
             }
         }
     }
