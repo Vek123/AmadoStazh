@@ -32,7 +32,9 @@ class Form {
             inputContainerError: config.inputContainerError || "_error",
             fields: config.fields || [],
             submitButtonSelector: config.submitButtonSelector || "button",
-            onlyOnSubmitError: config.onlyOnSubmitError || false
+            onlyOnSubmitError: config.onlyOnSubmitError || false,
+            successFormClassElement: config.successFormClassElement || this.form,
+            successFormClass: config.successFormClass || "_success",
         };
         this.errors = 0;
         this._firstValidation = true,
@@ -181,6 +183,9 @@ class Form {
                 data[key] = value;
             });
             console.log(data);
+            if (!formObj.config.successFormClassElement.classList.contains(formObj.config.successFormClass)) {
+                formObj.config.successFormClassElement.classList.add(formObj.config.successFormClass);
+            }
         } else {
             formObj.config.fields.forEach(field => {
                 if (field.error) {
@@ -286,6 +291,8 @@ let feedbackFormConfig = {
     onlyOnSubmitError: true,
     inputContainerCorrect: "form__item--correct",
     inputContainerError: "form__item--error",
+    successFormClass: "feedback-modal--success",
+    successFormClassElement: document.querySelector(".feedback-modal"),
 }
 document.addEventListener("DOMContentLoaded", () => {
     if (document.querySelector(".feedback-modal__form .form")) {

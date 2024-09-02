@@ -6,8 +6,9 @@ include ~@mixins/squareCloseButton
 include ~@mixins/radioButton
 include ~@mixins/select
 include ~@mixins/ratingInput
+include ~@mixins/mainButton
 
-mixin feedbackModal(className, title, subtitle)
+mixin feedbackModal(className, title, subtitle, successTitle, successSubtitle)
     -
         var selectList = [
             {name: "Первое", value: "Первое", selected: false},
@@ -42,4 +43,10 @@ mixin feedbackModal(className, title, subtitle)
                     .form__item
                         +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" target="_blank" href="/">персональных данных</a>`, "feedback-modal-form__checkbox", "aggreement", "true", true)
                     .form__button
-                        +mainButton("", "Отправить", true, "", true, "submit")
+                        +mainButton("", "Отправить", true, "", true, "submit")                
+        .form-container.feedback-modal__success 
+            h2.feedback-modal__title= successTitle
+            if successSubtitle
+                .feedback-modal__subtitle= successSubtitle
+            .feedback-modal__message-icon: include ~@icons/messageIcon.svg
+            .feedback-modal__success-button: +mainButton("", "Ок", true, "", true)

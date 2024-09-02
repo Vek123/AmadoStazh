@@ -18,4 +18,25 @@
     &__button {
         width: 100%;
     }
+    &__success {
+        display: none;
+        align-items: center;
+        flex-direction: column;
+    }
+    &__message-icon {
+        margin-bottom: 37px;
+    }
+    &__success-button {
+        width: 396px;
+    }
+    &--success {
+        .form-container {
+            display: none;
+        }
+        .feedback-modal {
+            &__success {
+                display: flex;
+            }
+        }
+    }
 }

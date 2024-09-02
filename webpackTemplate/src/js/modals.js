@@ -46,10 +46,12 @@ function openFeedbackModal() {
     let modal = document.querySelector(".feedback-modal-form");
     openModal(modal);
 }
-
+let closedModal = null;
 document.addEventListener("DOMContentLoaded", () => {
-    console.log(document.querySelectorAll(".feedback-modal-form__form .feedback-modal__close-button"));
-    
+    document.querySelectorAll(".modal__close-button").forEach(x => x.addEventListener("click", closeModal));
+
     document.querySelectorAll(".open-feedback-modal").forEach(x => x.addEventListener("click", openFeedbackModal));
-    document.querySelectorAll(".modal__close-button").forEach(x => x.addEventListener("click", closeModal))
+    document.querySelectorAll(".feedback-modal__success-button").forEach(x => x.addEventListener("click", event => {
+        event.target.closest(".feedback-modal").classList.remove("feedback-modal--success");
+    }));
 });
