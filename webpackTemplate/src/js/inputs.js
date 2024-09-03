@@ -30,7 +30,7 @@ function openSelectList() {
 }
 function choiceSelectItem(event, selectEl) {
     selectEl.classList.remove("select--list");
-    selectEl.querySelector(".select__item--selected").classList.remove("select__item--selected");
+    selectEl.querySelectorAll(".select__item--selected").forEach(x => x.classList.remove("select__item--selected"));
     event.target.classList.add("select__item--selected");
 
     let input = selectEl.querySelector(".select__input");

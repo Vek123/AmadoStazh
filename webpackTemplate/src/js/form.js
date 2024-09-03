@@ -104,7 +104,6 @@ class Form {
                 field.classList.remove(fieldConfig.correctName);
                 this.removeContainerCorrect(form, field, fieldConfig);
             } else {
-                
                 this.makeFieldCorrect(form, field, fieldConfig);
             }
         }
@@ -175,6 +174,46 @@ class Form {
             }
         }
     }
+    resetForm() {
+        this.form.reset();
+        this.config.fields.forEach(field => {
+            field.error = false;
+            this.errors = 0;
+            let input = this._getInputElement(field);
+            if (field.type === "select") {
+                let selectContainer = input.closest(".select");
+                let defaultValue = null;
+                selectContainer.querySelectorAll(".select__item").forEach(x => x.classList.remove("select__item--selected"));
+                if (!input.getAttribute("data-default-id") || input.getAttribute("data-default-id") === "null") {
+                    selectContainer.querySelector("label").textContent = "Выберите значение:";
+                    selectContainer.querySelector(".select__output").classList.add("select__output--default");
+                    selectContainer.querySelectorAll(".select__item[data-value=\"none\"]").forEach(x => x.classList.add("select__item--selected"));
+                } else {
+                    defaultValue = selectContainer.querySelectorAll(".select__item:not([data-value=\"none\"])")[Number(input.getAttribute("data-default-id"))];
+                }
+                if (!defaultValue) {
+                    input.value = input.getAttribute("data-default-value");
+                } else {
+                    defaultValue.classList.add("select__item--selected");
+                    selectContainer.querySelector("label").textContent = defaultValue.getAttribute("data-name");
+                    input.value = defaultValue.getAttribute("data-value");
+                }
+            } else if (["radio", "rating"].includes(field.type)) {
+                if (field.containerSelector) {
+                    input[0].closest(field.containerSelector).classList.remove(this.config.inputContainerError);
+                    input[0].closest(field.containerSelector).classList.remove(this.config.inputContainerCorrect);
+                }
+                input.forEach(x => {
+                    x.classList.remove(field.correctName);
+                    if (x.getAttribute("checked") !== null) {
+                        x.classList.add(field.correctName);
+                    }
+                });
+            }
+        });
+        this._firstValidation = true;
+        this.startValidating();
+    }
     submitForm(formEl, event, formObj) {
         event.preventDefault();
         if (formObj.errors === 0) {
@@ -186,6 +225,7 @@ class Form {
             if (!formObj.config.successFormClassElement.classList.contains(formObj.config.successFormClass)) {
                 formObj.config.successFormClassElement.classList.add(formObj.config.successFormClass);
             }
+            this.resetForm();
         } else {
             formObj.config.fields.forEach(field => {
                 if (field.error) {
@@ -294,8 +334,16 @@ let feedbackFormConfig = {
     successFormClass: "feedback-modal--success",
     successFormClassElement: document.querySelector(".feedback-modal"),
 }
+function resetForm(event) {
+    if (event.target.classList.contains("modal--visible") || event.target.closest(".modal__close-button")) {
+        feedbackForm.resetForm();
+    }
+}
+let feedbackForm = null;
 document.addEventListener("DOMContentLoaded", () => {
     if (document.querySelector(".feedback-modal__form .form")) {
-        let feedbackForm = new Form(".feedback-modal__form .form", feedbackFormConfig).startValidating();
+        feedbackForm = new Form(".feedback-modal__form .form", feedbackFormConfig);
+        feedbackForm.startValidating();
+        document.querySelector(".feedback-modal-form").addEventListener("click", resetForm);
     }
 });

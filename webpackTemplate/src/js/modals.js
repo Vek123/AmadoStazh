@@ -46,7 +46,7 @@ function openFeedbackModal() {
     let modal = document.querySelector(".feedback-modal-form");
     openModal(modal);
 }
-let closedModal = null;
+
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".modal__close-button").forEach(x => x.addEventListener("click", closeModal));
 
