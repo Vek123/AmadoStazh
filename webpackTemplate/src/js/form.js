@@ -2,7 +2,7 @@ import IMask from 'imask';
 
 
 class FormField {
-    constructor(type, name, correct="_correct", error="_error", containerSelector=null, required=false, min=1, max=Infinity) {
+    constructor(type, name, correct="_correct", error="_error", containerSelector=null, clearFunction=null, required=false, min=1, max=Infinity) {
         this.type = type;
         this.name = name;
         this.required = required;
@@ -11,6 +11,7 @@ class FormField {
         this.errorName = error;
         this.correctName = correct;
         this.containerSelector = containerSelector;
+        this.clearFunction = clearFunction;
         this._error = null;
     }
     set error(value) {
@@ -180,35 +181,18 @@ class Form {
             field.error = false;
             this.errors = 0;
             let input = this._getInputElement(field);
-            if (field.type === "select") {
-                let selectContainer = input.closest(".select");
-                let defaultValue = null;
-                selectContainer.querySelectorAll(".select__item").forEach(x => x.classList.remove("select__item--selected"));
-                if (!input.getAttribute("data-default-id") || input.getAttribute("data-default-id") === "null") {
-                    selectContainer.querySelector("label").textContent = "Выберите значение:";
-                    selectContainer.querySelector(".select__output").classList.add("select__output--default");
-                    selectContainer.querySelectorAll(".select__item[data-value=\"none\"]").forEach(x => x.classList.add("select__item--selected"));
-                } else {
-                    defaultValue = selectContainer.querySelectorAll(".select__item:not([data-value=\"none\"])")[Number(input.getAttribute("data-default-id"))];
-                }
-                if (!defaultValue) {
-                    input.value = input.getAttribute("data-default-value");
-                } else {
-                    defaultValue.classList.add("select__item--selected");
-                    selectContainer.querySelector("label").textContent = defaultValue.getAttribute("data-name");
-                    input.value = defaultValue.getAttribute("data-value");
-                }
-            } else if (["radio", "rating"].includes(field.type)) {
+            if (field.clearFunction) {
+                field.clearFunction(this, field, input);
+            } else {
+                input.classList.remove(field.errorName);
+                input.classList.remove(field.correctName);
                 if (field.containerSelector) {
-                    input[0].closest(field.containerSelector).classList.remove(this.config.inputContainerError);
-                    input[0].closest(field.containerSelector).classList.remove(this.config.inputContainerCorrect);
+                    input.closest(field.containerSelector).classList.remove(this.config.inputContainerCorrect);
+                    input.closest(field.containerSelector).classList.remove(this.config.inputContainerError);
                 }
-                input.forEach(x => {
-                    x.classList.remove(field.correctName);
-                    if (x.getAttribute("checked") !== null) {
-                        x.classList.add(field.correctName);
-                    }
-                });
+            }
+            if (input.mask) {
+                input.mask.updateValue();
             }
         });
         this._firstValidation = true;
@@ -317,15 +301,52 @@ class Form {
         this.form.addEventListener("submit",(event) => this.submitForm(this.form, event, this));
     }
 }
+function clearRadio(form, field, input) {
+    if (field.containerSelector) {
+        input[0].closest(field.containerSelector).classList.remove(form.config.inputContainerError);
+        input[0].closest(field.containerSelector).classList.remove(form.config.inputContainerCorrect);
+    }
+    input.forEach(x => {
+        x.classList.remove(field.correctName);
+        x.classList.remove(field.errorName);
+        if (x.getAttribute("checked") !== null) {
+            x.classList.add(field.correctName);
+        }
+    });
+}
+function clearSelect(form, field, input) {
+    let selectContainer = input.closest(".select");
+    let defaultValue = null;
+    selectContainer.querySelectorAll(".select__item").forEach(x => x.classList.remove("select__item--selected"));
+    if (field.containerSelector) {
+        input.closest(field.containerSelector).classList.remove(form.config.inputContainerCorrect);
+        input.closest(field.containerSelector).classList.remove(form.config.inputContainerError);
+    }
+    input.classList.remove(field.errorName);
+    if (!input.getAttribute("data-default-id") || input.getAttribute("data-default-id") === "null") {
+        selectContainer.querySelector("label").textContent = "Выберите значение:";
+        selectContainer.querySelector(".select__output").classList.add("select__output--default");
+        selectContainer.querySelectorAll(".select__item[data-value=\"none\"]").forEach(x => x.classList.add("select__item--selected"));
+    } else {
+        defaultValue = selectContainer.querySelectorAll(".select__item:not([data-value=\"none\"])")[Number(input.getAttribute("data-default-id"))];
+    }
+    if (!defaultValue) {
+        input.value = input.getAttribute("data-default-value");
+    } else {
+        defaultValue.classList.add("select__item--selected");
+        selectContainer.querySelector("label").textContent = defaultValue.getAttribute("data-name");
+        input.value = defaultValue.getAttribute("data-value");
+    }
+}
 let feedbackFormConfig = {
     fields: [
-        new FormField("name", "name", "input-text__input--correct", "input-text__input--error", ".form__item", true, 2),
-        new FormField("contacts", "contacts", "input-text__input--correct", "input-text__input--error", ".form__item", true),
-        new FormField("textarea", "message", "textarea__textarea--correct", "textarea__textarea--error", ".form__item", true, 5),
-        new FormField("radio", "radio", "radio-button__input--correct", "radio-button__input--error", ".form__item", true),
-        new FormField("select", "select", "select__input--correct", "select__input--error", ".form__item", true),
-        new FormField("rating", "medRating", "rating__input--correct", "rating__input--error", ".form__item", true),
-        new FormField("checkbox", "aggreement", "checkbox__input--correct", "checkbox__input--error", ".form__item", true),
+        new FormField("name", "name", "input-text__input--correct", "input-text__input--error", ".form__item", null, true, 2),
+        new FormField("contacts", "contacts", "input-text__input--correct", "input-text__input--error", ".form__item", null, true),
+        new FormField("textarea", "message", "textarea__textarea--correct", "textarea__textarea--error", ".form__item", null, true, 5),
+        new FormField("radio", "radio", "radio-button__input--correct", "radio-button__input--error", ".form__item", clearRadio, true),
+        new FormField("select", "select", "select__input--correct", "select__input--error", ".form__item", clearSelect, true),
+        new FormField("rating", "medRating", "rating__input--correct", "rating__input--error", ".form__item", clearRadio, true),
+        new FormField("checkbox", "aggreement", "checkbox__input--correct", "checkbox__input--error", ".form__item", null, true),
     ],
     submitButtonSelector: ".form__button",
     onlyOnSubmitError: true,
