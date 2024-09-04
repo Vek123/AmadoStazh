@@ -7,7 +7,7 @@ mixin tabs(className, items, prefixId)
                     if item.link
                         li: a.tabs__link(href=item.link)= item.title
                     else
-                        li: a.tabs__link(class=item.checked ? "tabs__link--selected" : "" data-id=item.id)= item.title
+                        li: .tabs__link(class=item.checked ? "tabs__link--selected" : "" data-id=item.id)= item.title
                     - iter += 1;
         .tabs__content
             - iter = 0

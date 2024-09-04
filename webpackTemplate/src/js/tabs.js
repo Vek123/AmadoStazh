@@ -8,7 +8,7 @@ function openTab(tabs, event) {
 
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".tabs").forEach(x => {
-        x.querySelectorAll("a[data-id]").forEach(y => {
+        x.querySelectorAll(".tabs__link[data-id]").forEach(y => {
             y.addEventListener("click", (event) => openTab(x, event));
         });
     });
