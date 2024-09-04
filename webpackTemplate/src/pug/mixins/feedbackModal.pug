@@ -31,7 +31,7 @@ mixin feedbackModal(className, title, subtitle, successTitle, successSubtitle)
                     .form__item
                         +textarea("", "message", "Введите ваше сообщение", "Это поле обязательно для заполнения и должно состоять минимум из 5 знаков", 7)
                     .form__item
-                        +select("", "select", "selected", selectList, null, true, "Это поле обязательно для заполнения, необходимо выбрать один вариант из приведённого списка")
+                        +select("", "select", "selected", selectList, null, false, "Это поле обязательно для заполнения, необходимо выбрать один вариант из приведённого списка")
                     .form__item
                         .form__text Выберите одно из двух:
                         .form__radio

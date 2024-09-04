@@ -195,6 +195,7 @@ class Form {
                 input.mask.updateValue();
             }
         });
+        this.form.removeEventListener("submit", this.submitForm);
         this._firstValidation = true;
         this.startValidating();
     }
@@ -230,6 +231,7 @@ class Form {
                 }
             });
         }
+        console.log(formObj.config.fields);
     }
     _getInputElement(field) {
         if (field.type === "textarea") {
@@ -257,12 +259,18 @@ class Form {
                 if (field.required) {
                     this.validateField(this, input, field);
                 }
-                input.addEventListener("input", () => this.validateField(this, input, field));
+                if (!input.listened) {
+                    input.addEventListener("input", () => this.validateField(this, input, field));
+                    input.listened = true;
+                }
             } else if (field.type === "checkbox") {
                 if (field.required) {
                     this.validateField(this, input, field);
                 }
-                input.addEventListener("change", () => {this.validateField(this, input, field)});
+                if (!input.listened) {
+                    input.addEventListener("change", () => {this.validateField(this, input, field)});
+                    input.listened = true;
+                }
             } else if (field.type === "contacts") {
                 input.mask = new IMask(input, {
                     mask: [
@@ -277,28 +285,42 @@ class Form {
                 if (field.required) {
                     this.validateField(this, input, field);
                 }
-                input.addEventListener("input", () => this.validateField(this, input, field));
+                if (!input.listened) {
+                    input.addEventListener("input", () => this.validateField(this, input, field));
+                    input.listened = true;
+                }
             } else if (["radio", "rating"].includes(field.type)) {
                 if (field.required) {
                     input.forEach(() => {
                         this.validateField(this, input, field);
                     });
                 }
-                input.forEach(x => x.addEventListener("change", () => {
-                    this.validateField(this, input, field)
-                }));
+                input.forEach(x => {
+                    if (!x.listened) {
+                        x.addEventListener("change", () => {
+                            this.validateField(this, input, field)
+                        });
+                        x.listened = true;
+                    }
+                });
             } else if (field.type === "select") {
                 if (field.required) {
                     this.validateField(this, input, field);
                 }
-                input.addEventListener("change", () => {this.validateField(this, input, field)});
+                if (!input.listened) {
+                    input.addEventListener("change", () => {this.validateField(this, input, field)});
+                    input.listened = true;
+                }
             }
         }
     }
     startValidating() {
         this.initValidation();
         this._firstValidation = false;
-        this.form.addEventListener("submit",(event) => this.submitForm(this.form, event, this));
+        if (!this.form.listened) {
+            this.form.addEventListener("submit",(event) => this.submitForm(this.form, event, this));
+            this.form.listened = true;
+        }
     }
 }
 function clearRadio(form, field, input) {
@@ -358,6 +380,7 @@ let feedbackFormConfig = {
 function resetForm(event) {
     if (event.target.classList.contains("modal--visible") || event.target.closest(".modal__close-button")) {
         feedbackForm.resetForm();
+        console.log("reseted");
     }
 }
 let feedbackForm = null;
