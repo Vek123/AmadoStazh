@@ -41,7 +41,7 @@ mixin feedbackModal(className, title, subtitle, successTitle, successSubtitle)
                     .form__item
                         +ratingInput("", "medRating", "Поставьте Вашу оценку препарату:", "medRating-", 5)
                     .form__item
-                        +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" target="_blank" href="/">персональных данных</a>`, "feedback-modal-form__checkbox", "aggreement", "true", true)
+                        +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" target="_blank" href="/">персональных данных</a>`, "feedback-modal-form__checkbox", "aggreement", "true", false)
                     .form__button
                         +mainButton("", "Отправить", true, "", true, "submit")                
         .form-container.feedback-modal__success 

@@ -1,32 +1,28 @@
 import SimpleBar from 'simplebar';
 
-function closeInput(event) {
-    closeSelectList(event);
-}
 
 function closeSelectList(event) {
     let select = event.target.closest(".select");
-    if (!openedList) {
-        return;
-    }
-    if (!select) {
+    if (openedList && !select) {
         openedList.classList.remove("select--list");
         openedList = null;
     }
 }
 let openedList = null;
 function openSelectList() {
-    if (this.closest(".select").classList.contains("select--list")) {
-        this.closest(".select").classList.remove("select--list");
+    let select = this.closest(".select");
+    if (select.classList.contains("select--list")) {
+        select.classList.remove("select--list");
         openedList = null;
     } else if (openedList) {
         openedList.classList.remove("select--list");
-        this.closest(".select").classList.add("select--list");
-        openedList = this.parentElement;
+        select.classList.add("select--list");
+        openedList = select;
     } else {
-        this.closest(".select").classList.add("select--list");
-        openedList = this.parentElement;
+        select.classList.add("select--list");
+        openedList = select;
     }
+    
 }
 function choiceSelectItem(event, selectEl) {
     selectEl.classList.remove("select--list");
@@ -46,7 +42,7 @@ function choiceSelectItem(event, selectEl) {
     }
     input.dispatchEvent(new Event("change"));
 }
-document.addEventListener("click", closeInput);
+document.addEventListener("click", closeSelectList, true);
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".select").forEach(x => {
         new SimpleBar(x.querySelector(".select__list"), {autoHide: false});
