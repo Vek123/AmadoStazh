@@ -196,6 +196,7 @@ let mapAddressesSimpleBars = [];
 document.querySelectorAll('.buy-map__scroll-points').forEach(x => mapAddressesSimpleBars.push(new SimpleBar(x, {autoHide: false})));
 document.querySelectorAll('.buy-map__scroll-cities').forEach(x => mapCitiesSimpleBars.push(new SimpleBar(x, {autoHide: false})));
 document.querySelectorAll(".mobile-modal-menu__body").forEach(x => new SimpleBar(x, {autoHide: false}));
+document.querySelectorAll(".feedback-modal").forEach(x => new SimpleBar(x, {autoHide: false}));
 
 
 function createPlacemarks(addresses) {
