@@ -5,9 +5,12 @@
     display: flex;
     align-items: center;
     &__input {
-        height: 55px;
+        height: 40px;
         width: 100%;
-        padding: 0 18px;
+        padding: 0 28px 0px 18px;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        overflow: hidden;
         border-radius: 50px;
         border: 1px solid rgb(var(--color-grey-border));
         &:focus, &:not(&:placeholder-shown) {

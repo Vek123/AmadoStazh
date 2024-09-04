@@ -3,7 +3,6 @@
     align-items: center;
     @include font("Roboto", 15px, 17.58px, 400);
     &__input {
-        height: 40px;
         form {
             width: 100%;
             height: 100%;
@@ -14,20 +13,28 @@
     &__like {
         margin-left: 10px;
     }
+    .input-text {
+        &__input {
+            padding-left: 36px;
+        }
+        &__icon {
+            left: 12px;
+            right: unset;
+        }
+    }
     &--active {
         input::placeholder {
             font-style: italic;
         }
-        .input-text {
-            input {
-                padding-left: 36px;
-            }
+        .input-text__input:placeholder-shown {
+            padding-right: 0;
             &__reset {
-                display: block;
+                display: none;
             }
-            &__icon {
-                left: 12px;
-                right: unset;
+        }
+        .input-text__input:not(:placeholder-shown) {
+            ~ .input-text__reset {
+                display: block;
             }
         }
     }

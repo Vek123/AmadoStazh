@@ -132,7 +132,7 @@
                 }
             }
         }
-        &--search {
+        &--fixed.header-bottom--search {
             ul li:nth-child(n+3):not(:nth-last-child(1)) {
                 display: none;
             }

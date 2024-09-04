@@ -179,6 +179,9 @@ button {
 .form {
   &__item {
     margin-bottom: 20px;
+    .input-text__input {
+      height: 55px;
+    }
     > .form__text {
       margin-bottom: 10px;
     }
