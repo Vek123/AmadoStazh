@@ -107,6 +107,16 @@ class Form {
             } else {
                 this.makeFieldCorrect(form, field, fieldConfig);
             }
+        } else if ("date" === fieldConfig.type) {
+            if (field.mask.unmaskedValue.length === 8) {
+                this.makeFieldCorrect(form, field, fieldConfig);
+            } else {
+                if (fieldConfig.required) {
+                    this.makeFieldError(form, field, fieldConfig);
+                }
+                field.classList.remove(fieldConfig.correctName);
+                this.removeContainerCorrect(form, field, fieldConfig);
+            }
         }
     }
     makeContainerCorrect(form, field, fieldConfig) {
@@ -231,7 +241,6 @@ class Form {
                 }
             });
         }
-        console.log(formObj.config.fields);
     }
     _getInputElement(field) {
         if (field.type === "textarea") {
@@ -311,6 +320,54 @@ class Form {
                     input.addEventListener("change", () => {this.validateField(this, input, field)});
                     input.listened = true;
                 }
+            } else if (field.type === "date") {
+                input.mask = new IMask(input, {
+                    mask: Date,
+                    pattern: 'd-`m-`Y',
+                    autofix: true,
+                    blocks: {
+                        d: {
+                            mask: IMask.MaskedRange,
+                            from: 1,
+                            to: 31,
+                            maxLength: 2,
+                        },
+                        m: {
+                            mask: IMask.MaskedRange,
+                            from: 1,
+                            to: 12,
+                            maxLength: 2,
+                        },
+                        Y: {
+                            mask: IMask.MaskedRange,
+                            from: typeof field.min.getFullYear === "function" ? field.min.getFullYear() : 1900,
+                            to: typeof field.max.getFullYear === "function" ? field.max.getFullYear() : 9999,
+                        }
+                    },
+                    format: date => {
+                        let day = date.getDate();
+                        let month = date.getMonth() + 1;
+                        const year = date.getFullYear();
+                    
+                        if (day < 10) day = "0" + day;
+                        if (month < 10) month = "0" + month;
+                    
+                        return [day, month, year].join('-');
+                    },
+                    parse: str => {
+                        const yearMonthDay = str.split('-');
+                        return new Date(yearMonthDay[2], yearMonthDay[1] - 1, yearMonthDay[0]);
+                    },
+                    min: typeof field.min.getMonth === 'function' ? field.min : new Date(1900, 0, 1),
+                    max: typeof field.max.getMonth === 'function' ? field.max : new Date(9999, 0, 1),
+                });
+                if (field.required) {
+                    this.validateField(this, input, field);
+                }
+                if (!input.listened) {
+                    input.addEventListener("input", () => {this.validateField(this, input, field)});
+                    input.listened = true;
+                }
             }
         }
     }
@@ -364,9 +421,10 @@ let feedbackFormConfig = {
     fields: [
         new FormField("name", "name", "input-text__input--correct", "input-text__input--error", ".form__item", null, true, 2),
         new FormField("contacts", "contacts", "input-text__input--correct", "input-text__input--error", ".form__item", null, true),
-        new FormField("textarea", "message", "textarea__textarea--correct", "textarea__textarea--error", ".form__item", null, true, 5),
+        new FormField("textarea", "message","textarea__textarea--correct", "textarea__textarea--error", ".form__item", null, true, 5),
         new FormField("radio", "radio", "radio-button__input--correct", "radio-button__input--error", ".form__item", clearRadio, true),
         new FormField("select", "select", "select__input--correct", "select__input--error", ".form__item", clearSelect, true),
+        new FormField("date", "date", "input-text__input--correct", "input-text__input--error", ".form__item", null, true, "", new Date()),
         new FormField("rating", "medRating", "rating__input--correct", "rating__input--error", ".form__item", clearRadio, true),
         new FormField("checkbox", "aggreement", "checkbox__input--correct", "checkbox__input--error", ".form__item", null, true),
     ],
@@ -380,7 +438,6 @@ let feedbackFormConfig = {
 function resetForm(event) {
     if (event.target.classList.contains("modal--visible") || event.target.closest(".modal__close-button")) {
         feedbackForm.resetForm();
-        console.log("reseted");
     }
 }
 let feedbackForm = null;

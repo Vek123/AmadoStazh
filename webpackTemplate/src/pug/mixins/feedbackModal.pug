@@ -39,6 +39,9 @@ mixin feedbackModal(className, title, subtitle, successTitle, successSubtitle)
                         .form__radio
                             +radioButton("", "Вторая кнопка", "form__radio-second", "radio", "Вторая кнопка", false)
                     .form__item
+                        .form__text Введите дату важего рождения
+                        +inputText("", "text", "date", "дд-мм-гггг", "Это поле обязательно для заполнения, необходимо написать корректную дату")
+                    .form__item
                         +ratingInput("", "medRating", "Поставьте Вашу оценку препарату:", "medRating-", 5)
                     .form__item
                         +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" target="_blank" href="/">персональных данных</a>`, "feedback-modal-form__checkbox", "aggreement", "true", false)
