@@ -64,12 +64,12 @@ class Form {
             }
         } else if ("contacts" === fieldConfig.type) {
             let reEmail = new RegExp(/^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{2,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{0,}$/i);
-            let rePhone = new RegExp(/^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/);
+            let rePhone = new RegExp(/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/);
             if (reEmail.test(field.value)) {
                 field.setAttribute("maxLength", "");
                 this.makeFieldCorrect(form, field, fieldConfig);
             } else if (rePhone.test(field.value)) {
-                field.setAttribute("maxLength", "16");
+                field.setAttribute("maxLength", "18");
                 this.makeFieldCorrect(form, field, fieldConfig);
             } else {
                 if (fieldConfig.required) {
@@ -109,6 +109,16 @@ class Form {
             }
         } else if ("date" === fieldConfig.type) {
             if (field.mask.unmaskedValue.length === 8) {
+                this.makeFieldCorrect(form, field, fieldConfig);
+            } else {
+                if (fieldConfig.required) {
+                    this.makeFieldError(form, field, fieldConfig);
+                }
+                field.classList.remove(fieldConfig.correctName);
+                this.removeContainerCorrect(form, field, fieldConfig);
+            }
+        } else if ("phone" === fieldConfig.type) {
+            if (field.mask.unmaskedValue.length === 11) {
                 this.makeFieldCorrect(form, field, fieldConfig);
             } else {
                 if (fieldConfig.required) {
@@ -284,7 +294,7 @@ class Form {
                 input.mask = new IMask(input, {
                     mask: [
                         {
-                            mask: '+{7}(000)000-00-00',
+                            mask: '+{7} (000) 000-00-00',
                         },
                         {
                             mask: /^.+$/i,
@@ -368,6 +378,18 @@ class Form {
                     input.addEventListener("input", () => {this.validateField(this, input, field)});
                     input.listened = true;
                 }
+            } else if (field.type === "phone") {
+                input.mask = new IMask(input, {
+                    mask: "+{7} (000) 000-00-00",
+                    lazy: false,
+                });
+                if (field.required) {
+                    this.validateField(this, input, field);
+                }
+                if (!input.listened) {
+                    input.addEventListener("input", () => {this.validateField(this, input, field)});
+                    input.listened = true;
+                }
             }
         }
     }
@@ -425,6 +447,7 @@ let feedbackFormConfig = {
         new FormField("radio", "radio", "radio-button__input--correct", "radio-button__input--error", ".form__item", clearRadio, true),
         new FormField("select", "select", "select__input--correct", "select__input--error", ".form__item", clearSelect, true),
         new FormField("date", "date", "input-text__input--correct", "input-text__input--error", ".form__item", null, true, "", new Date()),
+        new FormField("phone", "phone", "input-text__input--correct", "input-text__input--error", ".form__item", null, true),
         new FormField("rating", "medRating", "rating__input--correct", "rating__input--error", ".form__item", clearRadio, true),
         new FormField("checkbox", "aggreement", "checkbox__input--correct", "checkbox__input--error", ".form__item", null, true),
     ],

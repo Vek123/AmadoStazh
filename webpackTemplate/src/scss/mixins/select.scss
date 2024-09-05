@@ -69,7 +69,7 @@
         right: 16px;
     }
     &__error-message {
-        @include fontAdaptive(17px, 19.92px, 400);
+        @include fontAdaptive(17px, 24px, 400);
         position: absolute;
         bottom: -12px;
         left: 50%;
