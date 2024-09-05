@@ -25,6 +25,7 @@
         }
         &--selected, &--selected:hover {
             color: rgb(var(--color-black));
+            cursor: unset;
         }
     }
     &__tab-content {
