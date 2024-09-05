@@ -1,0 +1,10 @@
+mixin accordion(className, name, content, inputName, inputId, checked=false)
+    .accordion(class= className)
+        if checked
+            input.accordion__input(type= "checkbox" id= inputId name= inputName checked)
+        else
+            input.accordion__input(type= "checkbox" id= inputId name= inputName)
+        label(for= inputId).accordion__label= name
+            .accordion__icon
+        .accordion__content
+            .accordion__content-inner!= content

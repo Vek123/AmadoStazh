@@ -34,6 +34,8 @@ include ~@mixins/radioButton
 include ~@mixins/select
 include ~@mixins/ratingInput
 include ~@mixins/tabs
+include ~@mixins/accordion
+include ~@mixins/accordionsList
 
 block vars
   - title = 'ui страница'
@@ -131,6 +133,16 @@ block vars
       {name: "Первое", value: "first", selected: false},
       {name: "Второе", value: "second", selected: false},
       {name: "Третье", value: "third", selected: false},
+    ]
+    var accordions = [
+      {className: "", name:"Первый аккордион", content: "<h3>Первый аккордион</h3><p>Общее описание</p>", inputName: "accordion-list", inputId: "accordion-list-1"},
+      {className: "", name:"Второй аккордион", content: "<h3>Второй аккордион</h3><p>Общее описание</p>", inputName: "accordion-list", inputId: "accordion-list-2"},
+      {className: "", name:"Третий аккордион", content: "<h3>Третий аккордион</h3><p>Общее описание</p>", inputName: "accordion-list", inputId: "accordion-list-3"},
+    ]
+    var accordions2 = [
+      {className: "", name:"Первый аккордион", content: "<h3>Первый аккордион</h3><p>Общее описание</p>", inputName: "accordion-list-2", inputId: "accordion-list-2-1"},
+      {className: "", name:"Второй аккордион", content: "<h3>Второй аккордион</h3><p>Общее описание</p>", inputName: "accordion-list-2", inputId: "accordion-list-2-2"},
+      {className: "", name:"Третий аккордион", content: "<h3>Третий аккордион</h3><p>Общее описание</p>", inputName: "accordion-list-2", inputId: "accordion-list-2-3"},
     ]
     
 
@@ -259,3 +271,11 @@ block content
       +feedbackModal("feedback-modal-form__form", "Обратная связь", "Ваше мнение очень важно для нас", "Ваше сообщение успешно отправлено", "здесь может быть дополнительный текст, до двух-трёх строк")
     br
     +tabs("", [{title: "Первый", id: "tab-first", content: "<h3>Дополнительный источник кальция и солнца!</h3><p>Кальций является основным строительным материалом костей, зубов, важным компонентом волос и ногтей. Недостаток кальция может проявляться в виде ухудшения состояния зубов, волос и ногтей, а также повышенной утомляемости, общей слабости и снижении привычной трудоспособности.</p>", checked: true}, {title: "Второй", id: "tab-second", content: "Контент второго блока"}, {title: "Третий", link: "#header"}], "tabs-")
+    br
+    +accordion("", "Общее описание", "<h3>Общее описание</h3><p>Общее описание</p>", "accordion", "accordion")
+    br
+    h3 Можно открыть только 1 аккордион
+    +accordionsList("", accordions)
+    br
+    h3 Можно открыть несколько аккордионов
+    +accordionsList("", accordions2, false)

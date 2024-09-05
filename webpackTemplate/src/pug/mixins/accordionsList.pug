@@ -1,0 +1,7 @@
+include ~@mixins/accordion
+
+mixin accordionsList(className, items, onlyOne=true)
+    .accordions-list(class= onlyOne ? "accordions-list--only-one" : "" class= className)
+        each item in items
+            .accordions-list__accordion
+                +accordion(item.className, item.name, item.content, item.inputName, item.inputId, item.checked)
