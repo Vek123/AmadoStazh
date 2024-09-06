@@ -63,6 +63,7 @@ class Form {
                 this.removeContainerCorrect(form, field, fieldConfig);
             }
         } else if ("contacts" === fieldConfig.type) {
+            field.mask.updateValue();
             let reEmail = new RegExp(/^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{2,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{0,}$/i);
             let rePhone = new RegExp(/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/);
             if (reEmail.test(field.value)) {
@@ -108,6 +109,7 @@ class Form {
                 this.makeFieldCorrect(form, field, fieldConfig);
             }
         } else if ("date" === fieldConfig.type) {
+            field.mask.updateValue();
             if (field.mask.unmaskedValue.length === 8) {
                 this.makeFieldCorrect(form, field, fieldConfig);
             } else {
@@ -118,6 +120,17 @@ class Form {
                 this.removeContainerCorrect(form, field, fieldConfig);
             }
         } else if ("phone" === fieldConfig.type) {
+            if (field.mask.unmaskedValue.length <= 1) {
+                field.value = "";
+                field.mask.updateValue();  
+                field.mask.updateOptions({lazy: true});
+            } else {
+                if (field.mask.masked.lazy) {
+                    field.mask.updateValue();
+                    field.mask.updateOptions({lazy: false});
+                    field.mask.updateCursor(5);
+                }
+            }
             if (field.mask.unmaskedValue.length === 11) {
                 this.makeFieldCorrect(form, field, fieldConfig);
             } else {
@@ -212,6 +225,7 @@ class Form {
                 }
             }
             if (input.mask) {
+                input.mask.masked.reset();
                 input.mask.updateValue();
             }
         });
@@ -267,10 +281,12 @@ class Form {
             let input = this._getInputElement(field);
             if (["text", "textarea", "name"].includes(field.type)) {
                 if (field.type === "name") {
-                    input.mask = new IMask(input, {
-                        mask: /^[а-яa-z]*$/i,
-                        skipInvalid: true,
-                    });
+                    if (!input.mask) {
+                        input.mask = new IMask(input, {
+                            mask: /^[а-яa-z]*$/i,
+                            skipInvalid: true,
+                        });
+                    }
                 }
                 if (field.max) {
                     input.setAttribute("maxLength", field.max)
@@ -291,16 +307,18 @@ class Form {
                     input.listened = true;
                 }
             } else if (field.type === "contacts") {
-                input.mask = new IMask(input, {
-                    mask: [
-                        {
-                            mask: '+{7} (000) 000-00-00',
-                        },
-                        {
-                            mask: /^.+$/i,
-                        }
-                    ]
-                });
+                if (!input.mask) {
+                    input.mask = new IMask(input, {
+                        mask: [
+                            {
+                                mask: '+{7} (000) 000-00-00',
+                            },
+                            {
+                                mask: /^.+$/i,
+                            }
+                        ]
+                    });
+                }
                 if (field.required) {
                     this.validateField(this, input, field);
                 }
@@ -331,46 +349,49 @@ class Form {
                     input.listened = true;
                 }
             } else if (field.type === "date") {
-                input.mask = new IMask(input, {
-                    mask: Date,
-                    pattern: 'd-`m-`Y',
-                    autofix: true,
-                    blocks: {
-                        d: {
-                            mask: IMask.MaskedRange,
-                            from: 1,
-                            to: 31,
-                            maxLength: 2,
+                if (!input.mask) {
+                    input.mask = new IMask(input, {
+                        mask: Date,
+                        pattern: 'd-`m-`Y',
+                        autofix: true,
+                        blocks: {
+                            d: {
+                                mask: IMask.MaskedRange,
+                                from: 1,
+                                to: 31,
+                                maxLength: 2,
+                            },
+                            m: {
+                                mask: IMask.MaskedRange,
+                                from: 1,
+                                to: 12,
+                                maxLength: 2,
+                            },
+                            Y: {
+                                mask: IMask.MaskedRange,
+                                from: typeof field.min.getFullYear === "function" ? field.min.getFullYear() : 1900,
+                                to: typeof field.max.getFullYear === "function" ? field.max.getFullYear() : 9999,
+                                autofix: true,
+                            }
                         },
-                        m: {
-                            mask: IMask.MaskedRange,
-                            from: 1,
-                            to: 12,
-                            maxLength: 2,
+                        format: date => {
+                            let day = date.getDate();
+                            let month = date.getMonth() + 1;
+                            const year = date.getFullYear();
+                        
+                            if (day < 10) day = "0" + day;
+                            if (month < 10) month = "0" + month;
+                        
+                            return [day, month, year].join('-');
                         },
-                        Y: {
-                            mask: IMask.MaskedRange,
-                            from: typeof field.min.getFullYear === "function" ? field.min.getFullYear() : 1900,
-                            to: typeof field.max.getFullYear === "function" ? field.max.getFullYear() : 9999,
-                        }
-                    },
-                    format: date => {
-                        let day = date.getDate();
-                        let month = date.getMonth() + 1;
-                        const year = date.getFullYear();
-                    
-                        if (day < 10) day = "0" + day;
-                        if (month < 10) month = "0" + month;
-                    
-                        return [day, month, year].join('-');
-                    },
-                    parse: str => {
-                        const yearMonthDay = str.split('-');
-                        return new Date(yearMonthDay[2], yearMonthDay[1] - 1, yearMonthDay[0]);
-                    },
-                    min: typeof field.min.getMonth === 'function' ? field.min : new Date(1900, 0, 1),
-                    max: typeof field.max.getMonth === 'function' ? field.max : new Date(9999, 0, 1),
-                });
+                        parse: str => {
+                            const yearMonthDay = str.split('-');
+                            return new Date(yearMonthDay[2], yearMonthDay[1] - 1, yearMonthDay[0]);
+                        },
+                        min: typeof field.min.getMonth === 'function' ? field.min : new Date(1900, 0, 1),
+                        max: typeof field.max.getMonth === 'function' ? field.max : new Date(9999, 0, 1),
+                    });
+                }
                 if (field.required) {
                     this.validateField(this, input, field);
                 }
@@ -379,10 +400,11 @@ class Form {
                     input.listened = true;
                 }
             } else if (field.type === "phone") {
-                input.mask = new IMask(input, {
-                    mask: "+{7} (000) 000-00-00",
-                    lazy: false,
-                });
+                if (!input.mask) {
+                    input.mask = new IMask(input, {
+                        mask: "+{7} (000) 000-00-00",
+                    });
+                }
                 if (field.required) {
                     this.validateField(this, input, field);
                 }
@@ -446,7 +468,7 @@ let feedbackFormConfig = {
         new FormField("textarea", "message","textarea__textarea--correct", "textarea__textarea--error", ".form__item", null, true, 5),
         new FormField("radio", "radio", "radio-button__input--correct", "radio-button__input--error", ".form__item", clearRadio, true),
         new FormField("select", "select", "select__input--correct", "select__input--error", ".form__item", clearSelect, true),
-        new FormField("date", "date", "input-text__input--correct", "input-text__input--error", ".form__item", null, true, "", new Date()),
+        new FormField("date", "date", "input-text__input--correct", "input-text__input--error", ".form__item", null, true),
         new FormField("phone", "phone", "input-text__input--correct", "input-text__input--error", ".form__item", null, true),
         new FormField("rating", "medRating", "rating__input--correct", "rating__input--error", ".form__item", clearRadio, true),
         new FormField("checkbox", "aggreement", "checkbox__input--correct", "checkbox__input--error", ".form__item", null, true),
@@ -468,6 +490,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.querySelector(".feedback-modal__form .form")) {
         feedbackForm = new Form(".feedback-modal__form .form", feedbackFormConfig);
         feedbackForm.startValidating();
-        document.querySelector(".feedback-modal-form").addEventListener("click", resetForm);
+        document.querySelector(".feedback-modal-form").addEventListener("mousedown", resetForm);
     }
 });

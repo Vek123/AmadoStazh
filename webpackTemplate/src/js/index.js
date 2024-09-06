@@ -327,13 +327,13 @@ function closeMobileModalMenuSubList() {
 function openModal(modal) {
     bodyFixPosition();
     modal.classList.add("modal--visible");
-    modal.addEventListener("click", closeModal);
+    modal.addEventListener("mousedown", closeModal);
 }
 function closeModal(event) {
     let modal = event.target.closest(".modal--visible");
     if (event.target === modal || this.classList.contains("modal__close-button")) {
         modal.classList.remove("modal--visible");
-        modal.removeEventListener("click", closeModal);
+        modal.removeEventListener("mousedown", closeModal);
         setTimeout(() => {
             bodyUnfixPosition();
         }, mainDelay);

@@ -39,11 +39,10 @@ mixin feedbackModal(className, title, subtitle, successTitle, successSubtitle)
                         .form__radio
                             +radioButton("", "Вторая кнопка", "form__radio-second", "radio", "Вторая кнопка", false)
                     .form__item
-                        .form__text Введите дату важего рождения
+                        .form__text Введите дату вашего рождения
                         +inputText("", "text", "date", "дд-мм-гггг", "Это поле обязательно для заполнения, необходимо написать корректную дату")
                     .form__item
-                        .form__text Введите Ваш номер телефона
-                        +inputText("", "text", "phone", "", "Это поле обязательно для заполнения, необходимо написать корректный номер телефона формата \"+7 (123) 456-78-90\"")
+                        +inputText("", "text", "phone", "Введите номер телефона", "Это поле обязательно для заполнения, необходимо написать корректный номер телефона формата \"+7 (123) 456-78-90\"")
                     .form__item
                         +ratingInput("", "medRating", "Поставьте Вашу оценку препарату:", "medRating-", 5)
                     .form__item
