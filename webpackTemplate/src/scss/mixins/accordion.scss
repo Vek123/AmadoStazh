@@ -10,10 +10,6 @@
                         transform: translate(-50%, -50%) rotate(180deg);
                     }
                 }
-                &__content {
-                    max-height: 1800px;
-                    transition: max-height var(--delay-2s);
-                }
             }
         }
     }
@@ -56,9 +52,8 @@
         }
     }
     &__content {
-        max-height: 0;
+        height: 0;
         overflow: hidden;
-        transition: max-height var(--delay-05s);
         &-inner {
             padding: 30px 26px 0;
         }
