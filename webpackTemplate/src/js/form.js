@@ -52,16 +52,21 @@ class Form {
                 field.classList.remove(fieldConfig.correctName);
                 this.removeContainerCorrect(form, field, fieldConfig);
             }
-        } else if ("checkbox" === fieldConfig.type) {
-            if (field.checked) {
+        } else if (["checkbox", "checkboxes"].includes(fieldConfig.type)) {
+            if ((field.length && field[0].closest(fieldConfig.containerSelector).querySelector(`input[name=${fieldConfig.name}]:checked`)) ||  field.checked) {
                 this.makeFieldCorrect(form, field, fieldConfig);
             } else {
                 if (fieldConfig.required) {
                     this.makeFieldError(form, field, fieldConfig);
                 }
-                field.classList.remove(fieldConfig.correctName);
+                if (field.length) {
+                    field[0].classList.remove(fieldConfig.correctName);
+                } else {
+                    field.classList.remove(fieldConfig.correctName);
+                }
                 this.removeContainerCorrect(form, field, fieldConfig);
             }
+
         } else if ("contacts" === fieldConfig.type) {
             field.mask.updateValue();
             let reEmail = new RegExp(/^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{2,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{0,}$/i);
@@ -238,7 +243,11 @@ class Form {
         if (formObj.errors === 0) {
             const data = {};
             new FormData(formEl).forEach((value, key) => {
-                data[key] = value;
+                if (data[key]) {
+                    data[key] = [value].concat(data[key]);
+                } else {
+                    data[key] = value;
+                }
             });
             console.log(data);
             if (!formObj.config.successFormClassElement.classList.contains(formObj.config.successFormClass)) {
@@ -269,7 +278,7 @@ class Form {
     _getInputElement(field) {
         if (field.type === "textarea") {
             return this.form.querySelector(`textarea[name=${field.name}]`);
-        } else if (["radio", "rating"].includes(field.type)) {
+        } else if (["radio", "rating", "checkboxes"].includes(field.type)) {
             return this.form.querySelectorAll(`input[name=${field.name}]`);
         }
         else {
@@ -298,12 +307,16 @@ class Form {
                     input.addEventListener("input", () => this.validateField(this, input, field));
                     input.listened = true;
                 }
-            } else if (field.type === "checkbox") {
+            } else if (["checkbox", "checkboxes"].includes(field.type)) {
                 if (field.required) {
                     this.validateField(this, input, field);
                 }
                 if (!input.listened) {
-                    input.addEventListener("change", () => {this.validateField(this, input, field)});
+                    if (input.length) {
+                        input.forEach(x => x.addEventListener("change", () => this.validateField(this, input, field)));
+                    } else {
+                        input.addEventListener("change", () => {this.validateField(this, input, field)});
+                    }
                     input.listened = true;
                 }
             } else if (field.type === "contacts") {
@@ -424,7 +437,7 @@ class Form {
         }
     }
 }
-function clearRadio(form, field, input) {
+function clearManyInputs(form, field, input) {
     if (field.containerSelector) {
         input[0].closest(field.containerSelector).classList.remove(form.config.inputContainerError);
         input[0].closest(field.containerSelector).classList.remove(form.config.inputContainerCorrect);
@@ -466,11 +479,12 @@ let feedbackFormConfig = {
         new FormField("name", "name", "input-text__input--correct", "input-text__input--error", ".form__item", null, true, 2),
         new FormField("contacts", "contacts", "input-text__input--correct", "input-text__input--error", ".form__item", null, true),
         new FormField("textarea", "message","textarea__textarea--correct", "textarea__textarea--error", ".form__item", null, true, 5),
-        new FormField("radio", "radio", "radio-button__input--correct", "radio-button__input--error", ".form__item", clearRadio, true),
+        new FormField("radio", "radio", "radio-button__input--correct", "radio-button__input--error", ".form__item", clearManyInputs, true),
         new FormField("select", "select", "select__input--correct", "select__input--error", ".form__item", clearSelect, true),
         new FormField("date", "date", "input-text__input--correct", "input-text__input--error", ".form__item", null, true),
         new FormField("phone", "phone", "input-text__input--correct", "input-text__input--error", ".form__item", null, true),
-        new FormField("rating", "medRating", "rating__input--correct", "rating__input--error", ".form__item", clearRadio, true),
+        new FormField("checkboxes", "qualities", "checkbox__input--correct", "checkbox__input--error", ".form__item", clearManyInputs, true),
+        new FormField("rating", "medRating", "rating__input--correct", "rating__input--error", ".form__item", clearManyInputs, true),
         new FormField("checkbox", "aggreement", "checkbox__input--correct", "checkbox__input--error", ".form__item", null, true),
     ],
     submitButtonSelector: ".form__button",

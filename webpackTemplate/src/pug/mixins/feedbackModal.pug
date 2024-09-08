@@ -44,9 +44,14 @@ mixin feedbackModal(className, title, subtitle, successTitle, successSubtitle)
                     .form__item
                         +inputText("", "text", "phone", "Введите номер телефона", "Это поле обязательно для заполнения, необходимо написать корректный номер телефона формата \"+7 (123) 456-78-90\"")
                     .form__item
+                        .form__text Выберите качества присущие Вам
+                        +checkbox("", "Заинтересованный", "qualities-1", "qualities", "Заинтересованный")
+                        +checkbox("", "Честный", "qualities-2", "qualities", "Честный")
+                        +checkbox("", "Нервный", "qualities-3", "qualities", "Нервный")
+                    .form__item
                         +ratingInput("", "medRating", "Поставьте Вашу оценку препарату:", "medRating-", 5)
                     .form__item
-                        +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" target="_blank" href="/">персональных данных</a>`, "feedback-modal-form__checkbox", "aggreement", "true", false)
+                        +checkbox("", `Нажимая на кнопку «Отправить», я даю согласие на обработку&nbsp;<a class="intext-link" target="_blank" href="/">персональных данных</a>`, "feedback-modal-form__checkbox", "aggreement", "true")
                     .form__button
                         +mainButton("", "Отправить", true, "", true, "submit")                
         .form-container.feedback-modal__success 
