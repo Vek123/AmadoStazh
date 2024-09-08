@@ -1,0 +1,10 @@
+include ~@mixins/circleButton
+
+mixin videoTile(className, preview, text)
+    .video-tile
+        .video-tile__preview
+            img(src=preview alt="preview")
+            .video-tile__icon
+                +circleButton("", "смотреть")
+                    include ~@icons/buttons/playIcon.svg
+        .video-tile__text= text 

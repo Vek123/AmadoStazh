@@ -2,7 +2,7 @@ extends ~@templates/main-template
 include ~@mixins/mainButton
 include ~@mixins/inTextLink
 include ~@mixins/breadCrumbs
-include ~@mixins/zoomImageIcon
+include ~@mixins/circleButton
 include ~@mixins/squareCloseButton
 include ~@mixins/medicamentList
 include ~@mixins/brandCard
@@ -36,6 +36,7 @@ include ~@mixins/ratingInput
 include ~@mixins/tabs
 include ~@mixins/accordion
 include ~@mixins/accordionsList
+include ~@mixins/videoTile
 
 block vars
   - title = 'ui страница'
@@ -168,7 +169,8 @@ block content
     br
     +breadCrumbs(breadCrumbsItems)
     br
-    +zoomImageIcon('my-icon')
+    +circleButton('my-icon', "увеличить")
+      include ~@icons/buttons/searchIcon.svg
     br
     +squareCloseButton('')
     br
@@ -279,3 +281,5 @@ block content
     br
     h3 Можно открыть несколько аккордионов
     +accordionsList("", accordions2, false)
+    br
+    +videoTile("", "https://f.stolichki.ru/implovit/729c6ecd/8cfc3cf3_wtf.png", 'Наш производитель — партнёр Фармацевтическая компания "ВТФ"')
